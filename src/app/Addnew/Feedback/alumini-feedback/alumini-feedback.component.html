@@ -1,0 +1,23 @@
+<h4>Add Alumini Feedback</h4>
+
+
+<div [formGroup]="Form">
+<section class="container border mb-4 p-3 mt-4">
+
+  <mat-form-field appearance="outline" style="width: 40rem; margin-left: 1rem">
+    <mat-label>Details</mat-label>
+    <input matInput type="text" formControlName="details" name="details" id="details" #input
+        placeholder="eg - 1,2,3.."/>
+  </mat-form-field>
+
+
+<mat-form-field appearance="outline" style="width: 40rem; margin-left: 1rem">
+  <mat-label>Link for Form</mat-label>
+  <input matInput type="text" formControlName="link" name="link" id="link" #input
+      placeholder="eg - 1,2,3.."/>
+</mat-form-field>
+</section>
+</div>
+
+<button mat-raised-button color="accent" style="display:flex;justify-content: center;" (click)="submitForm()"  >Submit Form</button>
+

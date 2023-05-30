@@ -1,0 +1,134 @@
+<h1 class="head">List of Capacity Building/Skill Development Programmes</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <!-- <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button mat-raised-button color="accent" class="saveBtn" (click)="addNewSchoolData()">Add New Details</button>
+    </div>
+  </div> -->
+</div>
+
+
+<div class="table-responsive">
+  <h3 style="text-align: right; color:rgb(201, 49, 11);margin-right:10rem; font-family: Arial, Helvetica, sans-serif;font-size:15px">Total: {{this.dataSource.data.length}}     Selected: {{this.dataSource.filteredData.length}} </h3>
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
+
+    <!-- <ng-container matColumnDef="a_year">
+      <th mat-header-cell *matHeaderCellDef> Academic year </th>
+      <td mat-cell *matCellDef="let element"  data-label="a_year:" > {{element.academicYear}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="send_to">
+      <th mat-header-cell *matHeaderCellDef style="background-color:rgb(35, 94, 48);"> Send To </th>
+
+      <mat-cell style="margin-left: 1rem; background-color:rgb(201, 245, 199); border-color:blue " *matCellDef="let row" [style.color]="row.color" data-label="status :">
+        <!-- <mat-label>Select</mat-label> -->
+        <mat-select [value]="row.criteria?.name" (selectionChange)="singleStatusSelection(row,$event)">
+          <mat-option value="criteria2">Criteria 2</mat-option>
+          <mat-option value="criteria3">Criteria 3</mat-option>
+          <mat-option value="criteria5">Criteria 5</mat-option>
+          <mat-option value="criteria7">Criteria 7</mat-option>
+
+          <!-- <button type="button" class="btn btn-sm btn-info" (click)="status(row)">Submit</button> -->
+        </mat-select>
+      </mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.year}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="Department">
+      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <td mat-cell *matCellDef="let element" data-label="Department:"> {{element.department.departmentName}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title of Programme</th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element" style="word-wrap: break-word;"> {{element.fromDate|date:'dd/MM/yyyy'}} To {{element.toDate|date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="n_teachers">
+      <th mat-header-cell *matHeaderCellDef> Teachers count </th>
+      <td mat-cell *matCellDef="let element"> {{element.noOfTeachers}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="n_students">
+      <th mat-header-cell *matHeaderCellDef> Students count </th>
+      <td mat-cell *matCellDef="let element"> {{element.noOfStudent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="s_agency">
+      <th mat-header-cell *matHeaderCellDef> Supporting agency </th>
+      <td mat-cell *matCellDef="let element"> {{element.supportingAgency}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="photograph">
+      <th mat-header-cell *matHeaderCellDef> Photograph </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.photographs[0].photo" href="{{this.service.BASE_URL}}/resources/uploads/{{element.photographs[0].photo}}" target="_blank">View</a>
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="viewReport">
+      <th mat-header-cell *matHeaderCellDef> View Report </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="testreport(element)">Report</button>
+        <!-- <a mat-raised-button color="primary" [disabled]="!element.newsReports[0].news" href="{{this.service.BASE_URL}}/resources/uploads/{{element.newsReports[0].news}}" target="_blank">View Report</a> -->
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="participants">
+      <th mat-header-cell *matHeaderCellDef> Participants List </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.listOfParticipants[0].participant" href="{{this.service.BASE_URL}}/resources/uploads/{{element.listOfParticipants[0].participant}}" target="_blank">View</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white"></tr>
+
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br><br>
+
+</div>

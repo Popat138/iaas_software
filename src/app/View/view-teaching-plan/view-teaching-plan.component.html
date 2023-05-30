@@ -1,0 +1,93 @@
+
+<div [formGroup]="Form">
+
+  <h4 class="head_u" style="font-family:'Times New Roman', Times, serif;font-size: 22px;">Teaching Plan</h4>
+
+  <section class="container border mb-4 p-3 mt-4">
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Academic Year</mat-label>
+      <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Program</mat-label>
+      <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Course Code</mat-label>
+      <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Course Name</mat-label>
+      <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Year</mat-label>
+      <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Semester</mat-label>
+    <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Class</mat-label>
+      <input matInput type="text" formControlName="class" name="class" id="class" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Division</mat-label>
+        <input matInput type="text" formControlName="div" name="div" id="div" #input
+          placeholder="eg - 1,2,3.." [readonly]=true/>
+      </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Month</mat-label>
+    <input matInput type="text" formControlName="month" name="month" id="month" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+<div>
+  <button mat-raised-button color="primary" (click)="report5()" >Download Teaching Plan</button>
+  <div class="container border mb-1 p-3 mt-1">
+  <section id="plan" >
+    <div class="hill">
+    
+     <pre><strong style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 22px;">{{this.college}}</strong>
+      <strong  style="text-align: center;font-family:'Times New Roman', Times, serif;font-size: 20px;">Department of {{this.data.user.teacher.department.departmentName}}</strong>
+      <strong style=" font-family:'Times New Roman', Times, serif;font-size: 17px;"> Academic Year :{{this.data.academicYear}}
+    Program :{{this.data.academicDetail.course.program.programName}}      Class: {{this.data.academicDetail?.streamDetail.streamClass}}     Div.: {{this.data.academicDetail.division.divisionName}}          Course:   {{this.data.academicDetail.course.name}}</strong>
+      <strong style=" font-family:'Times New Roman', Times, serif;font-size: 15px;">Teacher: {{this.data.user.firstName +  " " + this.data.user.middleName +" " + this.data.user.lastName }}</strong>
+      <strong style=" font-family:'Times New Roman', Times, serif;font-size: 15px;">Plan Period: {{this.data.courseLecture[0].month}}</strong>
+      </pre>
+      <hr style="height:4px;border-width:2;color:rgb(17, 16, 16);background-color:rgb(8, 1, 1)">
+    </div>
+    <!-- <h4 class="row" ></h4> -->
+    <h4 class="head"><strong>Weekly Teaching plan </strong></h4>
+    <div  *ngFor="let other1 of otherControl;let i = index">
+      <div formArrayName="other">
+      <div [formGroupName]="i">
+        <h4 class="head" style="margin-top: 0.1rem;">Week {{i+1}} : Dates: {{this.data.courseLecture[i].lecDates}}</h4> <p> </p>
+        <div class="col" style="display: flex;justify-content: space-evenly;font-family:'Times New Roman', Times, serif;font-size:medium;">
+        <pre class="container border mb-1 p-3 mt-1"   style="margin-left: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>No. of Lectures: </strong> {{this.data.courseLecture[i].noOfLectures }}</pre>
+        <pre class="container border mb-1 p-3 mt-1" style="width: 2500px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;white-space: pre-wrap;padding-left:1em;;"><strong> Topics: </strong><br>{{this.data.courseLecture[i].topic}} </pre>
+        <p class="container border mb-1 p-3 mt-1" style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>No. of Tutorials:</strong>{{this.data.courseLecture[i].nofOfTutorials }}</p>
+        <p class="container border mb-1 p-3 mt-1"style="width: 1-00px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Assignments: </strong><br>{{this.data.courseLecture[i].assignment}} </p>
+        <p class="container border mb-1 p-3 mt-1"  style="margin-right: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Mode of Teaching: </strong><br>{{this.data.courseLecture[i].modeOfTeaching}} </p>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+  </section>
+  
+</div>
+
+

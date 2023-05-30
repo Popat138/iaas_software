@@ -1,0 +1,125 @@
+
+<div  [formGroup]="Form">
+    <div formArrayName="pg">
+      <section class="container border mb-4 p-3 mt-4">
+        <h4 class="head_u">Postgraduate Courses</h4>
+  
+        <div *ngFor="let pg1 of pgControl;let i = index">
+        <div [formGroupName]="i" >
+          <!-- <div  class="col-6 text-right">
+            <button type="button" class="btn btn-danger btn-sm" (click)="removepg(i)">
+              Remove
+            </button>
+          </div> -->
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Program Name</mat-label>
+            <mat-select required matNativeControl formControlName="pg_prog_name" [(ngModel)]="program" >
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let program of programs" [value]="program.programId">
+                {{ program.programName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Program Code</mat-label>
+            <mat-select required matNativeControl formControlName="code"  [(ngModel)]="program" >
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let program of programs" [value]="program.programId">
+                {{ program.programCode }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+  
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+              <mat-label>Year</mat-label>
+              <mat-select required matNativeControl formControlName="pg_year">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let year of pg_year" [value]="year.pg_year">
+                  {{ year.pg_year }}
+                  </mat-option>
+              </mat-select>
+              </mat-form-field>
+  
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+              <mat-label>Semester</mat-label>
+              <mat-select required matNativeControl formControlName="pg_semester">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let sem of pg_semester" [value]="sem.pg_semester">
+                  {{ sem.pg_semester }}
+                  </mat-option>
+              </mat-select>
+              </mat-form-field>
+  
+  
+       <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Semester.</mat-label>
+          <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field> -->
+  
+  
+        <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Program</mat-label>
+          <mat-select required matNativeControl formControlName="program" (selectionChange)="onpgProgramChange($event)">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let pgProgram of pgProgramList" [value]="pgProgram.programName">
+              {{ pgProgram.programName }}
+              </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+  
+  
+  
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Course code.</mat-label>
+          <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Course name.</mat-label>
+          <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+  
+  
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Program Type</mat-label>
+          <mat-select required matNativeControl formControlName="prog_type">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let course of prog_type" [value]="course.prog_type">
+              {{ course.prog_type }}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year Of Introduction.</mat-label>
+            <input matInput type="text" formControlName="year_of_intro" name="year_of_intro" id="year_of_intro" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+        <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Course type.</mat-label>
+          <input matInput type="text" formControlName="c_type" name="c_type" id="c_type" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field> -->
+      </div>
+      </div>
+      <!-- <div>
+        <button mat-raised-button class="btn btn-primary" (click)="addpg()">
+          Add
+        </button>
+      </div> -->
+      </section>
+      </div>
+    </div>
+    <button mat-raised-button  color="accent"  [disabled]="!Form.valid"  (click)="submitForm()"> Submit Form</button>
+  

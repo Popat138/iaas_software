@@ -1,0 +1,115 @@
+
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Student Project work/Field Work/field Trip </h4>
+
+    <section class="container border mb-4 p-3 mt-4">
+
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Academic Year</mat-label>
+          <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Program</mat-label>
+          <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Program Code</mat-label>
+          <input matInput type="text" formControlName="program_code" name="program_code" id="program_code" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+      </div>
+
+
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Course Code</mat-label>
+          <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Course Name</mat-label>
+          <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Year</mat-label>
+          <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Semester</mat-label>
+        <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+          placeholder="eg - 1,2,3.." [readonly]=true/>
+      </mat-form-field>
+      </div>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Class</mat-label>
+      <input matInput type="text" formControlName="class" name="class" id="class" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Division</mat-label>
+      <input matInput type="text" formControlName="div" name="div" id="div" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Type</mat-label>
+      <input matInput type="text" formControlName="type" name="type" id="type" #input placeholder="eg - Project work/Field Work/field Trip" [readonly]=true/>
+    </mat-form-field>
+  </section>
+    <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Month</mat-label>
+      <input matInput type="text" formControlName="month" name="month" id="month" #input placeholder="eg - 2020.." />
+    </mat-form-field> -->
+
+  <section class="container border mb-4 p-3 mt-4">
+    <h4 class="head" style="margin-top: 1.5rem;">Students</h4>
+
+    <!-- <div class="head" style="margin-bottom: 0.6rem;">
+
+      <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+    </div> -->
+
+      <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+
+  <div class="row">
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Roll number</mat-label>
+            <input matInput type="text" formControlName="roll_no" name="roll_no" id="roll_no"
+              #input placeholder="eg - 1,2,3.." [readonly]=true/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Name of Student</mat-label>
+            <input matInput type="text" formControlName="name_of_students" name="name_of_students" id="name_of_students"
+              #input placeholder="eg - 1,2,3.." [readonly]=true/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Title of Project/Fieldwork</mat-label>
+            <input matInput type="text" formControlName="title_of_project" name="title_of_project" id="title_of_project" #input
+              placeholder="eg - 1,2,3.." [readonly]=true/>
+          </mat-form-field>
+
+          <div style="width:15rem;margin-top:1rem;margin-left: -2rem">
+            <a mat-raised-button color="primary" [disabled]="!studentData[i]?.certificate" href="{{this.service.BASE_URL}}/resources/uploads/{{studentData[i]?.certificate}}" target="_blank">View</a>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    </section>
+    <div class="head" style="margin-bottom: 0.6rem;">
+      <!-- <h4 style="padding: 1rem;">Export Data</h4> -->
+      <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+    </div>

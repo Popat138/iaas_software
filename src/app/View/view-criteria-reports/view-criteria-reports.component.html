@@ -1,0 +1,36 @@
+
+<div  [formGroup]="Form" >
+    <section style="margin-left:5rem; margin-right:5rem" >
+        <div class="row">
+            <h3 style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: large;font-weight: bold;" ><strong>Qualitative Answer Details</strong></h3>
+            <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;">   Academic Year: {{this.data.academicYear}}   </pre>
+            <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;">   Criterion: {{this.data.crh.criteriaName}}   </pre>
+            <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;">   Metric : {{this.data.metricNo}}  : {{this.data.metricTitle}}   </pre>
+            <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;">   Answer :  </pre>
+            <div class="col container border mb-2 p-2 mt-2" >
+            <p innerHTML="{{this.data.ansBrief}}"style="margin-left:3rem; font-family: 'Times New Roman', Times, serif; font: size 12px;white-space: pre-wrap;padding-left:1rem;">{{this.data.ansBrief}}.innerHTML</p>
+        </div> <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;">   Additional :</pre>
+        <div class="col container border mb-2 p-2 mt-2" >
+          <pre style="text-align: left;font-family: 'Times New Roman', Times, serif;font-size: larger"> <a> {{this.data.anyLink}} </a> </pre>
+        </div>   
+        <p> Check Link: </p>
+        <a href="{{this.data.anyLink}}" target="_blank">{{this.data.anyLink}}</a>    
+        </div>
+    
+    
+    
+    </section>
+ <br>
+ <br>
+    <div class="col-3" style="margin-left:5rem;"> 
+        <!-- <button mat-raised-button color="primary" (click)="uploadAdhaar.click()">Upload Adhaar</button>
+      <input #uploadAdhaar (change)="adhaarUpload($event)" type="file" style="display: none" /> -->
+      <a mat-raised-button color="primary" [disabled]="!data.documentOne" href="{{this.service.BASE_URL}}/resources/uploads/{{data.documentOne}}" target="_blank">View Document - 1</a>
+      <br>
+      <br>
+      <a mat-raised-button color="primary" [disabled]="!data.documentTwo" href="{{this.service.BASE_URL}}/resources/uploads/{{data.documentTwo}}" target="_blank">View Document - 2</a>
+
+      </div>
+
+
+</div>

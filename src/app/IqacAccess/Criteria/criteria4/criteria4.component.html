@@ -1,0 +1,1158 @@
+<h4 class="head">Criteria 4: Infrastructure And Learning Resources</h4>
+
+<div class="row" style="display: flex;justify-content: space-evenly;">
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> ILMS Details </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_ilms($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_ilms()">Download EXCEL</button>
+      </div>
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_ilms" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>ILMS Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="nature_of_automation">
+          <th mat-header-cell *matHeaderCellDef>Nature Of Automation</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.natureOfAutomation }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Year</th>
+          <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="vendor_name">
+          <th mat-header-cell *matHeaderCellDef>Vendor Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="purchase_receipt">
+          <th mat-header-cell *matHeaderCellDef>Purchase Receipt</th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.purchaseReceipt" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.purchaseReceipt}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="maintenance_bill">
+          <th mat-header-cell *matHeaderCellDef>Maintenance Bill</th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.maintenanceBill" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.maintenanceBill}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_ilms(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_ilms(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_ilms" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_ilms" ></tr>
+      </table>
+      <br /><br/>
+    </div>
+
+</div>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- Screenshots of Library Management Software -->
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Screenshots of Library Mamgement Software </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search..." />
+      </mat-form-field>
+    </div> -->
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    
+    
+        
+    
+        <ng-container matColumnDef="Sr_no">
+          <th mat-header-cell *matHeaderCellDef>Sr no</th>
+          <td mat-cell *matCellDef="let element">{{ element.pos }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="academicYear">
+          <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+             <td  mat-cell *matCellDef="let element">
+               {{element.academicYear}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="screenshot">
+          <th mat-header-cell *matHeaderCellDef> Screen Shot Name </th>
+             <td  mat-cell *matCellDef="let element">
+          <!-- <button mat-raised-button color="primary">View Details</button> -->
+          {{element.bookIssueReturn}}
+            </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="view_ss">
+          <th mat-header-cell *matHeaderCellDef>View Screenshots</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.program?.natureOfAutomation }}
+          </td>
+        </ng-container> -->
+    
+        <ng-container matColumnDef="view_ss">
+          <th mat-header-cell *matHeaderCellDef> View screenshots</th>
+        <td mat-cell *matCellDef="let element">
+          <a mat-raised-button color="primary" [disabled]="!element.ilmsHomePage" href="{{this.service.BASE_URL}}/resources/uploads/{{element.ilmsHomePage}}" target="_blank">View</a>
+        </td>
+      </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator8 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<!-- Screenshots of Library Management Software -->
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Book Bank </mat-panel-title>
+    </mat-expansion-panel-header>
+
+
+<div class="row" style=" margin-top: 5rem">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem">
+    <input matInput (keyup)="applyFilter_bookbank($event)" placeholder="Search..." />
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+  <div class="head" style="margin-bottom: 0.6rem;">
+
+    <button type="submit" class="mat-raised-button" (click)="export_bookbank()">Download EXCEL</button>
+  </div>
+  <!-- <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button
+        mat-raised-button
+        color="accent"
+        class="saveBtn"
+        (click)="addpgcourses()">
+        Add New Details
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource_bookbank" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef>Academic year</th>
+      <td mat-cell *matCellDef="let element">{{ element.academicYear }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="benefited_students">
+      <th mat-header-cell *matHeaderCellDef>Total students benefited</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.benefitedStudent }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="books_issued">
+      <th mat-header-cell *matHeaderCellDef>Total books issued</th>
+      <td mat-cell *matCellDef="let element">{{ element.booksIssued }}</td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="isbn_no">
+      <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+      <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef>Period</th>
+      <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="total_cost">
+      <th mat-header-cell *matHeaderCellDef> Total cost of books </th>
+      <td mat-cell *matCellDef="let element">{{ element.costOfBooks }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fee_collected">
+      <th mat-header-cell *matHeaderCellDef>Total fee collected</th>
+      <td mat-cell *matCellDef="let element">{{ element.feeCollected }}</td>
+    </ng-container>
+
+
+
+
+     <ng-container matColumnDef="upload_studentlist">
+      <th mat-header-cell *matHeaderCellDef> View </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.upload" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.upload}}" target="_blank">View</a>
+      </td>
+    </ng-container>
+
+   <!-- <ng-container matColumnDef="usage_report">
+      <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit_bookbank(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete_bookbank(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns_bookbank" style="background-color:rgb(78, 80, 79);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns_bookbank" ></tr>
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator1 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br /><br/>
+</div>
+
+
+</div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Online Resources </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_onlineresources($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_onlineresources()">Download EXCEL</button>
+      </div>
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_onlineresources" class="mat-elevation-z8">
+
+
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Year</th>
+          <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="r_type">
+          <th mat-header-cell *matHeaderCellDef>Resource Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.otherType }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="r_name">
+          <th mat-header-cell *matHeaderCellDef>Resource Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.resourceName }}</td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="isbn_no">
+          <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+          <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+          <th mat-header-cell *matHeaderCellDef>Period</th>
+          <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="subs_date">
+          <th mat-header-cell *matHeaderCellDef>Subscription Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="subs_amount">
+          <th mat-header-cell *matHeaderCellDef>Subscription Amount</th>
+          <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="no_of_users">
+          <th mat-header-cell *matHeaderCellDef>No of Users</th>
+          <td mat-cell *matCellDef="let element">{{ element.noOfUsers }}</td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="receipt">
+          <th mat-header-cell *matHeaderCellDef> Receipt </th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.subscriptionReceipt" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.subscriptionReceipt}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="usage_report">
+          <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.annualUsage" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.annualUsage}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_onlineresources(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </mat-cell>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_onlineresources(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_onlineresources" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_onlineresources" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator2 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Purchase Of Books </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_purchase($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_purchase()">Download EXCEL</button>
+      </div>
+
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_purchase" class="mat-elevation-z8">
+
+
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Year</th>
+          <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="booktype">
+          <th mat-header-cell *matHeaderCellDef>Book Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.otherType }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalbooks">
+          <th mat-header-cell *matHeaderCellDef>Total Books</th>
+          <td mat-cell *matCellDef="let element">{{ element.totalBooks }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amountpaid">
+          <th mat-header-cell *matHeaderCellDef>Amount Paid</th>
+          <td mat-cell *matCellDef="let element">{{ element.amountPaid }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="invoiceno">
+          <th mat-header-cell *matHeaderCellDef>Invoice No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.invoiceNo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="view_upload_list">
+          <th mat-header-cell *matHeaderCellDef> View List </th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.accessionNumbers" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.accessionNumbers}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_purchase(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_purchase(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_purchase" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_purchase" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator3 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Rare Books </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_rare($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_rare()">Download EXCEL</button>
+      </div>
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_rare" class="mat-elevation-z8">
+
+
+
+
+        <!-- <ng-container matColumnDef="total_books">
+          <th mat-header-cell *matHeaderCellDef>Total Books</th>
+          <td mat-cell *matCellDef="let element">{{ element.program.name }}</td>
+        </ng-container> -->
+
+
+        <ng-container matColumnDef="accession_number">
+          <th mat-header-cell *matHeaderCellDef>Accession No.</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.accessionNo }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="book_title">
+          <th mat-header-cell *matHeaderCellDef>Book title</th>
+          <td mat-cell *matCellDef="let element">{{ element.bookTitle }}</td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="isbn_no">
+          <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+          <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+          <th mat-header-cell *matHeaderCellDef>Period</th>
+          <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="author">
+          <th mat-header-cell *matHeaderCellDef> Author (s)</th>
+          <td mat-cell *matCellDef="let element">{{ element.author }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="publisher">
+          <th mat-header-cell *matHeaderCellDef>Publisher</th>
+          <td mat-cell *matCellDef="let element">{{ element.publisher }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="public_year">
+          <th mat-header-cell *matHeaderCellDef>Publication year</th>
+          <td mat-cell *matCellDef="let element">{{ element.publicationYear }}</td>
+        </ng-container>
+
+
+
+        <!-- <ng-container matColumnDef="receipt">
+          <th mat-header-cell *matHeaderCellDef> Receipt </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary">View Report</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="usage_report">
+          <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+          <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="edit">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_rare(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_rare(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_rare" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_rare" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator4 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Resources for Visually Impared </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_resourecesvisually($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_resourcesvisually()">Download EXCEL</button>
+      </div>
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_resourecesvisually" class="mat-elevation-z8">
+
+
+
+        <ng-container matColumnDef="total_books">
+          <th mat-header-cell *matHeaderCellDef>Total Books LIPI</th>
+          <td mat-cell *matCellDef="let element">{{ element.totalBooks }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="audio_books">
+          <th mat-header-cell *matHeaderCellDef>Audio Books / CD's</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.audioBooks }}
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="braillie_list">
+          <th mat-header-cell *matHeaderCellDef>Audio Books / CD's</th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.brailleLipiList" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.brailleLipiList}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="audio_list">
+          <th mat-header-cell *matHeaderCellDef>Audio Books / CD's</th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.audioBookList" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.audioBookList}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="view_resources">
+          <th mat-header-cell *matHeaderCellDef>View Resources</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary" (click)=viewResources(element)>View</button>
+          </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="usage_report">
+          <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+          <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="edit">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_resourecesvisually(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_resourecesvisually(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_resourecesvisually" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_resourecesvisually" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator5 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Subscription Of Journals </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_journals($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_journals()">Download EXCEL</button>
+      </div>
+
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_journals" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Year</th>
+          <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="j_type">
+          <th mat-header-cell *matHeaderCellDef>Journal Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.otherType }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="j_name">
+          <th mat-header-cell *matHeaderCellDef>Journal Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.journalName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isbn_no">
+          <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+          <td mat-cell *matCellDef="let element">{{ element.issnNo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+          <th mat-header-cell *matHeaderCellDef>Period</th>
+          <td mat-cell *matCellDef="let element">{{ element.period }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="subs_date">
+          <th mat-header-cell *matHeaderCellDef>Subscription Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="subs_amount">
+          <th mat-header-cell *matHeaderCellDef>Subscription Amount</th>
+          <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="j_mode">
+          <th mat-header-cell *matHeaderCellDef>Journal Mode</th>
+          <td mat-cell *matCellDef="let element">{{ element.mode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="receipt">
+          <th mat-header-cell *matHeaderCellDef> Receipt </th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.subscriptionReceipt" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.subscriptionReceipt}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_journals(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_journals(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_journals" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_journals" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator6 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgb(233, 232, 231)">
+      <mat-panel-title class="head_u"> Usage Report </mat-panel-title>
+    </mat-expansion-panel-header>
+
+
+    <div class="row" style="margin-left: 5rem; margin-top: 5rem">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem">
+        <input matInput (keyup)="applyFilter_usagereport($event)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="head" style="margin-bottom: 0.6rem;">
+
+        <button type="submit" class="mat-raised-button" (click)="export_usagereport()">Download EXCEL</button>
+      </div>
+
+      <!-- <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button
+            mat-raised-button
+            color="accent"
+            class="saveBtn"
+            (click)="addpgcourses()">
+            Add New Details
+          </button>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource_usagereport" class="mat-elevation-z8">
+
+
+
+        <ng-container matColumnDef="academic_year">
+          <th mat-header-cell *matHeaderCellDef>Academic year</th>
+          <td mat-cell *matCellDef="let element">{{ element?.academicYear }}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="resource_name">
+          <th mat-header-cell *matHeaderCellDef>Resource Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.onlineResource?.resourceName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total_users">
+          <th mat-header-cell *matHeaderCellDef>Total Users</th>
+          <td mat-cell *matCellDef="let element">{{ element?.totalUsers }}</td>
+        </ng-container>
+
+
+
+         <ng-container matColumnDef="upload_usage_report">
+          <th mat-header-cell *matHeaderCellDef> Usage Report </th>
+          <td mat-cell *matCellDef="let element">
+            <a mat-raised-button color="primary" [disabled]="!element.usageReport" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.usageReport}}" target="_blank">View</a>
+          </td>
+        </ng-container>
+
+       <!-- <ng-container matColumnDef="usage_report">
+          <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+          <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Edit :">
+            <button mat-button color="primary" (click)="edit_usagereport(row)">
+              <mat-icon style="color: black">Edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <td mat-cell
+            *matCellDef="let row"
+            [style.color]="row.color"
+            data-label="Delete :">
+            <button mat-button color="primary" (click)="delete_usagereport(row)">
+              <mat-icon style="color: black; cursor: pointer"
+              >delete_forever</mat-icon>
+            </button>
+          </td>
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns_usagereport" style="background-color:rgb(78, 80, 79);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_usagereport" ></tr>
+      </table>
+      <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator7 [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      <br /><br/>
+    </div>
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion class="example-headers-align" style="margin-bottom: 0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgba(123, 241, 236, 0.925)">
+      <mat-panel-title class="head_u">Qualitative Metrics - Answers with proof </mat-panel-title>
+    </mat-expansion-panel-header>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource_qualN" class="mat-elevation-z8">
+          <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef> Year </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval.academicYear}} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Criterion </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval.crh.criteriaName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval.metricFor}} </td>
+          </ng-container>
+          <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef> Metric No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval.metricNo}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Metric title </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval.metricTitle}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef> View Answer </th>
+            <td mat-cell *matCellDef="let element">    <button mat-raised-button color="primary"  (click)="viewdetailsN(element)">Click here</button> </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="edit">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Edit :">
+              <button mat-button color="primary" (click)="editN(row)">
+                <mat-icon style="color: black">edit</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </ng-container>
+    
+          <!-- <ng-container matColumnDef="delete">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Delete :">
+              <button mat-button color="primary" (click)="delete(row)">
+                <mat-icon style="color: black; cursor: pointer"
+                >delete_forever</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </ng-container> --> 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns_qualN" style="background-color:rgb(105, 109, 108);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_qualN;" style="background-color:hsla(0, 0%, 100%, 0.815);"></tr>
+          </table>
+     
+     
+        </div>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion class="example-headers-align" style="margin-bottom: 0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header style="background-color:rgba(123, 241, 236, 0.925)">
+      <mat-panel-title class="head_u"> Quantitative Metrics - Answers with proof </mat-panel-title>
+    </mat-expansion-panel-header>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource_quanT" class="mat-elevation-z8">
+          <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef> Year </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval?.academicYear}} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Criterion </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval?.crh.criteriaName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval?.metricFor}} </td>
+          </ng-container>
+          <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef> Metric No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval?.metricNo}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Metric title </th>
+            <td mat-cell *matCellDef="let element"> {{element.approval?.metricTitle}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef> View Answer </th>
+            <td mat-cell *matCellDef="let element">    <button mat-raised-button color="primary"  (click)="viewdetailsL(element)">Click here</button> </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="edit">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Edit :">
+              <button mat-button color="primary" (click)="editL(row)">
+                <mat-icon style="color: black">edit</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </ng-container>
+    
+          <!-- <ng-container matColumnDef="delete">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Delete :">
+              <button mat-button color="primary" (click)="delete(row)">
+                <mat-icon style="color: black; cursor: pointer"
+                >delete_forever</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </ng-container> --> 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns_quanT" style="background-color:rgb(105, 109, 108);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns_quanT;" style="background-color:hsla(0, 0%, 100%, 0.815);"></tr>
+          </table>
+     
+     
+        </div>
+
+
+
+
+
+    
+  </mat-expansion-panel>
+</mat-accordion>
+
+</div>

@@ -1,0 +1,154 @@
+
+
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black"><strong>Update Appointment-details</strong></div>
+</mat-card>
+
+
+
+<section class="container border mb-4 p-3 mt-4">
+
+
+  <h3 class="head" style="margin-bottom: 2rem;"> Appointment-details </h3>
+
+
+
+  <div  [formGroup]="Form"  class="row" style="display: block">
+
+    <mat-form-field style="width: 21%;" color="primary" appearance="outline">
+      <mat-label>Appointment Date</mat-label>
+      <input matInput formControlName="appointment_date" [matDatepicker]="picker1" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+      <!-- <div class="row">
+
+          <div class="col-md-3"  >
+          <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>Academic Year</mat-label>
+          <mat-select required matNativeControl formControlName="academicYear">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let year of year" [value]="year.year">
+              {{ year.year }}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+          </div>
+      </div> -->
+
+      <!-- <div class="row">
+
+
+          <div class="col-md-3"  >
+          <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>Type</mat-label>
+          <mat-select required matNativeControl formControlName="type">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let type of types" [value]="type.value">
+              {{ type.title }}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+          </div>
+
+          <div class="col-md-3"  >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Level</mat-label>
+            <mat-select required matNativeControl formControlName="level">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let type of level" [value]="type.level">
+                {{ type.level }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+      </div> -->
+
+    <div class="row" >
+
+
+    <div class="col-md-3" >
+      <mat-form-field appearance="outline" >
+        <mat-label>Order Number</mat-label>
+        <input formControlName="order_no" matInput type="text" name="trder_no" id="order_no" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+      </div>
+      <div class="col-md-3" >
+        <div class="col-md-3"  >
+          <mat-form-field appearance="outline" >
+          <mat-label>Appointment Type</mat-label>
+          <mat-select required matNativeControl formControlName="appointment_type">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let desig of type" [value]="desig.value">
+              {{ desig.title }}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+          </div>
+          
+    </div>
+    <div class="col-md-3" >
+    <mat-form-field appearance="outline" >
+      <mat-label>Nature</mat-label>
+      <input formControlName="nature" matInput type="text" name="nature" id="order_no" #input
+        placeholder="eg -  Permanent/Temporary..." />
+    </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div>''
+      <mat-form-field appearance="outline" style="margin-top: 1rem">
+        <mat-label>Designation</mat-label>
+        <mat-select required matNativeControl formControlName="designation">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let any of designation" [value]="any.value">
+            {{ any.title }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+      
+      <mat-form-field style="width: 21%;" color="black" appearance="outline">
+          <mat-label>Joining Date in present Institute</mat-label>
+          <input matInput formControlName="joining_date" [matDatepicker]="picker2" />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+       </mat-form-field>
+
+        <div class="col" (click)="uploadFile.click()" style="margin-left: 0rem;margin-top: 2rem;">
+          <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload Letter</button>{{this.data?.document!=null?fileName||'Document Exist':""}}
+          <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+        </div>
+
+
+
+    </div>
+
+  </div>
+
+  <!-- <mat-form-field appearance="outline" style="margin-top: 1rem">
+    <mat-label>Role</mat-label>
+    <mat-select required matNativeControl formControlName="role">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+        {{ role.value }}
+        </mat-option>
+    </mat-select>
+    </mat-form-field> -->
+
+
+
+
+
+  </div>
+</section>
+
+
+<button mat-raised-button color="accent" [disabled]="!Form.valid"
+  (click)="submitForm()">
+  Submit Form
+</button>
+

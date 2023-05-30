@@ -1,0 +1,197 @@
+.header {
+  padding: 10px;
+  text-align: center;
+ background: rgb(252, 242, 231);
+  // box-shadow: inset 0px 500px 500px rgba(92, 50, 2, 2);
+  color: white;
+  box-shadow: #7875B5;
+  }
+
+.main-div{
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ // background-color: rgb(80, 218, 218);
+  box-shadow: inset 0px 200px 200px rgba(253, 255, 255, 0.952);
+  background: transparent;
+  //  background:linear-gradient(to right, rgb(252, 92, 125), rgb(106, 130, 251));
+  //background-color:rgb(238,117,170);
+}
+
+.login-card{
+ margin-top: 0%;
+ margin-left: 0%;
+ font-family: Spartan;
+ height: 50vh;
+ width: 50vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: transparent;
+ box-shadow: inset 0 0 1500px rgba(58, 160, 233, 0.952);
+ backdrop-filter: blur(5px);
+ border-top: 2px solid #b4e20e;
+
+}
+
+.img{
+  width: 29vh;
+  height: 25vh;
+  margin: 0 auto;
+  display: block;
+  margin-top:-55%;
+  // justify-content: center;
+  // margin-left: 30%;
+  // margin-top: -14vh;
+}
+.img2{
+  width: 10vh;
+  height: 20vh;
+  display: block;
+  object-fit: cover;
+
+}
+
+.img1{
+  width: 15vh;
+  height: 15vh;
+  //margin: 0 auto;
+  display: block;
+  margin-top:1%;
+  margin-left:5vh;
+ justify-content: center;
+//margin-left: 10%;
+  // margin-top: -14vh;
+}
+
+.mat-button.mat-primary .mat-button-focus-overlay {
+  background-color: transparent;
+}
+
+.Nav{
+  text-align: center;
+  font-family:'Josefin Slab',
+  serif;
+  font-size: 5rem;
+  font-weight: bold;
+  width: 90%;
+  margin-left: 1rem;
+}
+
+.head{
+  //text-align: center;
+  font-family:'Poppins',
+  serif;
+  font-size: 24x;
+  font-weight: bold;
+  text-align: center;
+  transition: width 2s;
+ // width: 30%;
+  //margin-left: 1rem;
+}
+
+
+.head_u{
+  //text-align: center;
+  font-family:'Josefin Slab',
+  serif;
+  font-size: 20px;
+  font-weight: bold;
+ // width: 5%;
+  //margin-left: 1rem;
+}
+
+.mat-raised-button{
+  margin-left: 3rem;
+}
+
+.head-card{
+  margin-top: 0%;
+  width:100%;
+  font-family: Spartan;
+  height: 0%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.952);
+  backdrop-filter: blur(2px);
+  border-top: 0px solid #f5d8d8;
+ 
+ }
+ 
+ .screen__background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);	
+}
+
+.screen__background__shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen__background__shape1 {
+	height: 520px;
+	width: 520px;
+	background: #FFF;	
+  backdrop-filter: blur(5px);
+  opacity: 0.3;
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 30px 0 0;
+}
+
+.screen__background__shape2 {
+	height: 220px;
+	width: 220px;
+	background: #e97a12;	
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, #1c74bd, #0aadad);
+  backdrop-filter: blur(2px);
+  opacity: 0.3;
+	top: -24px;
+	right: 0;	
+	border-radius: 50px;
+}
+
+.screen__background__shape4 {
+	height: 400px;
+	width: 200px;
+	background: #04be42;	
+	top: 420px;
+	right: 50px;	
+	border-radius: 60px;
+}
+.login__icon {
+	position: absolute;
+	top: 30px;
+	color: #2119ad;
+}
+
+
+@media screen and (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+}
+@media screen and (orientation: landscape) {
+  header nav {
+    position: fixed;
+    left: 0;
+    width: 20vw;
+  }
+}

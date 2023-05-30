@@ -1,0 +1,68 @@
+<div class="wrapper" style="width: 100%;height: 100%;">
+    <mat-drawer-container class="example-container" autosize>
+      <mat-card style="display: flex; flex-direction: row; align-items: center; background-color:hsl(189, 100%, 59%)">
+        <div style="width: 10%">
+          <button mat-mini-fab (click)="drawer.toggle()" style="margin-left: 2rem">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div class="Nav" style="color: rgb(12, 12, 12);">
+          <h1 style="font-family:Poppins;font-weight: bolder; font-size=10px">{{this.association}} </h1>
+          <h1 style="font-family:Poppins;font-weight: bolder;font-size=20px;margin-top:-1rem">{{this.college}}</h1>
+          <h2> <strong style="font-family:Garamond;font-weight: 700;color:rgb(245, 10, 10)">Welcome {{this.username}} to {{this.criterion}} </strong></h2>
+        </div>
+        <button   (click)="logout()" mat-mini-fab color="grey" aria-label="cart" >
+          <mat-icon>logout</mat-icon>
+          <br>
+        </button>
+        <p style="margin-top:4rem; margin-left: -2.5rem; color:rgb(19, 19, 18)"> logout</p>
+      </mat-card>
+  
+      <mat-drawer #drawer class="example-sidenav" opened mode="side" style="width: 19rem;background-color:white;">
+        <mat-card class="shadow p-3 mb-5 bg-body rounded" style=" margin-bottom: 10%;">
+          <h3 style="
+            font-family: Poppins;
+            font-weight: bold;
+            font-size: 19px;
+            margin-top: 5%;
+            text-align: center;
+          ">
+          <!-- {{this.committeename}} <br>Committee  -->
+          </h3>
+        </mat-card>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <mat-accordion>
+          <ul class="nav" style="margin-left: -0rem; margin-top:3rem">
+        
+            <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item" style="color:red">
+          
+          
+              <ul class="nav flex-column card  text-dark border-light mb-3 shadow-sm  mb-2  bg-body rounded" >
+                <!-- <mat-card style="width: 100%;margin-bottom: 2rem;"> -->
+                <li routerLinkActive="active" class="{{menuItem.class}} nav-item">
+                  <a class="nav-link" [routerLink]="menuItem.path" style="background-color:rgb(5, 97, 97)">
+                    <i style="margin-left: 0px;color: rgb(247, 240, 240); " class="material-icons">{{menuItem.icon}}</i>
+                    &nbsp;
+                    <p class="title">{{menuItem.title}}</p>
+                    <ng-container *ngIf="menuItem.children && menuItem.children.length > 0" style="color:red;margin-bottom:-1rem"> </ng-container>
+          
+                  </a>
+                </li>
+          
+                <!-- </mat-card> -->
+          
+              </ul>
+            </ul>
+         </mat-accordion>
+            
+      </mat-drawer>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-container>
+      </div>
+  

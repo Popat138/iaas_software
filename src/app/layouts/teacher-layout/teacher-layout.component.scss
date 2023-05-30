@@ -1,0 +1,89 @@
+.example-container {
+  width:auto;
+  height: 100%;
+  background-color:rgb(252, 251, 248);
+  border: 0.2px  rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color:rgb(17, 240, 166);
+  
+}
+
+.example-sidenav {
+  color:rgb(17, 240, 166);
+  padding: 2px;
+}
+
+.nav{
+    text-align: center;
+    font-family:'Josefin Slab';
+    font-size: 8px;
+    font-weight: bold;width: 90%;
+    display: block;
+    
+}
+
+.Nav{
+  text-align: center;
+  font-family:'Josefin Slab';
+  font-size: 14px;
+  font-weight: bold;width: 90%;
+  margin-left: -4%;
+  display: block;
+}
+
+a.active {
+  background-color: #00aec5;
+  color: white;
+ // margin: 10px -10px 0;
+}
+
+// :host ::ng-deep nav-item nav-link{
+//   margin: 0 !important;
+//   padding: 0;
+
+// }
+
+.nav-link{
+  display: flex;
+
+}
+.title{
+  margin-left: 1%;
+  font-size: large;
+  font-family:'Poppins';
+  font-weight:600;
+  color: rgb(245, 237, 237);
+  text-overflow:hidden;
+  white-space: nowrap;
+}
+
+.img1{
+  width: 10vh;
+  height: 10vh;
+  justify-content: right;
+  //margin: 0 auto;
+  display: block;
+  margin-top:1%;
+  // margin-left:5rem;
+ justify-content: right;
+margin-left: 85%;
+margin-top: -5vh;
+}
+.img2{
+  width: 10vh;
+  height: 10vh;
+  // justify-content: center;
+  //margin: 0 auto;
+  display: block;
+  margin-top:1%;
+  // margin-left:5rem;
+ justify-content: right;
+margin-left: 25%;
+// margin-top: -5vh;
+}

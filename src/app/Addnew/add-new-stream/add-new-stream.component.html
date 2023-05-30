@@ -1,0 +1,51 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add New Stream</div>
+  </mat-card>
+  
+  
+
+  
+  <section class="container border mb-4 p-3 mt-4">
+    <h3 class="head">Create Stream/Faculty</h3>
+    <div [formGroup]="Form" class="row" style="display: block;">
+  
+  <div class="row">
+    <div class="col-md-2" style="margin-top: 2rem;">  <h4 class="head">Name </h4> </div>
+  
+    <div class="col-md-3">
+        <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem;margin-left: -4rem;">
+  
+          <mat-label>Stream/Faculty Name</mat-label>
+          <input formControlName="s_name" matInput type="text" name="s_name" #input />
+        </mat-form-field>
+      </div>
+  
+      
+  
+  <!-- &nbsp;&nbsp; -->
+  
+  <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">  Starting Year  </h4> </div>
+  
+  <div class="col-md-3" style="margin-left: -6rem;" >
+  <mat-form-field appearance="outline" style="margin-top: 1rem;">
+    <mat-label>Starting year</mat-label>
+    <mat-select matNativeControl formControlName="academicYear" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+        {{ year }}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  
+</div>
+
+</div>
+        
+  </section>
+  
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+    (click)="submitForm()">Submit Form</button>
+  
+

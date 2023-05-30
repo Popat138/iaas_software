@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+  }
+  
+  * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  
+  .page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding-left: 0cm;
+    padding-right:0cm;
+    margin: 0cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 1px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 256mm;
+    outline: 2cm #FFEAEA solid;
+  }
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  // @media print {
+  //   .page {
+  //     margin: 0;
+  //     border: initial;
+  //     border-radius: initial;
+  //     width: initial;
+  //     min-height: initial;
+  //     box-shadow: initial;
+  //     background: initial;
+  //     page-break-after: always;
+  //   }
+  // }
+  .header {
+    //padding: 10px;
+    text-align: center;
+   background: rgb(116, 63, 19);
+    // box-shadow: inset 0px 500px 500px rgba(92, 50, 2, 2);
+    color: rgb(12, 11, 11);
+    box-shadow: #7875B5;
+    }
+  
+    .img1{
+        width: 2cm;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        margin-top:1%;
+        // margin-left:5vh;
+       justify-content: left;
+      //margin-left: 10%;
+        // margin-top: -14vh;
+      }
+  
+      .img{
+        width: 15vh;
+        height: auto;
+        //margin: 0 auto;
+        display: block;
+        margin-top:1%;
+        margin-left:5vh;
+       justify-content: left;
+       page-break-inside: avoid;
+      //margin-left: 10%;
+        // margin-top: -14vh;
+      }
+  
+      .host {             // host targets selector: 'home'
+  
+        display: block;
+        left: 0;
+    
+        width: 100%;    // takes parent width        
+        
+      
+        height: 100%;   // takes parent height    
+       
+    }
+    
+    
+    @media print {
+      html,
+      body,
+      body * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        visibility: hidden;
+      }
+    
+      #page,
+      #page * {
+        page-break-inside: avoid;
+        visibility: visible;
+      }
+    
+      #page {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      table, img {
+        page-break-inside: avoid;
+      }
+    }
+    th,td {
+        text-align: center;
+        page-break-inside: avoid;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1;
+    }
+  
+  

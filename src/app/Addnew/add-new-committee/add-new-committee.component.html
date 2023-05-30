@@ -1,0 +1,74 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black">Add New Committee</div>
+</mat-card>
+
+
+
+<section class="container border mb-4 p-3 mt-4">
+
+
+  <h3 class="head" style="margin-bottom: 4rem;">Create Committee</h3>
+
+
+
+  <div [formGroup]="Form" class="row" style="display: block">
+
+    <div class="row" >
+    <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Name</h4></div>
+
+    <div class="col-md-3" >
+      <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+        <mat-label>Commitee Name</mat-label>
+        <input formControlName="c_name" matInput type="text" name="c_name" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+  </div>
+
+    <div class="row">
+
+      <div class="col-md-2" style="margin-top: 1rem;"><h4 class="head">Chairman Name</h4></div>
+      <div class="col" style="margin-left: -5rem;" >
+      <mat-form-field appearance="outline" style="">
+        <mat-label>Chairman Name</mat-label>
+        <input formControlName="chairman_name" matInput type="text" name="chairman_name" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+
+
+
+      <div class="col-md-2" style="margin-top: 1rem;" ><h4 class="head">Email-id</h4>  </div>
+      <div class="col" style="margin-left: -5rem;" >
+      <mat-form-field appearance="outline" style=" ">
+        <mat-label>email-id</mat-label>
+        <input formControlName="c_email" matInput type="text" name="c_email" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+
+
+
+      <div class="col-md-2" style="margin-top: 1rem;"><h4 class="head">Password</h4>  </div>
+      <div class="col" style="margin-left: -5rem;" >
+      <mat-form-field appearance="outline" style="">
+        <mat-label> Passsword</mat-label>
+        <input formControlName="c_paswd" matInput type="password" name="c_paswd" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+
+
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-left: 25rem; margin-top: 3rem"
+  (click)="submitForm()">
+  Submit Form
+</button>

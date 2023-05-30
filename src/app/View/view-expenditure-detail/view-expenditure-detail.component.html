@@ -1,0 +1,43 @@
+<h1 class="head">{{this.data?.financialYear}} Expenditure Data : {{this.data.expenditures[0]?.facility}}</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+</div>
+
+<div>
+    <mat-card>
+        <mat-card-subtitle class="head">Total {{this.data.expenditures[0]?.facility}} Expenditure is {{
+            this.data.expenditures[0]?.facility == "physical" ? this.data?.physicalFacilityBudget : this.data.expenditures[0]?.facility == "academic" ? this.data?.academicFacilityBudget : this.data?.libraryFacilityBudget}}
+        </mat-card-subtitle>
+    </mat-card>
+</div>
+
+<div class="table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  ">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="pos">
+        <th mat-header-cell *matHeaderCellDef>Sr no</th>
+        <td mat-cell *matCellDef="let element"> {{element?.pos}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef>Item</th>
+        <td mat-cell *matCellDef="let element"> {{element?.item}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element"> {{element?.amount}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br>
+  <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+</div>

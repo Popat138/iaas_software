@@ -1,0 +1,111 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Diploma/Certificate/Ad-on programmes</h4>
+
+    <section class="container border mb-4 p-3 mt-4">
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Program Name.</mat-label>
+      <input matInput type="text" formControlName="name_of_prog" name="name_of_prog" id="name_of_prog" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+    </mat-form-field>
+    <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Year</mat-label>
+      <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.."/>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Type</mat-label>
+      <input matInput type="text" formControlName="other_type" name="other_type" id="other_type" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Course Name.</mat-label>
+      <input matInput type="text" formControlName="course_name" name="course_name" id="course_name" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+    </mat-form-field>
+    <button mat-raised-button color="accent" class="saveBtn" (click)="getCertificate()">Add-on/Certificate Courses</button>
+
+      <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+          <div style="margin-top: 2rem;">
+            <button mat-raised-button class="btn btn-danger btn-sm" (click)="removeother(i)">
+              Remove
+            </button>
+          </div>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName" name="firstName" id="firstName"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Middle Name</mat-label>
+            <input matInput type="text" formControlName="middleName" name="middleName" id="middleName"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName" name="lastName" id="lastName"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Class</mat-label>
+            <input matInput type="text" formControlName="class" name="class" id="class" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Class</mat-label>
+            <mat-select required matNativeControl formControlName="class">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let item of programDetails" [value]="item.programClass">
+                {{ item.programClass }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Category</mat-label>
+            <input matInput type="text" formControlName="category" name="category" id="category" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" name="email" id="email" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Phone</mat-label>
+            <input matInput type="text" formControlName="phone" name="phone" id="phone" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addother()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+    </section>
+  </div>
+
+<button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>

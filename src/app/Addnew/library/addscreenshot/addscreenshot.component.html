@@ -1,0 +1,93 @@
+<!-- <p>addscreenshot works!</p> -->
+
+ <div  [formGroup]="Form">
+
+  <section class="grid-container border mb-4 p-3 mt-4">
+    <h4 class="head_u">AddScreenshots of landing pages of ILMS</h4>
+
+
+<div class="row" style="display: flex;justify-content: space-around;margin-right: 2rem;margin-left: -3rem;">
+
+
+  <div class="row" style="margin-top: 0rem;">
+               <div class="col-md-3"  >
+            <mat-form-field appearance="outline" style="margin-left: 2rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academicYear">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                  {{ year }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+            <div class="col-md-3"  >
+    <mat-form-field appearance="outline" style="margin-left: 0rem">
+      <mat-label>Name of Screenshots</mat-label>
+      <mat-select required matNativeControl formControlName="screenshot">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let level of level" [value]="level.level">
+          {{ level.level }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  </div>
+  <div class="grid-item col-sm-2" style="margin-top: 0rem;" (click)="uploadpurchasereceipt.click()" >
+    <button mat-raised-button color="primary">Upload screenshot</button>
+    <input #uploadpurchasereceipt (change)="upload($event)" type="file" style="display: none" />
+  </div>
+
+
+  <!-- <div class="grid-item col-sm-2" style="margin-top: 0.5rem;" (click)="accession.click()">
+    <button mat-raised-button color="primary">Upload Accession registration</button>
+    <input #accession (change)="uploadAccession($event)" type="file" style="display: none" />
+  </div>
+
+  <div class="grid-item col-sm-2" style="margin-top: 0.5rem;;" (click)="bookIssue.click()">
+    <button mat-raised-button color="primary">Upload Book issue return</button>
+    <input #bookIssue (change)="uploadBookIssue($event)" type="file" style="display: none" />
+  </div>
+
+  <div class="grid-item col-sm-2" style="margin-top: 0.5rem;" (click)="bookBank.click()">
+    <button mat-raised-button color="primary">Upload Book bank issue return</button>
+    <input #bookBank (change)="uploadBookBank($event)" type="file" style="display: none" />
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: space-around;margin-left: -3rem;">
+
+  <div class="grid-item col-sm-2" style="margin-top: 1rem;" (click)="stockVerification.click()">
+    <button mat-raised-button color="primary">Upload Stock verification</button>
+    <input #stockVerification (change)="uploadStockVerification($event)" type="file" style="display: none" />
+  </div>
+
+
+  <div class="grid-item col-sm-2" style="margin-top: 1rem;" (click)="bookFacility.click()">
+    <button mat-raised-button color="primary">Upload Search Book facility </button>
+    <input #bookFacility (change)="uploadBookFacility($event)" type="file" style="display: none" />
+  </div>
+
+  <div class="grid-item col-sm-2" style="margin-top: 1rem;margin-left: 2.9rem;" (click)="bookReservation.click()">
+    <button mat-raised-button color="primary">Upload Book reservation</button>
+    <input #bookReservation (change)="uploadBookReservation($event)" type="file" style="display: none" />
+  </div>
+
+  <div class="grid-item col-sm-2" style="margin-top: 1rem;" (click)="libraryDues.click()">
+    <button mat-raised-button color="primary">Upload Library Dues</button>
+    <input #libraryDues (change)="uploadLibraryDues($event)" type="file" style="display: none" />
+  </div>
+
+</div>
+
+ 
+  <div class="grid-item col-sm-2" style="margin-top: 1rem;" (click)="uploadFile.click()">
+    <button mat-raised-button color="primary">Upload Students Membership Report</button>
+    <input #uploadFile (change)="uploadMembershipReport($event)" type="file" style="display: none" />
+  </div> -->
+</div>
+
+  </section>
+  </div>
+
+  <button mat-raised-button  color="accent"   (click)="submitForm()"> Submit Form</button>

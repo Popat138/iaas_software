@@ -1,0 +1,76 @@
+<div style="display:flex;margin-top: 1rem;">
+  <!-- <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{college?.image}}" alt=""> -->
+</div>
+<div class="header">
+  <div class="row">
+    <div class="col-md-1" style="width:20%;background-color:rgb(109, 135, 247); justify-content: center;"> 
+  <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{college?.image}}" style="display:flex; position: absolute; align-items: center;" alt="">
+    </div>
+    <div class="col-md-10" style="width:80%">
+  <h2 style="margin-top: 0.5rem; margin-bottom: 0.1rem;font-size:20px; color: rgb(9, 9, 245); " class="head">{{college?.association}}</h2>
+  <h2 style=" font-family: Poppins;margin-bottom: 0.1rem;font-weight: 600;color: rgb(1, 1, 24);font-size:30px">{{college?.name}}</h2>
+  <h2 style="margin-bottom: 0.1rem;font-size:20px; color: rgb(17, 17, 17); " class="head">{{college?.address}}</h2>
+  <h2 style="margin-bottom: 0.1rem;color: rgb(20, 4, 90);" class="head">{{college?.description}}</h2>
+  <!-- <mat-card class="head-card"> -->
+  <h1 style="margin-bottom: 1rem;font-family: Spartan ;font-variant-caps: small-caps;color: rgb(134, 4, 4);font-size:35px" class="head"><strong>Internal Quality Assurance Cell</strong></h1>
+  <!-- </mat-card> -->
+  </div>
+  </div>
+</div>
+
+<!-- <img src="assets/logo_transfinite.png" style="z-index: -1;position: absolute;opacity: 0.1;;background-size: cover;width:50%;height: 50%;background-position: 50% 50%;"> -->
+<div class="main-div">
+  <img src="assets/logo_transfinite.png" style="z-index: -1;position: absolute;opacity: 0.1;;background-size: cover;width:50%;height: 50%;background-position: 50% 50%;">
+  <div class="row">
+    <div class="col-md-3" style="width:30%; justify-content: center;"> 
+    <div style="display:flex;margin-top: 0rem;align-items: center;">
+      <!-- <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{college?.image}}" alt=""> -->
+    </div>
+     <img src="assets/iaas.png" style="margin-left:-35%; margin-top:2%;display:flex; position: absolute;">   
+    </div>
+    <div class="col-md-10" style="width:70%;"> 
+<div  style="text-align: center;">
+  <mat-card class="login-card"style="margin-top:25%;">
+      <div class="row" >
+      <img class="img" src="assets/user-profile.png">
+      <h2 style="text-align: center;font-family: Spartan ;margin-top: 0%;margin-left: 0vh;color: rgb(0, 0, 0);">LOGIN</h2>
+      <mat-form-field class="example-full-width" style="width: 100%;margin-top: 0%;">
+          <mat-label style="color: rgb(0, 0, 0);">Email-id/User-id</mat-label>
+          <input matInput placeholder="Ex. exapmle@gmail.com" required [(ngModel)] = "authenticationRequest.email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="width: 100%;">
+          <mat-label style="color: rgb(9, 10, 10);"> Password </mat-label>
+          <input matInput type="password" required [(ngModel)] = "authenticationRequest.password">
+        </mat-form-field>
+        <!-- <button mat-raised-button (click)="afterlogin2()"  style="background-color: azure; margin: 0 auto;margin-top: 3%;
+        display: block;">LOGIN</button><br><br> -->
+         <button mat-raised-button (click)="authenticate()"  style="color:white; background-color: rgba(7, 175, 113, 0.781); margin: 0 auto;margin-top: 10%;
+         display: block;">LOGIN</button><br><br>
+      
+       <!-- <a style="margin-left: 9vh;" (click)="register()"> Don't have an account? Sign up</a> -->
+
+  </div>
+  <!-- <a href=""  routerLink="Register" routerLinkActive="active"> Register Here</a> -->
+  <div class="screen__background" style="z-index: -3;position: absolute;">
+    <span class="screen__background__shape screen__background__shape4"></span>
+    <span class="screen__background__shape screen__background__shape3"></span>		
+    <span class="screen__background__shape screen__background__shape2"></span>
+    <span class="screen__background__shape screen__background__shape1"></span>
+  </div>		
+  </mat-card>
+</div>
+
+  <div  style="text-align: center;">
+    <img src="assets/iaasname.png" style="margin-left:-2%; margin-top:-2%;display:flex; position: absolute;" alt="">  
+    <div style="margin-top: 4rem;">
+      <!-- <h1 style="margin-bottom: 0rem;font-family: math;color: rgb(175, 72, 12);font-size:50px" class="head">iAAS</h1> -->
+      <!-- <h2 style="text-align: center;font-family: Spartan ;font-variant-caps: small-caps;color: rgb(0, 0, 0);">      Institutional Assessment & Accreditation Solutions</h2>   -->
+      <p><span class="script"> A </span> <i>Complete solution for NAAC accreditation</i></p>
+    </div>
+  </div>
+
+
+  
+</div>
+  </div>
+  </div>

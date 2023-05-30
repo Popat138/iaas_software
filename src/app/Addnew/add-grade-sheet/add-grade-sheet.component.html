@@ -1,0 +1,75 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add probable marks</div>
+  </mat-card>
+  <div style="margin-left: 3rem" [formGroup]="Form">
+    <section class="container border mb-4 p-3 mt-4">
+        <h3 class="head">Report Of Meetings</h3>
+     <div class="cols">
+        <mat-form-field appearance="outline" style="margin-top: 1.5rem">
+          <mat-label>Academic Year</mat-label>
+          <mat-select required matNativeControl formControlName="academicYear">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+              {{ year }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+              <mat-label>Date of calculation</mat-label>
+              <input matInput formControlName="date" [matDatepicker]="picker1" />
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+    <!-- Criterion I-->
+    </section>
+    
+    <h3>Criterion I</h3>
+    <section class="container border mb-4 p-2 mt-4">
+      <div formArrayName="oneForm">
+        <table  class="mat-table" style="width: auto;">
+          <tr class="mat-row">
+            <th>Metric Number</th>
+            <th>Metric Title</th>
+            <th>Metric type</th>
+            <th>BenchMark any</th>
+            <th>Weightage</th>
+            <th>Expected Score</th>
+            <th>Calulation</th>
+          </tr>
+          <tr *ngFor="let metr of metric;let i=index">
+            <td>{{metr.name}}</td>
+            <td>{{metr.mTitle}}</td>
+            <td>{{metr.mType}}</td>
+            <td innerHTML='{{metr.mbenchmark}}'>{{metr.mbenchmark}}.innerHTML</td>
+            <td>
+              {{metr.mweightage}}
+              <!-- <mat-form-field appearance="outline" style="width: 5rem; margin-left: 1rem"> -->
+              <!-- <input matInput type="number" formControlName="met_weightage" (change)="change($event,i)" name="met_weightage" id="met_weightage"/> -->
+            <!-- </mat-form-field> -->
+             </td>
+            <td><mat-form-field appearance="outline" style="width: 5rem; margin-left: 1rem">
+              <input matInput type="text" formControlName="met_value" (change)="change($event,i)" name="met_value" id="met_value" #input
+                placeholder="eg - 0,1,2,3,4" />
+            </mat-form-field></td>
+            <td>
+              <mat-form-field appearance="outline" style="width: 5rem; margin-left: 1rem">
+                <input matInput type="text" formControlName="met_cal" name="met_cal" id="met_cal" />
+              </mat-form-field>
+            </td>
+
+
+          </tr>
+
+        </table>
+      </div>
+
+    </section>
+    
+      </div>
+
+
+
+
+
+   

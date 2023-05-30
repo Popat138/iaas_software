@@ -1,0 +1,73 @@
+<h1 class="head">Students</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem; Font-size:30px; color: red;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search Student List using academic year eg. 2020-21...">
+  </mat-form-field>
+</div>
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  ">
+    <ng-container matColumnDef="academicYear">
+      <th mat-header-cell *matHeaderCellDef>Academic Year</th>
+      <td mat-cell *matCellDef="let element"> {{element.student.academicYear}} </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef>Middle Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="enrollmentNumber">
+      <th mat-header-cell *matHeaderCellDef>Enrollment number</th>
+      <td mat-cell *matCellDef="let element"> {{element.student.enrollmentNo}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="rollNumber">
+      <th mat-header-cell *matHeaderCellDef>Roll number</th>
+      <td mat-cell *matCellDef="let element"> {{element.student.rollNo}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>Select</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button color="accent" class="saveBtn" (click)="selectElement(element)">Select</button>
+        </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="click">
+      <th mat-header-cell *matHeaderCellDef>Select</th>
+      <td mat-cell *matCellDef="let element"> 
+        <div class="form-check form-check-inline">
+        <input type="checkbox" formControlName="knowledge_ss" id="knowledge_ss" class="form-check-input" />
+        <label for="knowledge_ss" class="form-check-label" for="inlineCheckbox1"></label>
+        </div>
+      </td>
+  </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br>
+</div>
+<!-- <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <button mat-raised-button color="accent" style="display:flex;justify-content: center;margin-top: 3rem;"
+  (click)="submitForm()">Submit photo</button>
+</div> -->

@@ -1,0 +1,372 @@
+<h4 class="head_u">One Time Form</h4>
+
+
+<div [formGroup]="Form">
+<section  class="container border mb-4 p-3 mt-4">
+  <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+              <mat-label>Salutation</mat-label>
+              <mat-select required  matNativeControl formControlName="salutation">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let level of salutation" [value]="level.level">
+                  {{ level.level }}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>First Name.</mat-label>
+    <input matInput type="text" formControlName="f_name" name="f_name" id="f_name" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Middle Name.</mat-label>
+    <input matInput type="text" formControlName="m_name" name="m_name" id="m_name" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Last Name.</mat-label>
+    <input matInput type="text" formControlName="l_name" name="l_name" id="l_name" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+
+  <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput formControlName="dob" [matDatepicker]="picker1" />
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Addhar No</mat-label>
+        <input matInput type="text" formControlName="addhar" name="addhar" id="addhar" #input
+          placeholder="eg - 1,2,3.." />
+      </mat-form-field>
+    </div>
+  
+    <div class="col-3">
+      <button mat-raised-button color="primary" (click)="uploadAdhaar.click()" [ngClass]="{'green' : togglea, 'red': !togglea}">Upload Adhaar</button> {{fileNamea||'Not selected'}}
+    <input #uploadAdhaar (change)="adhaarUpload($event)" type="file" style="display: none" />
+     </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Pancard No.</mat-label>
+        <input matInput type="text" formControlName="pan_no" name="pan_no" id="pan_no" #input
+          placeholder="eg - 1,2,3.." />
+      </mat-form-field>
+    </div>
+  
+    <div class="col-3">
+      <button mat-raised-button color="primary" (click)="uploadPan.click()"  [ngClass]="{'green' : togglep, 'red': !togglep}">Upload PAN</button> {{fileNamep||'Not selected'}}
+    <input #uploadPan (change)="panUpload($event)" type="file" style="display: none"/>
+    </div>
+  </div>
+  
+  <div>
+  <label for="image">Choose a passport size photo:</label>
+  <br>
+<input type="file"
+       id="image" name="image"
+       accept="image/png, image/jpeg" class="file-upload" (change)="certupload($event)" onchange="console.log(event.target.files)">
+       <img style="margin-left:2rem; width: 100px;height: auto;" [src]="urls[0]"/>
+       <!-- <img style="margin-left:2rem; width: 20px;height: 20px;" [src]="urls"/> -->
+  </div>
+  
+
+<!-- <div class="row">
+  <div class="col-3">
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Mobile No</mat-label>
+      <input matInput type="text" formControlName="addhar" name="addhar" id="addhar" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+  </div>
+
+
+</div> -->
+
+  <div>
+    <mat-form-field appearance="outline" style="margin-top: 1rem">
+      <mat-label>Present Designation</mat-label>
+      <mat-select required matNativeControl formControlName="designation">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let any of designation" [value]="any.value">
+          {{ any.title }}
+          </mat-option>
+      </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Gender</mat-label>
+        <input matInput type="text" formControlName="gender" name="gender" id="gender" #input
+          placeholder="Male/Female/Other" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Mobile No.</mat-label>
+        <input matInput type="text" formControlName="mobile" name="mobile" id="mobile" #input
+          placeholder="eg - 1,2,3.." />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Email Id.</mat-label>
+        <input matInput type="text" formControlName="tec_mail" name="tec_mail" id="tec_mail" #input
+          placeholder="eg - 1,2,3.." />
+      </mat-form-field>
+
+  </div>
+
+
+</section >
+
+<p> Note: Upload documents in pdf format each with size less than 2 mb</p>
+<section  class="container border mb-4 p-3 mt-4">
+  <h4 class="head_u">Undergraduate</h4>
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree.</mat-label>
+    <input matInput type="text" formControlName="degree" name="degree" id="degree" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass" name="y_of_pass" id="y_of_pass" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Specialization.</mat-label>
+    <input matInput type="text" formControlName="specialization" name="specialization" id="specialization" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade" name="grade" id="grade" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="uploadUGFile.click()" [ngClass]="{'green' : toggleu, 'red': !toggleu}">Upload certificate</button> {{fileNameu||'Not selected'}}
+  <input #uploadUGFile (change)="ugFileUpload($event)" type="file" style="display: none" />
+ 
+</section>
+
+
+<section  class="container border mb-4 p-3 mt-4">
+
+
+  <h4 class="head_u">Postgraduate</h4>
+
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree.</mat-label>
+    <input matInput type="text" formControlName="degree1" name="degree1" id="degree1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university1" id="university1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass1" name="y_of_pass1" id="y_of_pass1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Specialization.</mat-label>
+    <input matInput type="text" formControlName="specialization1" name="specialization1" id="specialization1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade1" name="grade1" id="grade1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="uploadPGFile.click()" [ngClass]="{'green' : togglepg, 'red': !togglepg}">Upload Certificate</button> {{fileNamepg||'Not selected'}}
+  <input #uploadPGFile (change)="pgFileUpload($event)" type="file" style="display: none" />
+
+</section>
+
+
+<section  class="container border mb-4 p-3 mt-4">
+  <h4 class="head_u">Qualifying exam (NET/SET....)</h4> 
+  
+  <p style="font-weight: bold;color: red;">If you have this <button (click)="toggleData()">Click here</button>   otherwise keep blank </p>
+<div *ngIf="!toDisplay">
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>NET/SET/GATE</mat-label>
+    <input matInput type="text" formControlName="net_set" name="net_set" id="net_set" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass2" name="y_of_pass2" id="y_of_pass2" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject" name="subject" id="subject" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade2" name="grade2" id="grade2" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+<br>
+  <button mat-raised-button color="primary" (click)="uploadQualifingFile.click()" [ngClass]="{'green' : toggleq, 'red': !toggleq}">Upload Certificate</button> {{fileNameq||'Not selected'}}
+  <input #uploadQualifingFile (change)="qualifingFileUpload($event)" type="file" style="display: none" />
+</div>
+<br>
+<br>
+  <h4 class="head_u">Other qualification</h4>
+  <p style="font-weight: bold;color: red;">If you have this <button (click)="toggleData1()">Click here</button>   otherwise keep blank </p>
+  <!-- <p style="font-weight: bold;color: red;">Fill this if you have this, otherwise keep blank</p> -->
+  <div *ngIf="!toDisplay1" >
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Other degree or exam</mat-label>
+    <input matInput type="text" formControlName="net_set1" name="net_set1" id="net_set1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass21" name="y_of_pass21" id="y_of_pass21" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject11" name="subject1" id="subject11" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade21" name="grade21" id="grade21" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="uploadQualifingFile.click()">Upload</button>
+  <input #uploadQualifingFile (change)="qualifingFileUpload($event)" type="file" style="display: none" /> -->
+
+</div> 
+
+
+
+
+</section>
+
+<section  class="container border mb-4 p-3 mt-4">
+
+  <h4 class="head_u">Research Qualification</h4>
+  <p style="font-weight: bold;color: rgb(20, 149, 235);">PhD/DNB/Dlit...</p>
+  <!-- <p style="font-weight: bold;color: red;">Fill this if you have this, otherwise keep blank</p> -->
+  <p style="font-weight: bold;color: red;">If you have this <button (click)="toggleData2()">Click here</button>   otherwise keep blank </p>
+  <!-- <p style="font-weight: bold;color: rgb(20, 149, 235);">PhD/DNB/Dlit...</p> -->
+  <div *ngIf="!toDisplay2">
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree</mat-label>
+    <input matInput type="text" formControlName="degree2" name="degree2" id="degree2" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Date of Declaration.</mat-label>
+    <input matInput formControlName="date_of_declaration" [matDatepicker]="picker2" />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject1" name="subject1" id="subject1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University2</mat-label>
+    <input matInput type="text" formControlName="university2" name="university2" id="university2" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="uploadResearchFile.click()" [ngClass]="{'green' : toggleph, 'red': !toggleph}">Upload Certificate</button> {{fileNameph||'Not selected'}}
+  <input #uploadResearchFile (change)="researchFileUpload($event)" type="file" style="display: none" />
+  </div>
+</section>
+<section  class="container border mb-4 p-3 mt-4">
+  <h4 class="head_u">Research guide information</h4>
+  <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+    <mat-label>whether research recognized guide</mat-label>
+    <mat-select required matNativeControl formControlName="guide">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let level of level" [value]="level.level">
+        {{ level.level }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hidden]="this.Form.get('guide').value!=='Yes'" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Recognition</mat-label>
+    <input matInput type="text" formControlName="rec_year" name="rec_year" id="rec_year" #input 
+      placeholder="eg - 2020,2021..." />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [hidden]="this.Form.get('guide').value!=='Yes'" (click)="uploadguideFile.click()" [ngClass]="{'green' : toggleg, 'red': !toggleg}">Upload guidesheep letter </button> {{this.Form.get('guide').value=='Yes'?fileNameg||'Not selected':""}}
+  <input #uploadguideFile (change)="guideFileUpload($event)" type="file" style="display: none" />
+
+</section>
+<section class="container border mb-4 p-3 mt-4">
+<div>
+  <h3 class="head">Address:-</h3> <br>
+  <textarea formControlName="tec_address" style="margin-left: 17.5rem; margin-top: -3rem" cols="40"
+    rows="5"></textarea>
+</div>
+<div>
+  <h3 class="head">Membership/Additional Duties:-</h3> <br>
+  <textarea formControlName="add_duty" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+    rows="5" ></textarea>
+  </div>
+</section>
+
+</div>
+<button mat-raised-button  (click)="submitForm()" [disabled]="!Form.valid"> Submit Form</button>

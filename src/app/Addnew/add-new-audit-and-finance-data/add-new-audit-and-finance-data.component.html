@@ -1,0 +1,278 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add New audit and finance</div>
+  </mat-card>
+  
+  
+  <div [formGroup]="Form">
+    <div class="container border mb-4 p-3 mt-4" >
+  
+      <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+        <mat-label>Year</mat-label>
+        <mat-select required  matNativeControl formControlName="academicYear">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+            {{ year }}
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4 class="head" style="margin-bottom: 2rem"> Budget of the year
+      </h4>
+  
+      
+      <div class="row" style="margin-top: 4rem;margin-bottom: 3rem;">
+        <div class="col-sm-3">
+          <h5 class="head_u">Upload pdf copy</h5>
+        </div>
+        <div class="col-sm-2" (click)="budgetUpload.click()" style="margin-left: -2rem;">
+          <button mat-raised-button color="primary" style="margin-top: -2rem;">Upload</button>
+          <input #budgetUpload (change)="budget_upload($event)" type="file" style="display: none" />
+        </div>
+
+
+        
+        <mat-form-field style="padding-top: 2%" appearance="outline">
+          
+            <mat-label>Total expenditure with salary</mat-label>
+            <input matInput type="text" formControlName="expenditureWithSalary" name="expenditureWithSalary" id="expenditureWithSalary" #input maxlength="250"
+              placeholder="eg - " />
+
+          </mat-form-field>
+
+          <mat-form-field style="padding-top: 2%" appearance="outline">
+            <mat-label>Total expenditure without salary</mat-label>
+            <input matInput type="text" formControlName="expenditureWithoutSalary" name="expenditureWithoutSalary" id="expenditureWithoutSalary" #input maxlength="250"
+              placeholder="eg - " />
+
+          </mat-form-field>
+  
+        <div class="col-sm-3">
+          <h5 class="head_u">Upload pdf audit report</h5>
+        </div>
+        <div class="col-sm-2" (click)="auditReportUpload.click()" style="margin-left: -2rem;">
+          <button mat-raised-button color="primary" style="margin-top: -2rem;">Upload</button>
+          <input #auditReportUpload (change)="audit_report_upload($event)" type="file" style="display: none" />
+        </div>
+  
+        </div>
+  
+        <h4 class="head" style="margin-bottom: 2rem"> Expenditure
+        </h4>
+    
+
+
+        <section class="container border mb-4 p-3 mt-4">
+          <h4 class="head_u">Expenditure for Physical Faciltiy</h4>
+        <div class="row"  style="margin-top: 1.5rem;">
+          <div class="col">
+            <h4 class="head_u" style="margin-top: 1.5rem; margin-left: 2rem;">Total budget on physical facility (Rs)  -</h4>
+          </div>
+          <div class="col">
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Total budget on physical facility (Rs)</mat-label>
+              <input matInput type="text" formControlName="budgetOnPhysicalFacility" name="budgetOnPhysicalFacility" id="budgetOnPhysicalFacility" #input maxlength="250"
+                placeholder="eg - " />
+            </mat-form-field>
+          </div>
+        </div>
+       
+       
+
+    <div formArrayName="physicalExpenditure" >
+      <section >
+        <div>
+          <div *ngFor="let physicalExpenditure of physicalExpenditureControl; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removePhysicalExpenditure(i)">
+                  Remove
+                </button>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Item</mat-label>
+                  <input matInput type="text" formControlName="item" name="item" id="item" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Amount (Rs)</mat-label>
+                  <input matInput type="text" formControlName="amount" name="amount" id="amount" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addPhysicalExpenditure()">
+            Add New Expenditure Data
+          </button>
+        </div>
+      </section>
+    </div>
+  </section>
+
+    <section class="container border mb-4 p-3 mt-4" >
+      <h4 class="head_u">Expenditure for Academic Faciltiy</h4>
+    <div class="row"  style="margin-top: 1.5rem;">
+      <div class="col">
+        <h4 class="head_u" style="margin-top: 1.5rem; margin-left: 2rem;">Total budget on Academic facility (Rs)  -</h4>
+      </div>
+      <div class="col">
+        <mat-form-field style="padding-top: 2%" appearance="outline">
+          <mat-label>Total budget on academic facility (Rs)</mat-label>
+          <input matInput type="text" formControlName="budgetOnAcademicFacility" name="budgetOnAcademicFacility" id="budgetOnAcademicFacility" #input maxlength="250"
+            placeholder="eg - " />
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div formArrayName="academicExpenditure" >
+      <section >
+        <div>
+          <div *ngFor="let academicExpenditure of academicExpenditureControl; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeAcademicExpenditure(i)">
+                  Remove
+                </button>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Item</mat-label>
+                  <input matInput type="text" formControlName="item" name="item" id="item" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Amount (Rs)</mat-label>
+                  <input matInput type="text" formControlName="amount" name="amount" id="amount" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addAcademicExpenditure()">
+            Add New Expenditure Data
+          </button>
+        </div>
+      </section>
+    </div>
+  </section>
+
+    <section class="container border mb-4 p-3 mt-4" >
+      <h4 class="head_u">Expenditure for Library Faciltiy</h4>
+    <div class="row" style="margin-top: 1.5rem;">
+      <div class="col">
+        <h4 class="head_u" style="margin-top: 1.5rem; margin-left: 2rem;">Total budget For Library (Rs)  -</h4>
+      </div>
+      <div class="col">
+
+        <mat-form-field style="padding-top: 2%" appearance="outline">
+          <mat-label>Total budget For Library (Rs)</mat-label>
+          <input matInput type="text" formControlName="budgetOnLibraryFacility" name="budgetOnLibraryFacility" id="budgetOnLibraryFacility" #input maxlength="250"
+            placeholder="eg - " />
+ 
+          </mat-form-field>
+      </div>
+    </div>
+
+    <div formArrayName="libraryExpenditure" >
+      <section >
+        <div>
+          <div *ngFor="let libraryExpenditure of libraryExpenditureControl; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeLibraryExpenditure(i)">
+                  Remove
+                </button>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Item</mat-label>
+                  <input matInput type="text" formControlName="item" name="item" id="item" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Amount (Rs)</mat-label>
+                  <input matInput type="text" formControlName="amount" name="amount" id="amount" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addLibraryExpenditure()">
+            Add New Expenditure Data
+          </button>
+        </div>
+      </section>
+    </div>
+  </section>
+
+
+    <section class="container border mb-4 p-3 mt-4" >
+      <h4 class="head_u">Expenditure for Maintenance</h4>
+    <div class="row"  style="margin-top: 1.5rem;">
+      <div class="col">
+        <h4 class="head_u" style="margin-top: 1.5rem; margin-left: 2rem;">Total budget For Maintenance (Rs)  -</h4>
+      </div>
+      <div class="col">
+        <mat-form-field style="padding-top: 2%" appearance="outline">
+          <mat-label>Total budget For Maintenance (Rs)</mat-label>
+          <input matInput type="text" formControlName="budgetOnMaintenanceFacility" name="budgetOnMaintenanceFacility" id="budgetOnMaintenanceFacility" #input maxlength="250"
+            placeholder="eg - " />
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    
+
+    <div formArrayName="maintenanceExpenditure" >
+      <section >
+        <div>
+          <div *ngFor="let maintenanceExpenditure of maintenanceExpenditureControl; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeMaintenanceExpenditure(i)">
+                  Remove
+                </button>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+
+                <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>Facility</mat-label>
+                  <mat-select required  matNativeControl formControlName="facility">
+                    <mat-option value="physical">Physical</mat-option>
+                    <mat-option value="academic">Academic</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Item</mat-label>
+                  <input matInput type="text" formControlName="item" name="item" id="item" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Amount (Rs)</mat-label>
+                  <input matInput type="text" formControlName="amount" name="amount" id="amount" #input maxlength="250" placeholder="eg - " />
+                </mat-form-field>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addMaintenanceExpenditure()">
+            Add New Expenditure Data
+          </button>
+        </div>
+      </section>
+    </div>
+  </section>
+  
+  </div>
+    <button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()"  >Submit Form</button>
+    </div>
+    
+  
+  

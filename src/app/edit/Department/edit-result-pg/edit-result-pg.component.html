@@ -1,0 +1,49 @@
+<section class="container border mb-4 p-3 mt-4">
+    <div [formGroup]="Form">
+      <!-- <div formArrayName="pg"> -->
+        <h4 class="head_u" style="margin-bottom:4rem;">Update Results PG</h4>
+        <!-- <h4 class="head">Name</h4> -->
+  
+        <div>
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year</mat-label>
+            <input matInput type="text" formControlName="year" name="year" id="year" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="programme" name="programme" id="programme" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+          <br>
+        </div>
+  
+  
+        <div>
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>No of Students Admitted</mat-label>
+            <input matInput type="text" formControlName="no_of_student_admitted" name="no_of_student_admitted" id="no_of_student_admitted" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>No of Students Appeared</mat-label>
+            <input matInput type="text" formControlName="no_of_student_appeared" name="no_of_student_appeared" id="no_of_student_appeared" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>No of Students Passed</mat-label>
+            <input matInput type="text" formControlName="no_of_student_passed" name="no_of_student_passed" id="no_of_student_passed" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+        </div>
+      </div>
+      </section>
+    <!-- </div> -->
+    <button mat-raised-button  color="accent"  [disabled]="!Form.valid"  (click)="submitForm()"> Submit Form</button>
+  

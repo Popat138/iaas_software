@@ -1,0 +1,114 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black">Add New Student Achievement</div>
+</mat-card>
+
+<div [formGroup]="Form">
+<div formArrayName="add_new_recognition" >
+  <section class="container border mb-4 p-3 mt-4" >
+    <div>
+      <h4 class="head" style="margin-bottom: 2rem">Awards/Recognitions/Achievements of students
+      </h4>
+      <div *ngFor="let add_new_recognition of add_new_recognitionControl; let i = index">
+        <div [formGroupName]="i">
+          <div class="col-6 text-right">
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeadd_new_recognition(i)">
+              Remove
+            </button>
+          </div>
+          <div style="display: flex; justify-content: space-around">
+
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Award Category</mat-label>
+              <input matInput type="text" formControlName="title" name="title" id="title" #input maxlength="250"
+                placeholder="eg - Sports/Cultural/Scoial service" />
+            </mat-form-field>
+
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Year</mat-label>
+              <input matInput type="text" formControlName="years" name="name" id="name" #input maxlength="250"
+                placeholder="eg - 2021" />
+              <!-- <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint> -->
+            </mat-form-field>
+
+
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Name of Student</mat-label>
+              <input matInput type="text" formControlName="name_of_award" name="name_of_award" id="name_of_award" #input
+                maxlength="250" placeholder="eg - Award.." />
+
+            </mat-form-field>
+
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Name of Award</mat-label>
+              <input matInput type="text" formControlName="award_name" name="award_name" id="award_name" #input
+                maxlength="250" placeholder="eg - Award.." />
+
+            </mat-form-field>
+
+            <mat-form-field style="padding-top: 2%" appearance="outline">
+              <mat-label>Awarding Agency</mat-label>
+              <input matInput type="text" formControlName="awarding_agency" name="awarding_agency" id="awarding_agency" #input maxlength="250"
+                placeholder="eg - Agency" />
+
+            </mat-form-field>
+
+          </div>
+
+          <div style="display: flex;margin-left: 1rem;" >
+            <div >
+              <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                <mat-label>Awards Level</mat-label>
+                <mat-select required  matNativeControl formControlName="achievementLevel">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let level of level" [value]="level.level">
+                    {{ level.level }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field>
+              </div>
+
+
+          <div class="col-sm-3" style="   margin-left: 1rem" >
+            <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+              <mat-label>Name of award/medal</mat-label>
+              <mat-select required  matNativeControl formControlName="achievementNature">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let nature of achievementNatures" [value]="nature.value">
+                  {{ nature.title }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+              <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+            </mat-form-field>
+            </div>
+            </div>
+
+
+          <div class="row" style="margin-top: 2rem">
+            <div class="col-sm-3">
+              <h5 class="head_u">Upload certificate</h5>
+            </div>
+            <div class="col-sm-2" (click)="uploadFile.click()" style="margin-left: -3rem;">
+              <button mat-raised-button color="primary">Upload</button>
+              <input #uploadFile (change)="upload($event,i)" type="file" style="display: none" />
+            </div>
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div>
+      <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addadd_new_recognition()">
+        Add Awards
+      </button>
+    </div>
+
+  </section>
+</div>
+<button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()"  >Submit Form</button>
+</div>
+

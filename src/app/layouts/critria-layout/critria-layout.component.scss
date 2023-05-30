@@ -1,0 +1,83 @@
+.example-container {
+    width:auto;
+    height: 100%;
+    background-color:rgb(250, 249, 236);
+    border: 0.2px  rgba(212, 27, 27, 0.5);
+    }
+  
+    .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    }
+  
+    .example-sidenav {
+      
+    padding: 20px,;
+    color:aqua;
+    
+    }
+  
+    .Nav{
+      text-align: center;
+      font-family:'Josefin Slab',
+      serif;font-size: 24px;
+      font-weight: bold;width: 90%;
+      //font-color:white;
+      margin-left: -3em;
+      
+    }
+    .head{
+      //text-align: center;
+      color:rgb(243, 236, 236);
+      font-family:'Josefin Slab',
+      serif;font-size: 15px;
+      font-weight: bold;
+      margin-left: 2rem;
+      margin-top: 2rem;
+    }
+  
+    .nav{
+        text-align: center;
+        font-family:'Josefin Slab';
+        font-size: 15px;
+        font-weight: bold;width: 140%;
+              display: block;
+    }
+  
+    a.active {
+      background-color: #5196f0;
+      color: azure;
+      margin-bottom:-6rem;
+     // margin: 10px -10px 0;
+    }
+  
+    // :host ::ng-deep nav-item nav-link{
+    //   margin: 0 !important;
+    //   padding: 0;
+  
+    // }
+  
+    .nav-link{
+      display: flex;
+      margin-top: 0rem;
+        margin-bottom:-1rem;
+  
+    }
+    .title{
+      margin-left: 0.2rem;
+      font-size: 20px;
+      text-align: left;
+      font-family:'Poppins';
+      font-weight:600;
+      color: rgb(238, 223, 223);
+      text-overflow:hidden;
+     // white-space: nowrap;
+      margin-top: 0.3rem;
+    }
+  
+    .mat-expansion-panel-indicator {
+      color: #076666;
+    }

@@ -1,0 +1,60 @@
+<h1 class="head">Department Details</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+</div>
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  ">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="programName">
+      <th mat-header-cell *matHeaderCellDef> Program Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.programName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="programType">
+      <th mat-header-cell *matHeaderCellDef> Program Type</th>
+      <td mat-cell *matCellDef="let element"> {{element.programType}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="programLevel">
+      <th mat-header-cell *matHeaderCellDef> Program Level</th>
+      <td mat-cell *matCellDef="let element"> {{element.programLevel}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="programCode">
+      <th mat-header-cell *matHeaderCellDef> Program Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.programCode}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="specialization">
+      <th mat-header-cell *matHeaderCellDef> Specialization</th>
+      <td mat-cell *matCellDef="let element"> {{element.specialization}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef> Select</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button color="accent" class="saveBtn" (click)="selectElement(element)">Select</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:hsla(162, 59%, 81%, 0.815);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:hsla(56, 55%, 84%, 0.815);"></tr>
+
+  </table>
+  <br><br>
+
+
+
+
+</div>

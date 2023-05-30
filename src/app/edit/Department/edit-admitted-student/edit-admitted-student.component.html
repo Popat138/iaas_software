@@ -1,0 +1,107 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Update Research Student</h4>
+  
+    <section class="container border mb-4 p-3 mt-4">
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Program Name.</mat-label>
+      <input matInput type="text" formControlName="name_of_prog" name="name_of_prog" id="name_of_prog" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+    </mat-form-field>
+    <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+  
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Year</mat-label>
+      <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+  
+  
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Type</mat-label>
+      <input matInput type="text" formControlName="other_type" name="other_type" id="other_type" #input placeholder="eg - 2020.." [readonly]=true/>
+    </mat-form-field>
+  
+  
+  
+      <!-- <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+          <div style="margin-top: 2rem;">
+            <button mat-raised-button class="btn btn-danger btn-sm" (click)="removeother(i)">
+              Remove
+            </button>
+          </div> -->
+  
+  
+          <!-- Programme: this.fb.control('',Validators.required),
+          name_of_student: this.fb.control('',Validators.required),
+          category: this.fb.control('',Validators.required),
+          name_of_guide: this.fb.control('',Validators.required),
+          date_of_registration: this.fb.control('',Validators.required),
+          title_of_topic: this.fb.control('',Validators.required), -->
+  
+  
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="Programme" name="Programme" id="Programme"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Name Of Student</mat-label>
+            <input matInput type="text" formControlName="name_of_student" name="name_of_student" id="name_of_student"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Category</mat-label>
+            <input matInput type="text" formControlName="category" name="category" id="category" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Guide</mat-label>
+              <mat-select required matNativeControl formControlName="name_of_guide" >
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let guide of guides" [value]="guide.id">
+                  {{ guide.guideName }}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+  
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Date</mat-label>
+            <input matInput type="text" formControlName="date_of_registration" name="date_of_registration" id="date_of_registration" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+          <mat-form-field color="accent" appearance="outline" style="margin-left: 1rem">
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="date_of_registration" [matDatepicker]="picker2" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Title of research work</mat-label>
+            <input matInput type="text" formControlName="title_of_topic" name="title_of_topic" id="title_of_topic" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+        <!-- </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addother()">
+            Add students
+          </button>
+        </div>
+      </div>
+    </div> -->
+    </section>
+  </div>
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>
+  

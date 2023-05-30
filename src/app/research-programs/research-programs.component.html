@@ -1,0 +1,121 @@
+<h1 class="head">Research Programme Guide Information</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-3">
+    <div class="card-body table-responsive">
+    <button mat-raised-button color="accent" class="saveBtn" (click)="addguide()">Add New Details</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  " style="background-color:hsla(126, 34%, 88%, 0.705)">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef> Year </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.year}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="programName">
+      <th mat-header-cell *matHeaderCellDef>Program Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.data.programDetail.program.programName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="programType">
+      <th mat-header-cell *matHeaderCellDef>Program Type</th>
+      <td mat-cell *matCellDef="let element"> {{element.data.programDetail.program.programType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef>Class</th>
+      <td mat-cell *matCellDef="let element"> {{element.data.programDetail.programClass}} </td>
+    </ng-container>
+
+ 
+
+
+    <ng-container matColumnDef="guide">
+      <th mat-header-cell *matHeaderCellDef>Name of Guide</th>
+      <td mat-cell *matCellDef="let element"> {{element.guideName }} </td>
+    </ng-container>
+
+   <!--  <ng-container matColumnDef="certificate">
+      <th mat-header-cell *matHeaderCellDef> Certificate </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.achievementCertificate" href="{{this.service.BASE_URL}}/resources/uploads/{{element.achievementCertificate}}" target="_blank">View</a>
+      </td>
+    </ng-container> -->
+
+    <!-- Symbol Column -->
+    <!-- <ng-container matColumnDef="n_students">
+      <th mat-header-cell *matHeaderCellDef> Students count </th>
+      <td mat-cell *matCellDef="let element"> {{element.n_students}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="s_agency">
+      <th mat-header-cell *matHeaderCellDef> Supporting agency </th>
+      <td mat-cell *matCellDef="let element"> {{element.s_agency}} </td>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="report">
+      <th mat-header-cell *matHeaderCellDef> Report </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="viewAchievements()">View Report</button>
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+    <ng-container matColumnDef="upload_cert">
+      <th mat-header-cell *matHeaderCellDef> Upload certificate
+      <td  mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.document" href="{{this.service.BASE_URL}}/resources/uploads/{{element.document}}" target="_blank">View</a>
+      </td>
+
+    </ng-container>
+    
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white;"></tr>
+
+  </table>
+  <br><br>
+
+
+
+
+</div>

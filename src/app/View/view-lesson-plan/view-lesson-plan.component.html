@@ -1,0 +1,161 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u" style="font-family:'Times New Roman', Times, serif;font-size: 22px;">Lesson Plans</h4>
+  
+    <section class="container border mb-4 p-3 mt-4">
+  
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Academic Year</mat-label>
+        <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year"/>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Program</mat-label>
+        <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Course Code</mat-label>
+        <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Course Name</mat-label>
+        <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+      </mat-form-field>
+     <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Class</mat-label>
+        <input matInput type="text" formControlName="class" name="class" id="class" #input
+          placeholder="eg - 1,2,3.." [readonly]=true/>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Division</mat-label>
+          <input matInput type="text" formControlName="div" name="div" id="div" #input
+            placeholder="eg - 1,2,3.." [readonly]=true/>
+        </mat-form-field>
+      </section>
+      <div>
+<section class="container border mb-4 p-3 mt-4">
+           
+      <div  *ngFor="let other1 of otherControl;let i = index">
+      <div id="report">
+             <div formArrayName="other">
+            <div [formGroupName]="i">
+                <section class="container border mb-4 p-3 mt-4" style="border:0.4px solid rgb(19, 18, 18)">
+                <div class="hill">  
+                <pre class="head"><strong style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 18px;">{{this.association}}</strong></pre>
+                <pre class="head"><strong style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 22px;">{{this.college}}</strong></pre>
+                <pre class="head"><strong style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 18px;">{{this.address}}</strong></pre>
+                <pre><strong style=" font-family:'Times New Roman', Times, serif;font-size: 19px;"> Academic Year :{{this.data.academicDetail?.academicYear}}<br>
+                    Program :{{this.data.academicDetail.course.program.programName}}              Class: {{this.data.academicDetail?.streamDetail.streamClass}}           Div.: {{this.data.academicDetail.division.divisionName}}               Course:   {{this.data.academicDetail.course.name}}</strong>
+                      </pre>
+                 
+                <h3 style=" font-family:'Times New Roman', Times, serif;font-size: 20px;font-weight:bold ;">Lecture Plan</h3><br>
+            </div> 
+                <!-- <h4 class="head" style="margin-top: 0.1rem;">Lecture No: {{i+1}}   Day/Date: {{this.data.detailPlan[i].lecDay}}:{{this.data.detailPlan[i].lecDate}} Time: {{this.data.detailPlan[i].lecTime}}</h4>  -->
+                <!-- <pre class="grid" style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;white-space: pre-wrap;padding-left:1em;;"><strong> Key: </strong>{{this.data.detailPlan[i].keyPoint}}  Teaching Aids: {{this.data.detailPlan[i].teachAid}}</pre> -->
+                <div class="row" style="height: 50px;border-top:0.4px solid black">
+                  <div class="column"> <pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size:14pt ;white-space: pre-wrap;padding-left:1em"><strong>Teacher:{{this.data.user.teacher.salute +" " +this.data.user.firstName +  " " + this.data.user.middleName +" " + this.data.user.lastName }}</strong></pre></div>
+                </div>
+                <div class="row" style="height: 50px;">
+                    <div class="column" style="width:25%"><pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size:14pt;white-space: pre-wrap;padding-left:1em"><strong>Lecture No: {{i+1}} </strong></pre> </div>
+                    <div class="column" style="width:25%"><pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Day:</strong> {{this.data.detailPlan[i].lecDay}} </pre></div>
+                    <div class="column" style="width:25%"><pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Date:</strong> {{this.data.detailPlan[i].lecDate}} </pre></div>
+                    <div class="column" style="width:25%"><pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Date:</strong> {{this.data.detailPlan[i].lecTime}} </pre></div>
+                </div>
+                <div class="row" style="height: 50px;">
+                    <div class="column"> <pre style="margin-top: 12.5px;font-family:'Times New Roman', Times, serif;font-size:14pt ;white-space: pre-wrap;padding-left:1em"><strong>Title of Unit:</strong> {{this.data.detailPlan[i].unitTitle}}</pre></div>
+                </div>
+                <div class="row" style="height: 150px;">
+                    <div class="column left"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Key Points:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].keyPoint}}</p></pre> </div>
+                    <div class="column right"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Teaching Aids:</strong> {{this.data.detailPlan[i].teachAid}} </pre></div>
+                </div>
+                <div class="row" style="height: 150px;">
+
+                <div class="column"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Previous Knowledge:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].prevKnow}}</p> </pre></div>
+                </div>
+                <div class="row" style="height: 150px;">
+                    <div class="column"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Objectives:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].objective}}</p> </pre></div>
+                </div>
+
+                <div class="row" style="height: 250px; ">
+                    <div class="column left"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Teacher Activity:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].teachActivity}}</p></pre> </div>
+                    <div class="column right"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Student Activity:</strong> <p style="padding-left:2em">{{this.data.detailPlan[i].studActivity}}</p> </pre></div>
+                </div>
+
+
+                <div class="row" style="height: 150px;border-bottom:0.0px solid white">
+                    <div class="column left" style="width:75%"><pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Learning Skills:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].learnSkills}}</p> </pre></div>
+                    <div class="column right" style="width:25%">
+                      <pre style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>Level:</strong></pre>
+                      <div class="form-group form-check" type="checkbox" formControlName="knowledge_ss">
+                        <input type="checkbox" formControlName="knowledge_ss" id="knowledge_ss" class="form-check-input" />
+                        <label for="knowledge_ss" class="form-check-label" for="inlineCheckbox1">Knowledge</label>
+                      </div>
+          
+                      <div class="form-group form-check">
+                        <input type="checkbox" formControlName="understanding_ss" id="understanding_ss" class="form-check-input" />
+                        <label for="understanding_ss" class="form-check-label"  for="inlineCheckbox2">Understanding</label>
+                     </div>
+          
+                     <div class="form-group form-check">
+                      <input type="checkbox" formControlName="application_ss" id="application_ss" class="form-check-input" />
+                      <label for="application_ss" class="form-check-label"  for="inlineCheckbox3">Application</label>
+                    </div>
+          
+                    <div class="form-group form-check">
+                      <input type="checkbox" formControlName="analysis_ss" id="analysis_ss" class="form-check-input" />
+                      <label for="analysis_ss" class="form-check-label"  for="inlineCheckbox4">Analysis</label>
+                   </div>
+                   
+                    <div class="form-group form-check">
+                      <input type="checkbox" formControlName="synthesis_ss" id="synthesis_ss" class="form-check-input" />
+                      <label for="synthesis_ss" class="form-check-label"  for="inlineCheckbox5">Synthesis</label>
+                    </div>
+          
+                    <div class="form-group form-check">
+                        <input type="checkbox" formControlName="evaluation_ss" id="evaluation_ss" class="form-check-input" />
+                        <label for="evaluation_ss" class="form-check-label"  for="inlineCheckbox6">Evaluation</label>
+                     </div>
+          
+                  </div>
+                </div>
+<!--  -->
+                <div class="row" style="height: 150px;border-top:0.0px solid white">
+                    <div class="column left" style="width:75%"><pre style="border-top:0.3px solid rgb(8, 8, 8);margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;"><strong>Assignment:</strong><p style="padding-left:2em">{{this.data.detailPlan[i].assignment}}</p></pre></div>
+                </div>
+                <div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+        <pre style="text-align: right;margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;"><strong>Teacher Signature  {{"          "}}</strong></pre>
+               
+
+
+                </div>
+
+            </section>
+            
+    </div>
+    
+      </div>
+      
+      </div>
+      <button mat-raised-button color="primary" (click)="print()" >Download Teaching Plan</button>  
+    </div>
+    </section>
+  
+    </div>
+
+      
+
+
+
+
+
+
+  </div>

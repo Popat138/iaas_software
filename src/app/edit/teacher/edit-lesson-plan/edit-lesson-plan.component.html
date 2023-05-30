@@ -1,0 +1,184 @@
+<div [formGroup]="Form">
+    <p>Update Lesson Plan or Add Lesson Plan</p>
+    <section class="container border mb-4 p-3 mt-4">
+        <div class="row">
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+              <mat-label>Academic Year</mat-label>
+              <mat-select required matNativeControl formControlName="academic_year">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                    {{ year }}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+          </div>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+          
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Class</mat-label>
+            <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" >
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let item of programDetails" [value]="item.streamClass">
+                {{ item.streamClass }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Division</mat-label>
+            <mat-select required matNativeControl formControlName="div" [disabled]="!this.Form.get('class').valid">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let division of divisions" [value]="division.id">
+                {{ division.divisionName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Code</mat-label>
+            <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="saveBtn" (click)="getCourses()" [disabled]="!this.Form.get('program').valid">Courses</button>
+      
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Name</mat-label>
+            <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+          </mat-form-field>
+    
+    </section>
+    <br>
+    
+    <section class="container border mb-4 p-3 mt-4">
+        <div *ngFor="let other1 of otherControl;let i = index">
+            <div formArrayName="other">
+            <div [formGroupName]="i">
+              <div style="margin-top: 2rem;">
+                <button mat-raised-button class="btn btn-danger btn-sm" (click)="removeother(i)">
+                  Remove
+                </button>
+              </div>
+              <section class="container border mb-4 p-3 mt-4">
+              <h4 class="head" style="margin-top: 1.5rem;">Lecture No. {{i+1}}</h4>
+    
+              <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Date</mat-label>
+                <input matInput type="text" formControlName="lec_dates" name="lec_dates" id="lec_dates"
+                  #input placeholder="eg - 1,2,3.." />
+              </mat-form-field>
+    
+              <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Day</mat-label>
+                <input matInput type="text" formControlName="lec_day" name="lec_day" id="lec_day"
+                  #input placeholder="eg - 1,2,3.." />
+              </mat-form-field> -->
+               
+                <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>Day</mat-label>
+                  <mat-select required  matNativeControl formControlName="lec_day">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let level of level" [value]="level.level">
+                      {{ level.level }}
+                    </mat-option>
+                  </mat-select>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                    <mat-label>Time</mat-label>
+                    <input matInput type="text" formControlName="lec_time" name="lec_time" id="lec_time"
+                      #input placeholder="eg - 1,2,3.." />
+                  </mat-form-field>
+                <div class="çols">
+                  <p class="head">Title of Unit: :-</p><br>
+              <textarea formControlName="unit_title"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                rows="5"></textarea>
+
+                  <p class="head">Key Points: :-</p><br>
+                  <textarea formControlName="key_point"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                    rows="5"></textarea>
+    
+                    <p class="head">Teaching Aids: :-</p><br>
+                    <textarea formControlName="teach_aid"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                      rows="2"></textarea>
+                      <p class="head">Previous Knowledge: :-</p><br>
+                    <textarea formControlName="previous_knw"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                      rows="5"></textarea>
+    
+                    <p class="head">Objectives :-</p><br>
+                      <textarea formControlName="objectives"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                        rows="5"></textarea>
+    
+                        
+                    <p class="head">Teacher Activity :-</p><br>
+                    <textarea formControlName="activity_teaching"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                          rows="5"></textarea>  
+    
+                    <p class="head">Student Activity :-</p><br>
+                    <textarea formControlName="activity_student"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                            rows="5"></textarea>  
+                    <p class="head">References :-</p><br>
+                      <textarea formControlName="reference"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                                    rows="5"></textarea>     
+                      <p class="head">Learning Skills :-</p><br>
+                        <textarea formControlName="learn_skills"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                                                  rows="5"></textarea> 
+                      <p class="head">Assignments:-</p><br>
+                        <textarea formControlName="assignments"  style="margin-left: 12.5rem; margin-top: -3rem" cols="50"
+                                                  rows="5"></textarea> 
+                </div>
+                <!-- Check Boxes -->
+                <p> Level:</p>
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input type="checkbox" formControlName="knowledge_ss" id="knowledge_ss" onclick="console.log('')" class="form-check-input" />
+                    <label for="knowledge_ss" class="form-check-label">Knowledge</label>
+                  </div>
+
+
+                  
+      
+                  <div class="form-check form-check-inline">
+                    <input type="checkbox" formControlName="understanding_ss" id="understanding_ss" class="form-check-input" />
+                    <label for="understanding_ss" class="form-check-label" >Understanding</label>
+                 </div>
+      
+                 <div class="form-check form-check-inline">
+                  <input type="checkbox" formControlName="application_ss" id="application_ss" class="form-check-input" />
+                  <label for="application_ss" class="form-check-label" >Application</label>
+                </div>
+      
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" formControlName="analysis_ss" id="analysis_ss" class="form-check-input" />
+                  <label for="analysis_ss" class="form-check-label" >Analysis</label>
+               </div>
+               
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" formControlName="synthesis_ss" id="synthesis_ss" class="form-check-input" />
+                  <label for="synthesis_ss" class="form-check-label" >Synthesis</label>
+                </div>
+      
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" formControlName="evaluation_ss" id="evaluation_ss" class="form-check-input" />
+                    <label for="evaluation_ss" class="form-check-label" >Evaluation</label>
+                 </div>
+               </div>
+              </section> 
+              <div>
+                <button mat-raised-button class="btn btn-primary" (click)="addother()">
+                  Add new plan
+                </button>
+              </div>
+            </div>
+            </div>
+        </div>
+    
+    
+    </section>
+    
+    </div>
+    <button mat-raised-button color="accent" [disabled]="!Form.valid" style="display:flex;justify-content: center;"
+        (click)="submitForm()">Submit Form</button>

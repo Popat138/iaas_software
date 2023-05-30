@@ -1,0 +1,113 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Add Members</h4>
+  
+    <section class="container border mb-4 p-3 mt-4">
+    
+  
+      <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+          <div style="margin-top: 2rem;margin-bottom: 2rem;">
+            <button mat-raised-button class="btn btn-danger btn-sm" (click)="removeother(i)">
+              Remove
+            </button>
+          </div>
+  
+  
+          <!-- Programme: this.fb.control('',Validators.required),
+          name_of_student: this.fb.control('',Validators.required),
+          category: this.fb.control('',Validators.required),
+          name_of_guide: this.fb.control('',Validators.required),
+          date_of_registration: this.fb.control('',Validators.required),
+          title_of_topic: this.fb.control('',Validators.required), -->
+  
+  
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="Programme" name="Programme" id="Programme"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="f_name" name="f_name" id="f_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Middle Name</mat-label>
+            <input matInput type="text" formControlName="m_name" name="m_name" id="m_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="l_name" name="l_name" id="l_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+        
+        <br>
+           
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Email-id</mat-label>
+            <input matInput type="text" formControlName="email" name="email" id="email" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Mobile No</mat-label>
+            <input matInput type="text" formControlName="paswd" name="paswd" id="paswd" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+  
+<!--   
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Guide</mat-label>
+              <mat-select required matNativeControl formControlName="name_of_guide" >
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let guide of guides" [value]="guide">
+                  {{ guide.guideName }}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+   -->
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Date</mat-label>
+            <input matInput type="text" formControlName="date_of_registration" name="date_of_registration" id="date_of_registration" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+          <!-- <mat-form-field color="accent" appearance="outline" style="margin-left: 1rem">
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="date_of_registration" [matDatepicker]="picker2" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Title of research work</mat-label>
+            <input matInput type="text" formControlName="title_of_topic" name="title_of_topic" id="title_of_topic" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+          
+          <!-- <div class="col-sm-2" (click)="uploadFile.click()" style="margin-left: 1rem;">
+            <button mat-raised-button color="primary">Upload certificate copy</button>
+            <input #uploadFile (change)="upload($event, i)" type="file" style="display: none" />
+          </div> -->
+  
+        </div>
+        
+      </div>
+    </div>
+    <br/>
+    <div>
+      <button mat-raised-button class="btn btn-primary" (click)="addother()">
+        Add students
+      </button>
+    </div>
+    </section>
+  </div>
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>
+  

@@ -1,0 +1,78 @@
+.example-container {
+  width:auto;
+  height: 100%;
+  border: 0.2px  rgba(0, 0, 0, 0.5);
+  background-color:rgb(250, 250, 229);
+  }
+
+  .example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color:aquamarine;
+
+  width: 100%;
+  }
+
+  .example-sidenav {
+    
+  padding: 0px;
+ 
+  }
+
+  .Nav{
+    text-align: center;
+    font-family:'Poppins',
+    serif;font-size: 24px;
+    font-weight: bold;width: 90%;
+    margin-left: -3em;
+     color:aquamarine;
+  }
+
+
+  .nav{
+      text-align: center;
+      font-family:'Josefin Slab';
+      font-size: 15px;
+      font-weight: bold;width: 96%;
+       color:rgb(252, 251, 246);
+            display: block;
+            
+  }
+
+  a.active {
+    background-color: #088b9c;
+    color: rgb(128, 16, 16);
+   // margin: 10px -10px 0;
+  }
+
+  // :host ::ng-deep nav-item nav-link{
+  //   margin: 0 !important;
+  //   padding: 0;
+
+  // }
+
+  .nav-link{
+    display: flex;
+ 
+
+  }
+  .title{
+    margin-left: 0.2rem;
+    font-size: large;
+    font-family:'Poppins';
+    font-weight: bold;
+    text-align: left;
+    font-weight:1000;
+    color: rgb(3, 3, 3);
+    text-overflow:hidden;
+   // white-space: nowrap;
+    margin-top: 0.1rem;
+  }
+
+  html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}

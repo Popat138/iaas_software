@@ -1,0 +1,37 @@
+.head{
+  //text-align: center;
+  font-family:'Poppins',
+  serif;font-size: 24px;
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+table {
+  width: 96%;
+  margin-top: 2%;
+  margin-left: 1.5rem;
+  // table-layout: fixed;
+ // margin-right: 1.5rem;
+}
+.mat-header-cell{
+  font-family:'Poppins';
+  font-size: 16px;
+  font-weight: bolder;
+  color: rgb(255, 251, 251);
+
+  //width: 90%;
+  // margin-top: 2%;
+  // margin-left: 1.5rem;
+  // display: block;
+
+}
+
+.mat-cell {
+  padding: 8px 8px 8px 0;
+}
+th, td {
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

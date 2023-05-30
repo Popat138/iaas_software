@@ -1,0 +1,208 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add Book/Proceeding Publications</div>
+  </mat-card>
+
+
+
+  <section class="container border mb-4 p-3 mt-4">
+
+
+    <h3 class="head" style="margin-bottom: 4rem;">Book/Proceeding Publications</h3>
+
+
+
+    <div [formGroup]="Form" class="row" style="display: block">
+
+        <div class="row">
+            <div class="col-md-4" style="margin-top: 2rem;">  <h4 class="head">Academic Year</h4> </div>
+
+            <div class="col-md-6"  >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academicYear">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                  {{ year }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" style="margin-top: 2rem;">  <h4 class="head">Type</h4> </div>
+
+            <div class="col-md-6"  >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Type</mat-label>
+            <mat-select required matNativeControl formControlName="type">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                {{ type.title }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+
+      <div class="row" [hidden]="this.Form.get('type').value===''||this.Form.get('type').value==='Proceeding'?true:false" >
+      <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Title of Book</h4></div>
+
+      <div class="col-md-6" >
+        <mat-form-field  appearance="outline" style="margin-top: 0rem;">
+          <mat-label>Title of Book</mat-label>
+          <input formControlName="title" matInput type="text" name="title" id="title" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" [hidden]="this.Form.get('type').value==='Proceeding'?false:true" >
+      <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Title of Paper</h4></div>
+
+      <div class="col-md-6" >
+        <mat-form-field  appearance="outline" style="margin-top: 0rem;">
+          <mat-label>Title of the paper</mat-label>
+          <input formControlName="titleOfPaper" matInput type="text" name="titleOfPaper" id="titleOfPaper" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" [hidden]="this.Form.get('type').value==='Proceeding'?false:true" >
+      <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Title of the proceedings</h4></div>
+
+      <div class="col-md-6" >
+        <mat-form-field  appearance="outline" style="margin-top: 0rem;">
+          <mat-label>Title of the proceedings</mat-label>
+          <input formControlName="titleOfproceedings" matInput type="text" name="titleOfproceedings" id="titleOfproceedings" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" [hidden]="this.Form.get('type').value==='Proceeding'?false:true" >
+      <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Name of the conference</h4></div>
+
+      <div class="col-md-6" >
+        <mat-form-field  appearance="outline" style="margin-top: 0rem;">
+          <mat-label>Name of the conference</mat-label>
+          <input formControlName="nameOfconference" matInput type="text" name="nameOfconference" id="naemOfconference" #input
+            placeholder="eg - Name..." />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Authors</h4></div>
+
+        <div class="col-md-6" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;">
+            <mat-label>Authors</mat-label>
+            <input formControlName="author" matInput type="text" name="author" id="author" #input
+              placeholder="eg - Title..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Publisher</h4></div>
+
+        <div class="col-md-6" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;">
+            <mat-label>Publisher</mat-label>
+            <input formControlName="publisher" matInput type="text" name="publisher" id="publisher" #input
+              placeholder="eg - Publisher..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Year</h4></div>
+
+        <div class="col-md-6" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;">
+            <mat-label>Year</mat-label>
+            <input formControlName="year" matInput type="text" name="year" id="year" #input
+              placeholder="eg - Year..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">ISSN/ISBN</h4></div>
+
+        <div class="col-md-6" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;">
+            <mat-label>ISSN/ISBN</mat-label>
+            <input formControlName="edition" matInput type="text" name="edition" id="edition" #input
+              placeholder="eg - ISSN/ISBN No..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4" style="margin-top: 2rem;">  <h4 class="head">Role</h4> </div>
+
+        <div class="col-md-6"  >
+        <mat-form-field appearance="outline" style="margin-top: 1rem">
+        <mat-label>Role</mat-label>
+        <mat-select required matNativeControl formControlName="role">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{ role.value }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" style="margin-top: 2rem;">  <h4 class="head">publications</h4> </div>
+
+        <div class="col-md-6"  >
+        <mat-form-field appearance="outline" style="margin-top: 1rem">
+        <mat-label>publications</mat-label>
+        <mat-select required matNativeControl formControlName="publication">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let publication of publications" [value]="publication.value">
+            {{ publication.value }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 2rem">
+        <div class="col-sm-4">
+          <h5 class="head_u">Upload </h5>
+          <h6>NOTE - Upload cover page, title page, ISBN no page, content page in one pdf file</h6>
+        </div>
+
+        <div class="col-sm-6" (click)="uploadFile.click()" style="margin-left: -3rem;margin-top: -1rem;">
+          <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload
+          </button> {{fileName||'Not selected'}}
+          <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+        </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-4" ><h4 class="head" style="margin-top: 1rem;">Affiliating Institute at the time of publication </h4></div>
+  
+          <div class="col-md-6" >
+            <mat-form-field appearance="outline" style="margin-top: 0rem;">
+              <mat-label>Affiliating Institute at the time of publication </mat-label>
+              <input formControlName="AffiliatingInstitute" matInput type="text" name="AffiliatingInstitute" id="AffiliatingInstitute" #input
+                placeholder="eg - Affiliating Institute at the time of publication ..." />
+            </mat-form-field>
+          </div>
+        </div>
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-left: 25rem; margin-top: 3rem"
+    (click)="submitForm()">
+    Submit Form
+  </button>

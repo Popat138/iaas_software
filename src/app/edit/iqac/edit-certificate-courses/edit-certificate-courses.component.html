@@ -1,0 +1,141 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Edit Certificate Courses</div>
+  </mat-card>
+  
+  <section class="container border mb-4 p-3 mt-4">
+    <div [formGroup]="Form" class="row" style="display: block;">
+  
+  
+  
+    <div class="row">
+  
+  
+        <div class="col-md-2" style="margin-top: 2.5rem;"><h4 class="head">Faculty</h4></div>
+  
+        <div class="col-md-3">
+                <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem;margin-left: -5rem;">
+                  <mat-label>Faculty</mat-label>
+                  <input formControlName="faculty" matInput type="text" name="faculty" id="title" #input
+                    placeholder="eg - Title..." />
+                </mat-form-field>
+        </div>
+  
+        <div class="col-md-2" style="margin-top: 2rem;">
+          <h4 class="head">Department</h4></div>
+          <div class="col">
+          <mat-form-field appearance="outline" style="margin-top: 2rem;">
+              <mat-label>Department</mat-label>
+              <mat-select required matNativeControl formControlName="department">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let department of departments" [value]="department">
+                  {{ department.departmentName || " " }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+          </div>
+    </div>
+  
+  <div class="row">
+  <div class="col-md-2" style="margin-top: 2.5rem;"><h4 class="head">Program Name</h4></div>
+  <div class="col-md-3">
+    <mat-form-field appearance="outline" style="margin-left: -4rem;margin-top: 2rem;">
+      <mat-label>Program Name</mat-label>
+      <mat-select required matNativeControl formControlName="prog_name">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let program of fetchDivision()" [value]="program.programId">
+          {{ program.programName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="col-md-2" style="margin-top: 2.5rem;margin-left: 3rem;"><h4 class="head">Course Name</h4></div>
+  <div class="col-md-3">
+      <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem">
+        <mat-label>Certificate course name</mat-label>
+        <input formControlName="cert_name" matInput type="text" name="cert_name" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="row">
+  
+  <div class="col-md-2" style="margin-top: 3rem;"><h4 class="head">Duration</h4></div>
+  
+  <div class="col-md-6" style="margin-left: -5rem;margin-top: 2rem;">
+    <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem">
+      <mat-label>Course duration</mat-label>
+      <input formControlName="duration" matInput type="text" name="f_date" id="f_date" #input
+        placeholder="eg - Title..." />
+    </mat-form-field>
+        <!-- <mat-form-field color="accent" appearance="outline" >
+          <mat-label>From Date</mat-label>
+          <input matInput formControlName="f_date" [matDatepicker]="picker1" />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>To Date</mat-label>
+          <input matInput formControlName="t_date" [matDatepicker]="picker2" />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        </mat-form-field> -->
+      </div>
+   </div>
+   <div class="row">
+  
+  
+      <!-- <div class="col">
+  
+      </div> -->
+  
+      <h4 class="col-md-2  head" style="margin-top: 3rem;">Implementation Year</h4>
+      <div class="col">
+      <mat-form-field appearance="outline" style="margin-left: -8rem;margin-top: 2rem;">
+          <mat-label>Implementation Year</mat-label>
+          <mat-select required matNativeControl formControlName="academicYear">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+              {{ year }}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      </div>
+  
+      <h4 class="col-md-2  head" style="margin-top: 3rem;">Course level</h4>
+      <div class="col">
+      <mat-form-field appearance="outline" style="margin-left: -8rem;margin-top: 2rem;">
+          <mat-label>Course level</mat-label>
+          <mat-select required matNativeControl formControlName="courseLevel">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let level of level" [value]="level.level">
+              {{ level.level }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      </div>
+  
+      <div class="row">
+      <h4 class=" head" style="margin-top: 3rem;">Upload permission letter
+      </h4>
+            <div class="col-sm-2" (click)="newsReport.click()">
+              <button mat-raised-button color="primary" style="margin-top: 2rem;margin-left: -2rem;">Upload</button>
+              <input #newsReport (change)="certupload($event)" type="file" style="display: none" />
+            </div>
+  
+          </div>
+  
+  
+  
+  
+      </div>
+    </div>
+  </section>
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+    (click)="submitForm()">Submit Form</button>
+  

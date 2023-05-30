@@ -1,0 +1,108 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Add Book Bank Scheme</h4>
+    <!-- <h5 class="note">(Note: the entries must be made voucher wise)</h5> -->
+  
+  
+    <section class="container border mb-4 p-3 mt-4">
+
+
+    <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Total books</mat-label>
+      <input matInput type="total_books" formControlName="total_books" name="total_books" id="total_books" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+   -->
+  
+  
+  
+      <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+          <div style="margin-top: 2rem;">
+            <button mat-raised-button class="btn btn-danger btn-sm" style="margin-bottom: 1rem;" (click)="removeother(i)">
+              Remove
+            </button>
+          </div>
+  
+    
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Academic year </mat-label>
+            <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year" #input placeholder="eg - 2020.." />
+          </mat-form-field>
+  
+  
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Type</mat-label>
+            <mat-select required matNativeControl formControlName="other_type">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let other_type of other_type" [value]="other_type.other_type">
+                {{ other_type.other_type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Total students benefited </mat-label>
+            <input matInput type="text" formControlName="benefited_students" name="benefited_students" id="benefited_students"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label> Total books issued</mat-label>
+            <input matInput type="text" formControlName="books_issued" name="books_issued" id="books_issued" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Total cost of books </mat-label>
+            <input matInput type="text" formControlName="cost_of_books" name="cost_of_books" id="cost_of_books" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Total fee collected from students</mat-label>
+            <input matInput type="text" formControlName="fee_collected" name="fee_collected" id="fee_collected" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+          <div class="col-sm-2" style="margin-top: 1rem;margin-left: 5rem;margin-bottom: 3rem;" (click)="upload_student_list.click()">
+            <button mat-raised-button color="primary">Upload list of students with details</button>
+            <input #upload_student_list (change)="upload($event, i)" type="file" style="display: none" />
+          </div>
+
+          <!-- <div class="row">
+  
+          <div class="col-sm-2" style="margin-top: 1rem;margin-left: 1rem;margin-bottom: 3rem;" (click)="upload_subscription_receipt.click()">
+            <button mat-raised-button color="primary">Upload subscription receipt</button>
+            <input #upload_subscription_receipt (change)="upload($event)" type="file" style="display: none" />
+          </div>
+  
+         
+  
+        </div> -->
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Title of research work</mat-label>
+            <input matInput type="text" formControlName="title_of_topic" name="title_of_topic" id="title_of_topic" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+  
+  
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addother()">
+            Add New Detail
+          </button>
+        </div>
+      </div>
+    </div>
+    </section>
+  </div>
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>
+  

@@ -1,0 +1,85 @@
+
+
+<h4 class="head">List of Teachers</h4>
+<div class="col-md-6">
+  <br>
+  <br>
+  <br>
+  <mat-form-field class="col-md-6" style="width: 75%;margin-left: 5rem;">
+    <input matInput style="width: 75%;" (keyup)="applyFilter($event)" placeholder="Search ....">
+  </mat-form-field>
+
+</div>
+
+<div class="table-responsive">
+  <h3 style="text-align: right; color:rgb(201, 49, 11);margin-right:10rem; font-family: Arial, Helvetica, sans-serif;font-size:15px">Total: {{this.dataSource.data.length}}     Selected: {{this.dataSource.filteredData.length}} </h3>
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8  ">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="f_Name">
+    <th mat-header-cell *matHeaderCellDef> Teacher Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.middleName}} {{element.lastName}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Middle Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="l_Name">
+    <th mat-header-cell *matHeaderCellDef>Last Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="DOB">
+    <th mat-header-cell *matHeaderCellDef> DOB </th>
+    <td mat-cell *matCellDef="let element"> {{element.dob | date: 'dd/MM/yy'}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Addhar_no">
+    <th mat-header-cell *matHeaderCellDef> Addhar number </th>
+    <td mat-cell *matCellDef="let element"> {{element.teacher?.aadharNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Pancard_no">
+    <th mat-header-cell *matHeaderCellDef> Pancard Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.teacher?.panNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="qualification">
+    <th mat-header-cell *matHeaderCellDef> Qualification</th>
+    <td mat-cell *matCellDef="let element"> {{element.teacher?.pgQualification[0]?.degree +","+ element.teacher?.entranceQualification[0]?.name+","+ element.teacher?.researchQualification[0]?.degree }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="view">
+    <th mat-header-cell *matHeaderCellDef> View </th>
+       <td  mat-cell *matCellDef="let element">
+    <button mat-raised-button color="primary" (click)="viewDetail(element)">View Details</button>
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="view_bio">
+    <th mat-header-cell *matHeaderCellDef> View </th>
+       <td  mat-cell *matCellDef="let element">
+    <button mat-raised-button color="primary" (click)="biodata(element)">View Biodata</button>
+      </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white"></tr>
+
+</table>
+<mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+<br><br>
+
+
+
+
+</div>
+

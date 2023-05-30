@@ -1,0 +1,53 @@
+<p>view-teaching-details</p>
+<div [formGroup]="Form">
+<div class="hill">
+    
+    <pre><strong style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 22px;">{{this.data.user.college.name}}</strong>
+     <strong  style="text-align: center;font-family:'Times New Roman', Times, serif;font-size: 20px;">Department of {{this.data.user.teacher.department.departmentName}}</strong>
+     <strong style=" font-family:'Times New Roman', Times, serif;font-size: 17px;"> Academic Year :{{this.data.academicYear}}
+   <!-- Program :{{this.data.academicDetail.course.program.programName}}      Class: {{this.data.academicDetail?.streamDetail.streamClass}}     Div.: {{this.data.academicDetail.division.divisionName}}          Course:   {{this.data.academicDetail.course.name}} -->
+</strong>
+     <strong style=" font-family:'Times New Roman', Times, serif;font-size: 15px;">Teacher: {{this.data.user.firstName +  " " + this.data.user.middleName +" " + this.data.user.lastName }}</strong>
+     <!-- <strong style=" font-family:'Times New Roman', Times, serif;font-size: 15px;">Plan Period: {{this.data.courseLecture[0].month}}</strong> -->
+     </pre>
+   </div>
+   
+   <h4 class="head"><strong>Undergraduate </strong></h4>
+   
+    <div   *ngFor="let ug1 of ugControl;let i = index">
+      <div formArrayName="ug">
+       <div [formGroupName]="i">
+        
+        <div class="col" style="display: flex;justify-content: space-evenly;font-family:'Times New Roman', Times, serif;font-size:medium;">
+          <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium"> <strong>Program: </strong> {{this.data.ugCourses[i]?.course.program.programName}}</p>
+        <pre class="container border mb-1 p-3 mt-1"   style="margin-left: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Year: </strong> {{this.data.ugCourses[i]?.course.year }}</pre>
+        <pre class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Semester: </strong> {{this.data.ugCourses[i]?.semester}}</pre>
+        <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Course: </strong> {{this.data.ugCourses[i]?.course.name}}</p>
+        <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Type: </strong> {{this.data.ugCourses[i]?.courseType}}</p>
+        <!-- <pre class="container border mb-1 p-3 mt-1" style="width: 2500px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"><strong> Topics: </strong><br>{{this.data.courseLecture[i].topic}} </pre>
+        <p class="container border mb-1 p-3 mt-1" style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>No. of Tutorials:</strong>{{this.data.courseLecture[i].nofOfTutorials }}</p>
+        <p class="container border mb-1 p-3 mt-1"style="width: 1-00px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Assignments: </strong><br>{{this.data.courseLecture[i].assignment}} </p>
+        <p class="container border mb-1 p-3 mt-1"  style="margin-right: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Mode of Teaching: </strong><br>{{this.data.courseLecture[i].modeOfTeaching}} </p> --> 
+        </div>
+        </div>
+    </div>
+   </div>
+    <h4 class="head"><strong>Postgraduate </strong></h4>
+     <div   *ngFor="let pg1 of pgControl;let i = index">
+      <div formArrayName="pg">
+       <div [formGroupName]="i">
+        <div class="col" style="display: flex;justify-content: space-evenly;font-family:'Times New Roman', Times, serif;font-size:medium;">
+        <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Program: </strong> {{this.data.pgCourses[i]?.course.program.programName}}</p>
+        <pre class="container border mb-1 p-3 mt-1"   style="margin-left: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Year: </strong> {{this.data.pgCourses[i]?.year }}</pre>
+        <pre class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Semester: </strong> {{this.data.pgCourses[i]?.semester}}</pre>
+        <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Course: </strong> {{this.data.pgCourses[i]?.course.name}}</p>
+        <p class="container border mb-1 p-3 mt-1"   style="font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Type: </strong> {{this.data.pgCourses[i]?.courseType}}</p>
+        <!-- <pre class="container border mb-1 p-3 mt-1" style="width: 2500px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"><strong> Topics: </strong><br>{{this.data.courseLecture[i].topic}} </pre>
+        <p class="container border mb-1 p-3 mt-1" style="margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>No. of Tutorials:</strong>{{this.data.courseLecture[i].nofOfTutorials }}</p>
+        <p class="container border mb-1 p-3 mt-1"style="width: 1-00px; margin: 0 auto;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Assignments: </strong><br>{{this.data.courseLecture[i].assignment}} </p>
+        <p class="container border mb-1 p-3 mt-1"  style="margin-right: 1.5rem;font-family:'Times New Roman', Times, serif;font-size: medium;;"> <strong>Mode of Teaching: </strong><br>{{this.data.courseLecture[i].modeOfTeaching}} </p> --> 
+        </div>
+        </div>
+    </div>
+    </div>
+   </div>

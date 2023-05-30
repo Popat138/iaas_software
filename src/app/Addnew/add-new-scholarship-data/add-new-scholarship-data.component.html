@@ -1,0 +1,202 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black">Add New Scholarship Data</div>
+</mat-card>
+
+
+<div [formGroup]="Form">
+    <section class="container border mb-4 p-3 mt-4" >
+      <div>
+        <h4 class="head" style="margin-bottom: 2rem"> Scholarship Data
+        </h4>
+
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+              <mat-label>Year</mat-label>
+              <mat-select required  matNativeControl formControlName="achievementYear">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                  {{ year }}
+              </mat-option>
+              </mat-select>
+              <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+              <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+            </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                <mat-label>Scholarship Type</mat-label>
+                <mat-select required (selectionChange)="selectScholarship($event)" matNativeControl formControlName="scholarshipType">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of scholarshipTypes" [value]="type.value">
+                    {{ type.value }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field>
+              </div>
+        </div>
+
+
+        <!-- <div class="row" style="margin-top: 4rem;margin-bottom: 3rem;">
+          <div class="col-sm-3">
+            <h5 class="head_u">Upload student list</h5>
+          </div>
+          <div class="col-sm-2" (click)="uploadFile.click()" style="margin-left: -2rem;">
+            <button mat-raised-button color="primary" style="margin-top: -2rem;">Upload</button>
+            <input #uploadFile (change)="upload1($event)" type="file" style="display: none" />
+          </div>
+
+          <div class="col-sm-3">
+            <h5 class="head_u">Download Excel format</h5>
+          </div>
+          <div class="col-sm-2" (click)="uploadFile.click()" style="margin-left: -2rem;">
+            <button mat-raised-button color="primary" style="margin-top: -2rem;">Download</button>
+            <input #uploadFile (change)="upload1($event)" type="file" style="display: none" />
+          </div>
+
+          </div> -->
+
+
+
+
+          <div formArrayName="add_new_recognition" >
+
+        <div *ngFor="let add_new_recognition of add_new_recognitionControl; let i = index">
+
+
+
+
+
+
+
+          <div [formGroupName]="i">
+
+            <div class="col-6 text-right">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeadd_new_recognition(i)">
+                Remove
+              </button>
+            </div>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
+              <!-- <mat-form-field style="padding-top: 2%" appearance="outline">
+                <mat-label>Year</mat-label>
+                <input matInput type="text" formControlName="years" name="name" id="name" #input maxlength="250"
+                  placeholder="eg - 2021" />
+                <!-- <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
+              </mat-form-field> -->
+              <!-- {{this.Form.get('type').value==="Government"}} -->
+              <mat-form-field [hidden]="this.Form.get('scholarshipType').value==='Institutional'?true:false" appearance="outline" style="margin-top: 1.1rem">
+                <mat-label>Scheme</mat-label>
+                <!-- <input matInput type="text" formControlName="scheme" name="scheme" id="scheme" #input
+                 placeholder="eg - scheme.." [matAutocomplete]="schemeOption"/> -->
+                <mat-select  (selectionChange)="selectScheme($event)" 
+                
+                  matNativeControl formControlName="scheme">
+                  <mat-option *ngFor="let scheme of schemes" [value]="scheme.title">
+                    {{ scheme.title }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="outline" [hidden]="this.Form.get('scholarshipType').value!=='Institutional' && Form.controls['add_new_recognition'].value[i].scheme!=='Other'?true:false" style="margin-top: 1.1rem">
+                <mat-label>Other </mat-label>
+                <input 
+                 matInput type="text" formControlName="OtherName" name="OtherName" id="OtherName" #input
+                 placeholder="eg - Scheme Name.." />
+                <!-- <mat-select  [disabled]="this.Form.get('scholarshipType').value===scholarshipTypes[1].value " required  matNativeControl formControlName="scheme">
+                  <mat-option *ngFor="let scheme of schemes" [value]="scheme.title">
+                    {{ scheme.title }}
+                  </mat-option>
+                </mat-select> -->
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field>
+              <!-- <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                <mat-label>Scheme</mat-label>
+                <input matInput type="text" formControlName="scheme" name="scheme" id="scheme" #input
+                 placeholder="eg - scheme.." [matAutocomplete]="schemeOption"/>
+                <mat-autocomplete  matNativeControl #schemeOption="matAutocomplete">
+                  <mat-option *ngFor="let scheme of schemes" [value]="scheme.title">
+                    {{ scheme.title }}
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field> -->
+              <mat-form-field style="padding-top: 2%" appearance="outline">
+                <mat-label>Awarding agency</mat-label>
+                <input matInput type="text" formControlName="awardingAgency" name="awardingAgency" id="awardingAgency" #input
+                  maxlength="250" placeholder="eg - Award.." />
+
+              </mat-form-field>
+              <mat-form-field style="padding-top: 2%" appearance="outline">
+                <mat-label>No of students</mat-label>
+                <input matInput type="text" formControlName="noOfStudents" name="noOfStudents" id="noOfStudents" #input
+                  maxlength="250" placeholder="eg - Award.." />
+
+              </mat-form-field>
+
+              <mat-form-field style="padding-top: 2%" appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput type="text" formControlName="amount" name="amount" id="amount" #input maxlength="250"
+                  placeholder="eg - Agency" />
+
+              </mat-form-field>
+
+            </div>
+
+              <div class="row" style="margin-top: 2rem">
+                <!-- <div class="col-sm-3">
+                  <h5 class="head_u">Upload roll call list</h5>
+                </div> -->
+                <div class="col-sm-2" (click)="uploadFile.click()">
+                  <button mat-raised-button color="primary" style="margin-top: 0.1rem;">Upload sanction letter</button>
+                  <input #uploadFile (change)="upload($event,i)" type="file" style="display: none" />
+                </div>
+
+                <div class="col-sm-2" (click)="uploadFile1.click()">
+                  <button mat-raised-button color="primary" style="margin-top: 0.1rem;margin-left: 3rem;">Upload student list</button>
+                  <input #uploadFile1 (change)="studentListUpload($event,i)" type="file" style="display: none" />
+                </div>
+              </div>
+
+
+
+
+
+
+
+            <!-- <div class="col-sm-3" style="   margin-left: 1rem" >
+              <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                <mat-label>Nature</mat-label>
+                <mat-select required  matNativeControl formControlName="achievementNature">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let nature of achievementNatures" [value]="nature.value">
+                    {{ nature.title }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+                <mat-hint>{{ yearControl.value?.sound }}</mat-hint>
+              </mat-form-field>
+              </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+      </div>
+      <div>
+        <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addadd_new_recognition()">
+          Add New Student Data
+        </button>
+      </div>
+
+    </section>
+  <button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()"  >Submit Form</button>
+  </div>
+

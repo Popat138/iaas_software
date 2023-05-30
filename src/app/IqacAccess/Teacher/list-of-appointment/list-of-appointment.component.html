@@ -1,0 +1,96 @@
+<!-- <p>list-of-appointment works!</p> -->
+
+<div class="head">
+    List of Appointment Details
+  </div>
+  <div class="col">
+    <br>
+    <br>
+    <br>
+    <mat-form-field class="col-md-6" style="width: 75%;margin-left: 5rem;">
+      <input matInput style="width: 75%;" (keyup)="applyFilter($event)" placeholder="Search ....">
+    </mat-form-field>
+    </div>
+  <!-- <div class="col-md-6">
+  
+    <button style="margin-top: 5%;margin-left: 1.5rem;" mat-raised-button color="primary" (click)="addservicedetails()">
+      Add your details
+    </button>
+  
+  </div>
+   -->
+  <div style="margin-top: 5%" class="table-responsive">
+    <h3 style="text-align: right; color:rgb(201, 49, 11);margin-right:10rem; font-family: Arial, Helvetica, sans-serif;font-size:15px">Total: {{this.dataSource.data.length}}     Selected: {{this.dataSource.filteredData.length}} </h3>
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+  
+
+    <ng-container matColumnDef="teacher">
+        <th mat-header-cell *matHeaderCellDef>Teacher Name </th>
+           <td  mat-cell *matCellDef="let element">
+            {{element.user?.firstName}}  {{element.user?.middleName}}  {{element.user?.lastName}}
+          </td>
+      </ng-container>
+
+    <ng-container matColumnDef="appointment_date">
+      <th mat-header-cell *matHeaderCellDef> Appointment Date </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.appointmentDate | date: 'dd-MM-yyyy'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="order_no">
+      <th mat-header-cell *matHeaderCellDef> Order Number </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.orderNumber}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="appointment_type">
+      <th mat-header-cell *matHeaderCellDef> Appointment Type </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.appointmentType.replace("_", " ")}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="nature">
+      <th mat-header-cell *matHeaderCellDef> Appointment Nature </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.nature.replace("_", " ")}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="designation">
+      <th mat-header-cell *matHeaderCellDef> Designation </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.designation.replace("_", " ")}}
+        </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="resguide">
+      <th mat-header-cell *matHeaderCellDef> Recognised Guide </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element?.teacher.resGuide}}
+        </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="joining_date">
+      <th mat-header-cell *matHeaderCellDef> Joining Date in present Institute </th>
+         <td  mat-cell *matCellDef="let element">
+          {{element.joinDate | date: 'dd-MM-yyyy'}}
+        </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="document">
+      <th mat-header-cell *matHeaderCellDef> Document </th>
+      <td  mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.document" href="{{this.service.BASE_URL}}/resources/uploads/{{element.document}}" target="_blank">View</a>
+      </td>
+  
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:rgb(252, 251, 247)"></tr>
+  
+   </table>
+   <mat-paginator style="font-weight:bold;margin-right: 3rem;margin-left: 2rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br><br>
+  
+  </div>
+  
+  

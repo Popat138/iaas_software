@@ -1,0 +1,92 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Edit New Department</div>
+  </mat-card>
+  
+  
+  
+  <section class="container border mb-4 p-3 mt-4">
+    <h3 class="head">Create Department</h3>
+    <div [formGroup]="Form" class="row" style="display: block;">
+      <div>
+  
+  <div class="row">
+    <div class="col-md-2" style="margin-top: 2rem;">  <h4 class="head">Name </h4> </div>
+  
+    <div class="col-md-3">
+        <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem;margin-left: -4rem;">
+  
+          <mat-label>Department Name</mat-label>
+          <input formControlName="d_name" matInput type="text" name="d_name" #input />
+        </mat-form-field>
+      </div>
+  
+      <div class="col-md-2" style="margin-top: 2rem;">  <h4 class="head"> Specialization  </h4> </div>
+      <div class="col-md-3">
+      <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem">
+        <mat-label>Specialization</mat-label>
+        <input formControlName="spec" matInput type="text" name="spec" #input  />
+      </mat-form-field>
+  
+  </div>
+  &nbsp;&nbsp;
+  
+  <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">  Establishment Year  </h4> </div>
+  
+  <div class="col-md-3" style="margin-left: -6rem;" >
+  <mat-form-field appearance="outline" style="margin-top: 1rem">
+    <mat-label>Establishment year</mat-label>
+    <mat-select required matNativeControl formControlName="academicYear">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+        {{ year }}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  
+  <div class="col-md-2" style="margin-top: 1rem;margin-left: 1rem;">  <h4 class="head"> HOD Name </h4> </div>
+  
+    <div class="col-md-3" style="margin-left: -5rem;">
+        <mat-form-field appearance="outline" style=" margin-top: 1rem">
+          <mat-label>Department Head Name</mat-label>
+          <input formControlName="hod_name" matInput type="text" name="hod_name" #input placeholder="eg - Name..." />
+        </mat-form-field>
+      </div>
+  
+  
+  </div>
+  
+  
+  
+  <div class="row">
+  
+  
+  
+  
+      <div class="col-md-2" style="margin-top: 2rem;">  <h4 class="head"> Email-id </h4> </div>
+  
+      <div class="col"  style="margin-left: -5rem;" >
+        <mat-form-field appearance="outline" style=" margin-top: 1rem;margin-left: 4.5rem;">
+          <mat-label>Department Head Email-id</mat-label>
+          <input formControlName="hod_email" matInput type="text" name="hod_email" #input placeholder="eg - test@gmail.com" />
+        </mat-form-field>
+      </div>
+  
+        <div class="col-md-2" style="margin-top: 2rem; margin-left: -10rem;">
+         <h4 class="head"> Password </h4> </div>
+        <div class="col"  style="margin-left: -5rem;">
+        <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>Department Head Passsword</mat-label>
+          <input formControlName="hod_paswd" matInput type="password" name="hod_paswd" #input />
+        </mat-form-field>
+      </div>
+      </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+    (click)="submitForm()">Submit Form</button>
+  

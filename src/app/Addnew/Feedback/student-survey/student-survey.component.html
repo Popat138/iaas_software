@@ -1,0 +1,71 @@
+<p class="head_u">Add-Student-Survey</p>
+<div [formGroup]="Form">
+<section class="container border mb-4 p-3 mt-4">
+  <div class="row">
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Academic Year</mat-label>
+      <mat-select required matNativeControl formControlName="academic_year">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+            {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Programme</mat-label>
+    <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+  <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Course Code</mat-label>
+    <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+  <button mat-raised-button color="accent" class="saveBtn" (click)="getCourses()" [disabled]="!this.Form.get('program').valid">Courses</button> -->
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Course Name</mat-label>
+    <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field> -->
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year</mat-label>
+    <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Semester</mat-label>
+    <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field> -->
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Class</mat-label>
+    <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" [disabled]="!this.Form.get('program').valid">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let item of programDetails" [value]="item">
+        {{ item.programClass }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Division</mat-label>
+    <mat-select required matNativeControl formControlName="div" [disabled]="!this.Form.get('class').valid">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let division of divisions" [value]="division">
+        {{ division.divisionName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40rem; margin-left: 1rem">
+    <mat-label>Link for Form</mat-label>
+    <input matInput type="text" formControlName="link" name="link" id="link" #input
+        placeholder="eg - 1,2,3.."/>
+  </mat-form-field>
+</section>
+</div>
+<button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()"  >Submit Form</button>

@@ -1,0 +1,96 @@
+<h1 class="head">
+    Stream/Faculty Classwise Details</h1>
+
+    <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+        <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+        </mat-form-field>
+      
+        <div class="col-md-1"></div>
+      
+        <div class="col-md-3">
+          <div class="card-body table-responsive">
+            <button mat-raised-button color="accent" class="saveBtn" (click)="addstreamdetails()">Add New Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="s_name">
+            <th mat-header-cell *matHeaderCellDef> Stream/Faculty Name </th>
+            <td mat-cell *matCellDef="let element"> {{element?.stream.streamName}} </td>
+          </ng-container>
+      
+          
+          <ng-container matColumnDef="class">
+            <th mat-header-cell *matHeaderCellDef> Class </th>
+            <td mat-cell *matCellDef="let element"> {{element?.streamClass}} </td>
+          </ng-container>
+      
+         <ng-container matColumnDef="no_of_div">
+            <th mat-header-cell *matHeaderCellDef> no of div </th>
+            <td mat-cell *matCellDef="let element"> {{element.divisions.length}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="divisons">
+            <th mat-header-cell *matHeaderCellDef> Divisions </th>
+            <td mat-cell *matCellDef="let element"> {{concatDivisions(element)}} </td>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="subjects">
+            <th mat-header-cell *matHeaderCellDef> Subjects </th>
+            <td mat-cell *matCellDef="let element"> {{element?.divisions.subjects}} </td>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="intake_capacity">
+            <th mat-header-cell *matHeaderCellDef>  Intake Capacity </th>
+            <td mat-cell *matCellDef="let element"> {{element.intakeCapacity}} </td>
+          </ng-container> -->
+      
+          <!-- <ng-container matColumnDef="upload_cert">
+            <th mat-header-cell *matHeaderCellDef> Certificate </th>
+            <td mat-cell *matCellDef="let element">
+              <a mat-raised-button color="primary" [disabled]="!element.certificate" href="{{this.service.BASE_URL}}/resources/uploads/{{element.certificate}}" target="_blank">View</a>
+            </td>
+          </ng-container>
+       -->
+          <ng-container matColumnDef="edit">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Edit :">
+              <button mat-button color="primary" (click)="edit(row)">
+                <mat-icon style="color: black">edit</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </ng-container>
+      
+          <ng-container matColumnDef="delete">
+            <td mat-cell
+              *matCellDef="let row"
+              [style.color]="row.color"
+              data-label="Delete :">
+              <button mat-button color="primary" (click)="delete(row)">
+                <mat-icon style="color: black; cursor: pointer"
+                >delete_forever</mat-icon>
+              </button>
+            </td>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </ng-container>
+      
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white;"></tr>
+      
+        </table>
+        <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+        <br><br>
+      
+      
+      
+      
+      </div>
+      

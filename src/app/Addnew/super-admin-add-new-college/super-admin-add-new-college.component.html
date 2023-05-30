@@ -1,0 +1,98 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black;">Add New College  </div>
+</mat-card>
+
+
+<div  [formGroup]="Form" style="display: flex;justify-content: center;margin-top: 4rem;">
+<div class="row">
+
+  <div class="col-sm-6" style="padding: left 14rem;;">
+    <h4 class="head_u" >Association/Management</h4>
+    </div>
+    <div class="col-sm-2" style="margin-left: -2.5rem;">
+    <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+      <mat-label>Association</mat-label>
+    
+      <input formControlName="association" matInput type="text" name="association" id="association" #input
+        placeholder="eg - Name..." />
+    
+    </mat-form-field>
+    </div>
+
+  <div class="col-sm-6" style="padding: left 14rem;;">
+<h4 class="head_u" >College Name</h4>
+</div>
+<div class="col-sm-2" style="margin-left: -2.5rem;">
+<mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+  <mat-label>College Name</mat-label>
+
+  <input formControlName="name" matInput type="text" name="name" id="name" #input
+    placeholder="eg - Name..." />
+
+</mat-form-field>
+</div>
+
+<div class="col-sm-6" style="padding: left 14rem;;">
+  <h4 class="head_u" >Address</h4>
+  </div>
+  <div class="col-sm-2" style="margin-left: -2.5rem;">
+  <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+    <mat-label>Address</mat-label>
+  
+    <input formControlName="address" matInput type="text" name="address" id="address" #input
+      placeholder="eg - address..." />
+  
+  </mat-form-field>
+  </div>
+
+  <div class="col-sm-6" style="padding: left 14rem;;">
+    <h4 class="head_u" >Description/Affiliation</h4>
+    </div>
+    <div class="col-sm-2" style="margin-left: -2.5rem;">
+    <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+      <mat-label>Description/Affiliation</mat-label>
+    
+      <input formControlName="description" matInput type="text" name="description" id="description" #input
+        placeholder="eg - Name..." />
+    
+    </mat-form-field>
+    </div>
+
+<div class="col-sm-6"  >
+  <h4 class="head_u"  >College Code</h4>
+  </div>
+  <div class="col-sm-2" style="margin-left: -2.5rem;">
+  <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+    <mat-label>College Code</mat-label>
+
+    <input formControlName="code" matInput type="text" name="code" id="code" #input
+      placeholder="eg - Name..." />
+
+  </mat-form-field>
+  </div>
+ <br>
+
+ <label for="image">Choose a College Logo:</label>
+<input type="file"
+       id="image" name="image"
+       accept="image/png, image/jpeg" class="file-upload" (change)="certupload($event)" onchange="console.log(event.target.files)">
+ </div>
+  <!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+<!-- <div class="row">
+<div class="col-sm-6">
+  <h4 class="head_u" >College Code</h4>
+  </div>
+  <div class="col-sm-2">
+  <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+    <mat-label>College Code</mat-label>
+
+    <input formControlName="code" matInput type="text" name="code" id="code" #input
+      placeholder="eg - Name..." />
+
+  </mat-form-field>
+  </div>
+</div> -->
+</div>
+<button mat-raised-button color="accent"  [disabled]="!Form.valid"
+ style="margin-left: 25rem;margin-top: 3rem;"
+(click)="submitForm()" >Submit Form</button>

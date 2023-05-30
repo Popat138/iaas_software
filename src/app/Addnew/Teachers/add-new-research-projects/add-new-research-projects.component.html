@@ -1,0 +1,164 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add Research Projects</div>
+  </mat-card>
+
+
+
+  <section class="container border mb-4 p-3 mt-4">
+
+
+    <h3 class="head" style="margin-bottom: 4rem;">Research Projects</h3>
+
+
+
+    <div [formGroup]="Form" class="row" style="display: block">
+
+        <div class="row">
+            <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">Academic Year</h4> </div>
+
+            <div class="col-md-3" style="margin-left: -6rem;" >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academicYear">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                  {{ year }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">Type</h4> </div>
+
+            <div class="col-md-3" style="margin-left: -6rem;" >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Type</mat-label>
+            <mat-select required matNativeControl formControlName="projectType">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let project of projects" [value]="project.value">
+                {{ project.value }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+
+      <div class="row" >
+      <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Title of Project</h4></div>
+
+      <div class="col-md-3" >
+        <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+          <mat-label>Title of Research Project</mat-label>
+          <input formControlName="title" matInput type="text" name="title" id="title" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Name of Investigator</h4></div>
+
+        <div class="col-md-3" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+            <mat-label>Name of Investigator</mat-label>
+            <input formControlName="author" matInput type="text" name="author" id="author" #input
+              placeholder="eg - Title..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Awarding Agency</h4></div>
+
+        <div class="col-md-3" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+            <mat-label>Awarding Agency</mat-label>
+            <input formControlName="publisher" matInput type="text" name="publisher" id="publisher" #input
+              placeholder="eg - Publisher..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Year of Award</h4></div>
+
+        <div class="col-md-3" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+            <mat-label>Year of Award</mat-label>
+            <input formControlName="year_award" matInput type="text" name="year_award" id="year" #input
+              placeholder="eg - Year..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-md-2" ><h4 class="head" style="margin-top: 1rem;">Amount Rs</h4></div>
+
+        <div class="col-md-3" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: -5rem;">
+            <mat-label>Amount Rs</mat-label>
+            <input formControlName="edition" matInput type="text" name="edition" id="edition" #input
+              placeholder="eg - Edition..." />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">Role</h4> </div>
+
+        <div class="col-md-3" style="margin-left: -6rem;" >
+        <mat-form-field appearance="outline" style="margin-top: 1rem">
+        <mat-label>Role</mat-label>
+        <mat-select required matNativeControl formControlName="role">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{ role.value }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" style="margin-top: 2rem;">  <h4 class="head">Agency Type</h4> </div>
+
+        <div class="col-md-3" style="margin-left: -6rem;" >
+        <mat-form-field appearance="outline" style="margin-top: 1rem">
+        <mat-label>Agency Type</mat-label>
+        <mat-select required matNativeControl formControlName="agency">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let agency of agencys" [value]="agency.value">
+            {{ agency.title }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 2rem">
+        <div class="col-sm-3">
+          <h5 class="head_u">Upload </h5>
+          <h6>NOTE - Upload sanction letter copy</h6>
+        </div>
+
+        <div class="col" (click)="uploadFile.click()" style="margin-left: -3rem;margin-top: -1rem;">
+          <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload
+          </button> {{fileName||'Not selected'}}
+          <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+        </div>
+        </div>
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-left: 25rem; margin-top: 3rem"
+    (click)="submitForm()">
+    Submit Form
+  </button>

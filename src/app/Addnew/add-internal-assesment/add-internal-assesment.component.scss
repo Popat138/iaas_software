@@ -1,0 +1,31 @@
+.mat-table {
+  display: block;
+  font-family: Tahoma, Verdana;
+  border: 1 solid;
+}
+
+.mat-row,
+.mat-header-row {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  margin-top: 1rem;
+}
+
+.mat-cell,
+.mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+// .name{
+//   margin-top: 0.8rem;
+// }
+
+.mat-header-cell {
+
+  font-weight: bolder;
+  color: black;
+}

@@ -1,0 +1,110 @@
+<h1 class="head">Book Bank</h1>
+
+<div class="row" style="margin-left: 5rem; margin-top: 5rem">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search..." />
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button
+        mat-raised-button
+        color="accent"
+        class="saveBtn"
+        (click)="addpgcourses()">
+        Add New Details
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef>Academic year</th>
+      <td mat-cell *matCellDef="let element">{{ element.academicYear }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="benefited_students">
+      <th mat-header-cell *matHeaderCellDef>Total students benefited</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.benefitedStudent }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="books_issued">
+      <th mat-header-cell *matHeaderCellDef>Total books issued</th>
+      <td mat-cell *matCellDef="let element">{{ element.booksIssued }}</td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="isbn_no">
+      <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+      <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef>Period</th>
+      <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="total_cost">
+      <th mat-header-cell *matHeaderCellDef> Total cost of books </th>
+      <td mat-cell *matCellDef="let element">{{ element.costOfBooks }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fee_collected">
+      <th mat-header-cell *matHeaderCellDef>Total fee collected</th>
+      <td mat-cell *matCellDef="let element">{{ element.feeCollected }}</td>
+    </ng-container>
+
+
+
+
+     <ng-container matColumnDef="upload_studentlist">
+      <th mat-header-cell *matHeaderCellDef> Student List </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary">View</button>
+      </td>
+    </ng-container>
+
+   <!-- <ng-container matColumnDef="usage_report">
+      <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:hsla(120, 1%, 17%, 0.815);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br /><br/>
+</div>

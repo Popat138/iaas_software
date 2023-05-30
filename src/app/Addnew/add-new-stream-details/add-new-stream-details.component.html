@@ -1,0 +1,129 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add New Faculty wise classes</div>
+  </mat-card>
+
+  <section class="container border mb-4 p-3 mt-4">
+    <h3 class="head">Create Stream Details</h3>
+    <div [formGroup]="Form" class="row" style="display: block;">
+    <div class="row">
+    <div class="col-md-4">
+        <mat-form-field appearance="outline" style="margin-top: 2rem;">
+          <mat-label>Faculty </mat-label>
+          <mat-select required matNativeControl formControlName="faculty">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let stream of streams" [value]="stream.id">
+              {{ stream?.streamName || " " }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+              <!-- <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem;margin-left: -5rem;">
+                <mat-label>Faculty</mat-label>
+                <input formControlName="faculty" matInput type="text" name="faculty" id="title" #input
+                  placeholder="eg - Title..." />
+              </mat-form-field> -->
+      </div>
+      
+      <div class="col-md-1" style="margin-top: 3rem;margin-left: 0rem;">
+        <h4 class="head">Class</h4>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline" style="width: 10rem; margin-top: 2rem">
+          <mat-label>Class</mat-label>
+          <input formControlName="class" matInput type="class" name="class" id="title" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+      </div>
+     
+      <div class="col-md-2" style="margin-top: 2rem;">
+        <h4 class="head">Number of Division</h4>
+      </div>
+      <div class="col-md-2" style="margin-left: -5rem;margin-top: 0rem;">
+        <mat-form-field appearance="outline" style="width: 6rem; margin-top: 2rem">
+          <mat-label>number of div</mat-label>
+          <input formControlName="no_of_div" matInput type="text" name="no_of_div" #input />
+        </mat-form-field>
+      </div>
+    </div>
+    <div div formArrayName="division">
+      <section class="container border mb-4 p-3 mt-4">
+        <div *ngFor="let division of divisionControl; let i = index">
+          <div [formGroupName]="i">
+
+
+
+            <div class="col-6 text-right">
+              <button type="button" class="btn btn-danger btn-sm" style="margin-top: 3rem;" (click)="removeDivision(i)">
+                Remove
+              </button>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-2" style="margin-top: 3rem;margin-left: 4rem;">
+                <h4 class="head">Division List</h4>
+              </div>
+              <div class="col-md-3" style="margin-top: 2rem;">
+                <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>List of Divisions</mat-label>
+                  <!-- <mat-select required matNativeControl formControlName="division">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let level of level" [value]="level.level">
+                      {{ level.level }}
+                    </mat-option>
+                  </mat-select> -->
+                  <input formControlName="division" matInput type="text" name="division" #input />
+                  
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-1" style="margin-top: 3rem;">
+                <h4 class="head">Add Subject</h4>
+              </div>
+              <div class="col-md-4" style="margin-top: 3rem;">
+               
+                <mat-form-field appearance="outline">
+                  <mat-chip-list #chipList aria-label="Subject selection">
+                    <mat-chip *ngFor="let subject of subjects[i]" (removed)="remove(subject, i)">
+                      {{subject}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input appearance="outline" placeholder="New Subject..." [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="add($event, i)">
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <br>
+              <br>
+              <p> Write division Names like A, B, C,..... or special subject name </p>
+
+
+            </div>
+            <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addDivision()">
+              Add Division
+            </button>
+
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+    </div>
+    
+  
+
+
+
+
+
+    
+    </section>
+    <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+  (click)="submitForm()">Submit Form</button>

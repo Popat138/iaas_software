@@ -1,0 +1,56 @@
+<body class="page">
+  <div id="report" >
+      <section class="header" style="text-align: center;line-height: normal;font-stretch: normal;" >
+        <div class="row">
+          <div class="col-md-1"> 
+        <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+          </div>
+          <div class="col-md-10">
+        <p style="text-align: center; line-height: normal; color:rgb(17, 16, 16);margin-top:0rem; font-family: Arial, Helvetica, sans-serif;font-size: 8pt;"><strong>{{this.association}}</strong></p>
+      <p style="text-align: center; line-height: normal;color:rgb(12, 11, 11);margin-top:-0.2rem; font-family: Arial, Helvetica, sans-serif;font-size:9pt"> <strong>{{this.college}}</strong></p>
+      <p  style="text-align: center; line-height: normal; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;font-size: 8pt;"><strong>{{this.address}}</strong></p>
+      <!-- <div *ngIf="this.data?.committee?.name"><p style="font-weight: 800; font-size:20px">{{this.data?.committee?.name}} Committee</p></div>
+      <div *ngIf="!this.data?.committee?.name"><p style="font-weight: 800; font-size:20px">Department of {{this.data?.department.departmentName}}</p> </div>   -->
+      <p style="text-align: center; line-height: normal;color:rgb(17, 16, 16);font-weight: 800; font-size: 8pt;">Department of {{this.data?.teacher.department.departmentName}}</p>
+    </div>
+  </div>
+      </section>
+  <hr style="height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7);margin-top:-0.2rem;font-family: 'Times New Roman', Times, serif;" >
+   <section style="text-align: justify;line-height: normal;font-stretch: normal; padding-left:3%;padding-right:3%" >
+   <h5 style="text-align: center;font-weight: 800;font-size: 8pt;color: rgb(247, 8, 8); line-height: normal;">{{this.data.titleOfMethod||this.data.title}}</h5>
+   <h4 style="text-align: center;font-weight: 800;font-size: 8pt;color: rgb(56, 6, 6);line-height: normal;" >{{this.data.type}}</h4>
+   <div class="col" style="display: flex;justify-content: space-evenly;font-family: 'Times New Roman', Times, serif;">
+    <h4 class="container border mb-0 p-1 mt-0" style="font-weight: 600;font-size: 8pt;line-height: normal;font-family: 'Times New Roman', Times, serif;"  >Class: {{this.data.pclass}}</h4>
+    <h4 class="container border mb-0 p-1 mt-0" style="font-weight: 600;font-size: 8pt;line-height: normal;font-family: 'Times New Roman', Times, serif;"  >Subject: {{this.data.psubject}}</h4>
+  <h4 class="container border mb-0 p-1 mt-0" style="font-weight: 600;font-size: 8pt;line-height: normal;font-family: 'Times New Roman', Times, serif;"  >Date: {{this.fdate | date:'dd/MM/yyyy'}} - {{this.tdate  | date:'dd/MM/yyyy'}}</h4>
+  <!-- <h4 class="container border mb-0 p-1 mt-0" style="font-weight: 600;font-size: 8pt;ine-height: normal;font-family: 'Times New Roman', Times, serif;" >No of Students: {{this.data.noOfStudent}}</h4> -->
+  </div>
+   <p class="container border mb-0 p-1 mt-0" style="font-family: 'Times New Roman', Times, serif;font-weight: 800;font-size: 8pt;" ><strong>Teachers:</strong> {{this.data.ictResources}}</p>
+   <p class="container border mb-0 p-1 mt-0" style="font-family: 'Times New Roman', Times, serif;font-size: 8pt;" > <strong>List of Resources:</strong>{{this.data.ictLinkone}} {{this.data.ictLinktwo}} </p>
+  <div class="container border mb-0 p-1 mt-0" style="display: flex-start; font-family: Spartan; font-size: 8pt;">
+    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 800;color: black;font-size: 8pt;">Brief Report :</h4>
+        <div innerHTML="{{this.data.reportBrief}}" style="margin-top:-0.3rem;font-family: 'Times New Roman', Times, serif;font-size: 8pt;" ></div>  
+    <h4 style="font-family: 'Times New Roman', Times, serif;font-size: larger; font-weight: 800;color: black;font-size: 8pt;">Learning Outcomes  : </h4> 
+    <div innerHTML="{{this.data.learnOutcomes}}"></div>
+  </div>
+  <br>
+  <td>
+    <div class="table">
+  <div class="row" style="display: flex;justify-content: space-between; ">
+    
+    <div class="col" *ngFor="let photograph of this.data.photographs" >
+  
+      <img  class="img1" style="width: 7cm;height: auto;" src="{{this.service.BASE_URL}}/resources/uploads/{{photograph.photo}}"/>
+     </div>
+  <!-- <img style="width: 350px;height: 300px;" src="http://localhost:8080/api/resources/uploads/{{this.data.newsReports[1].news}}"/> -->
+  </div>
+    </div>
+  </td>
+  
+  </section>
+  <pre style="font-weight: 600;font-size: 8pt;line-height: normal;font-family: 'Times New Roman', Times, serif;" >     Department of {{this.data.teacher.department.departmentName}},{{this.college}} </pre>
+  
+  </div>
+</body>
+  <button  mat-button color="primary" (click)="report5()">Download</button>
+  

@@ -1,0 +1,156 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Update New List of Programs</div>
+  </mat-card>
+  
+  <section class="container border mb-4 p-3 mt-4">
+    <h3 class="head">Create List of Programs</h3>
+    <div [formGroup]="Form" class="row" style="display: block;">
+  
+  
+  
+    <div class="row">
+  
+      <div class="col-md-2" style="margin-top: 2rem;">
+        <h4 class="head">Department</h4></div>
+        <div class="col">
+        <mat-form-field appearance="outline" style="margin-top: 2rem;">
+            <mat-label>Department</mat-label>
+            <mat-select required matNativeControl formControlName="department">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let department of departments" [value]="department.id">
+                {{ department.departmentName || " " }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+        </div>
+  
+  
+        <div class="col-md-2" style="margin-top: 2.5rem;"><h4 class="head">Faculty</h4></div>
+  
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" style="margin-top: 2rem;">
+            <mat-label>Faculty </mat-label>
+            <mat-select required matNativeControl formControlName="faculty">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let stream of streams" [value]="stream.id">
+                {{ stream.streamName || " " }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+                <!-- <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem;margin-left: -5rem;">
+                  <mat-label>Faculty</mat-label>
+                  <input formControlName="faculty" matInput type="text" name="faculty" id="title" #input
+                    placeholder="eg - Title..." />
+                </mat-form-field> -->
+        </div>
+  
+    </div>
+  
+  <div class="row">
+  <div class="col-md-2" style="margin-top: 2.5rem;"><h4 class="head">Program Name</h4></div>
+  <div class="col-md-3">
+        <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem">
+          <mat-label>Program Name</mat-label>
+          <input formControlName="prog_name" matInput type="text" name="prog_name" id="title" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+  </div>
+  <div class="col-md-2" style="margin-top: 2.5rem;margin-left: 3rem;"><h4 class="head">Program Code</h4></div>
+  <div class="col-md-3">
+      <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem">
+        <mat-label>Program Code</mat-label>
+        <input formControlName="prog_code" matInput type="text" name="prog_code" id="title" #input
+          placeholder="eg - Title..." />
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="row">
+  
+  <div class="col-md-2" style="margin-top: 3rem;"><h4 class="head">Program Type</h4></div>
+  
+  <div class="col-md-3" style="margin-left: -5rem;margin-top: 2rem;">
+    <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+      <mat-label>Program Type</mat-label>
+      <mat-select required matNativeControl formControlName="prog_type">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let type of prog_type" [value]="type.prog_type">
+          {{ type.prog_type }}
+        </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+      <mat-hint>{{ yearControl.value?.sound }}</mat-hint> -->
+    </mat-form-field>
+  </div>
+    <div class="col-md-2" style="margin-top: 3rem;margin-left: 5rem;"><h4 class="head">Program Level</h4></div>
+  
+  <div class="col-md-3" style="margin-left: -5rem;margin-top: 2rem;">
+    <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+      <mat-label>Level</mat-label>
+      <mat-select required matNativeControl formControlName="prog_lvl">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let level of level" [value]="level.level">
+          {{ level.level }}
+        </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="yearControl.hasError('required')">Level</mat-error>
+      <mat-hint>{{ yearControl.value?.sound }}</mat-hint> -->
+    </mat-form-field>
+      </div>
+   </div>
+  
+  
+   <div class="row">
+  
+    <div class="col-md-2" style="margin-top: 2rem;">  <h4 class="head"> Specialization  </h4> </div>
+    <div class="col-md-3">
+    <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem">
+      <mat-label>Specialization</mat-label>
+      <input formControlName="spec" matInput type="text" name="spec" #input  />
+    </mat-form-field>
+  
+  </div>
+  
+      <div class="row">
+  
+  
+      <div class="col-md-2" style="margin-top: 2rem;">
+      <h4 class="head">Implementation Year (CBCS)</h4></div>
+      <div class="col">
+      <mat-form-field appearance="outline" style="margin-top: 2rem;">
+          <mat-label>Implementation Year</mat-label>
+          <mat-select required matNativeControl formControlName="implementationYear">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+              {{ year }}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      </div>
+    </div>
+  
+      <div class="row">
+      <h4 class=" head" style="margin-top: 3rem;">Upload permission letter
+      </h4>
+            <div class="col-sm-2" (click)="certUpload.click()">
+              <button mat-raised-button color="primary" style="margin-top: 2rem;margin-left: -2rem;">Upload</button>
+              <input #certUpload (change)="certupload($event)" type="file" style="display: none" />
+            </div>
+  
+            <h4 class=" head" style="margin-top: 3rem;">Upload affiliation letter
+            </h4>
+                  <div class="col-sm-2" (click)="affiliationUpload.click()">
+                    <button mat-raised-button color="primary" style="margin-top: 2rem;margin-left: -2rem;">Upload</button>
+                    <input #affiliationUpload (change)="affiliationupload($event)" type="file" style="display: none" />
+                  </div>
+  
+          </div>
+  
+      </div>
+    </div>
+  </section>
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+    (click)="submitForm()">Submit Form</button>
+  

@@ -1,0 +1,120 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div style="width: 10%">
+    <!-- <button mat-mini-fab (click)="drawer.toggle()" style="margin-left: 2rem">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+  </div>
+  <div class="Nav">Welcome to Super Admin</div>
+  <button   (click)="logout()" mat-mini-fab color="grey" aria-label="cart" >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-card>
+
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button mat-raised-button color="accent" class="saveBtn" (click)="addNewDetails()">Add New Details</button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  ">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="college_name">
+      <th mat-header-cell *matHeaderCellDef> View Year Details </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="viewYearDetails(element)">View Details</button>
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="Asso">
+      <th mat-header-cell *matHeaderCellDef> Association </th>
+      <td mat-cell *matCellDef="let element"> {{element.association}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+   <ng-container matColumnDef="college_name">
+      <th mat-header-cell *matHeaderCellDef> College Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Desdription </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    
+
+    <!--  <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="n_teachers">
+      <th mat-header-cell *matHeaderCellDef> Teachers count </th>
+      <td mat-cell *matCellDef="let element"> {{element.n_teachers}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="n_students">
+      <th mat-header-cell *matHeaderCellDef> Students count </th>
+      <td mat-cell *matCellDef="let element"> {{element.n_students}} </td>
+    </ng-container>-->
+
+    <ng-container matColumnDef="college_code">
+      <th mat-header-cell *matHeaderCellDef> College Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> College Logo </th>
+      <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+    <!-- <ng-container matColumnDef="report">
+      <th mat-header-cell *matHeaderCellDef> Report </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="viewCommitteeDetails(element)">View Report</button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br>
+
+
+
+
+</div>

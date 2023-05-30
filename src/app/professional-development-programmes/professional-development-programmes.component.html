@@ -1,0 +1,116 @@
+
+
+<h1 class="head">Professional-development-programmes</h1>
+
+
+
+
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button mat-raised-button color="accent" class="saveBtn" (click)="addnewprogram()">Add New Details</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="head" style="margin-bottom: 0.6rem;">
+  <!-- <h4 style="padding: 1rem;">Export Data</h4> -->
+  <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+</div>
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef> Academic year </th>
+      <td mat-cell *matCellDef="let element"  data-label="academic_year:" > {{element.academicYear}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dates">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element" style="word-wrap: break-word;"> {{formatDate(element.fromDate)}} To {{formatDate(element.toDate)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="n_teachers">
+      <th mat-header-cell *matHeaderCellDef> Teachers count </th>
+      <td mat-cell *matCellDef="let element"> {{element.noOfTeachers}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="n_staff">
+      <th mat-header-cell *matHeaderCellDef> Staff count </th>
+      <td mat-cell *matCellDef="let element"> {{element.noOfStudent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="s_agency">
+      <th mat-header-cell *matHeaderCellDef> Supporting agency </th>
+      <td mat-cell *matCellDef="let element"> {{element.supportingAgency}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="photograph">
+      <th mat-header-cell *matHeaderCellDef> Photograph </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" href="{{this.service.BASE_URL}}/resources/uploads/{{element.photographs[0].photo}}" target="_blank">View</a>
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="viewReport">
+      <th mat-header-cell *matHeaderCellDef> View Report </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="testreport(element)">Report</button>
+        <!-- <a mat-raised-button color="primary" [disabled]="!element.newsReports[0].news" href="{{this.service.BASE_URL}}/resources/uploads/{{element.newsReports[0].news}}" target="_blank">View Report</a> -->
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="participants">
+      <th mat-header-cell *matHeaderCellDef> Participants </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.listOfParticipants[0].participant" href="{{this.service.BASE_URL}}/resources/uploads/{{element.listOfParticipants[0].participant}}" target="_blank">Participants</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white;"></tr>
+
+  </table>
+  <br><br>
+
+</div>

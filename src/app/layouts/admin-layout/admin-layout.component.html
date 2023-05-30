@@ -1,0 +1,595 @@
+<ng-container id="alu"  *ngIf="userRole == 'Feedback'">
+  <mat-card class="col" style="display: flex;justify-content: center;background-color:hsl(187, 89%, 72%)" >
+
+    <div class="head row" style="color: rgb(7, 7, 7);">
+
+      <h1 style="font-family:Poppins;font-weight: bolder;text-align: center;">{{this.college}} </h1>
+      <h2 style="color: black;font-family:Josefin Slab;font-weight: 700;text-align: center;" >Welcome To Feedback </h2>
+    </div>
+      <div class="row" style="display: flex;justify-content: flex-end;" >
+      <button (click)="logout()" mat-mini-fab color="grey" aria-label="cart">
+      <mat-icon>logout</mat-icon></button>
+      </div>
+  </mat-card>
+
+
+
+<h4 class="head" style="margin-top: 2rem;margin-left: 2rem;">Feedback</h4>
+
+
+
+<div class="row" style="display: flex;justify-content: space-evenly;">
+
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="head_u"> Student Satisfaction Survey on Teaching Learning Process </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="head" style="margin-top:1rem;">
+
+      <button type="submit" class="mat-raised-button" (click)="export_studentfeedback()">Download EXCEL</button>
+    </div>
+    <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button mat-raised-button color="accent" class="saveBtn" (click)="addstudentfeedback()">Add New Details</button>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
+
+
+    <ng-container matColumnDef="a_year">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element.feedback.academicDetail.academicYear}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="program">
+      <th mat-header-cell *matHeaderCellDef> Program </th>
+      <td mat-cell *matCellDef="let element" style="word-wrap: break-word;"> {{element.feedback.program.programName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef> Class </th>
+      <td mat-cell *matCellDef="let element"> {{element.programClass}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="divison">
+      <th mat-header-cell *matHeaderCellDef> Division </th>
+      <td mat-cell *matCellDef="let element"> {{element.feedback.academicDetail.division.divisionName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="link">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{element?.feedback?.link}}" target="_blank">{{element?.feedback?.link}}</a>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="photograph">
+      <th mat-header-cell *matHeaderCellDef> Photograph </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.photographs[0].photo" href="{{this.service.BASE_URL}}/resources/uploads/{{element.photographs[0].photo}}" target="_blank">View</a>
+      </td>
+    </ng-container> -->
+
+
+    <!-- <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container> -->
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br>
+
+</div>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<br /><br />
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="head_u"> Teacher Feedback </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="head" style="margin-top:1rem;">
+
+      <button type="submit" class="mat-raised-button" (click)="export_teacherfeedback()">Download EXCEL</button>
+    </div>
+    <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+        <input matInput (keyup)="applyFilter_teacher($event)" placeholder="Search...">
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button mat-raised-button color="accent" class="saveBtn" (click)="addteacherfeedback()">Add New Details</button>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource_teacher"  class="mat-elevation-z8" matSort>
+
+
+    <ng-container matColumnDef="a_year">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element?.academicDetail?.academicYear}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="teacher">
+      <th mat-header-cell *matHeaderCellDef> Teacher Name </th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element?.user.firstName}} {{element?.user.middleName}} {{element?.user.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dept">
+      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <td mat-cell *matCellDef="let element" data-label="title:"> {{element?.user.teacher.department.departmentName}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="program">
+      <th mat-header-cell *matHeaderCellDef> Program </th>
+      <td mat-cell *matCellDef="let element" style="word-wrap: break-word;"> {{element?.program?.programName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef> Class </th>
+      <td mat-cell *matCellDef="let element"> {{element?.streamDetail?.streamClass}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="divison">
+      <th mat-header-cell *matHeaderCellDef> Division </th>
+      <td mat-cell *matCellDef="let element"> {{element?.academicDetail?.division?.divisionName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef> Subject </th>
+      <td mat-cell *matCellDef="let element"> {{element?.subject?.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="link">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{element?.link}}" target="_blank">{{element?.link}}</a>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="photograph">
+      <th mat-header-cell *matHeaderCellDef> Photograph </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.photographs[0].photo" href="{{this.service.BASE_URL}}/resources/uploads/{{element.photographs[0].photo}}" target="_blank">View</a>
+      </td>
+    </ng-container> -->
+
+
+    <!-- <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit_teacher(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container> -->
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete_teacher(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns_teacher"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns_teacher;"></tr>
+
+  </table>
+  <br><br>
+
+</div>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<br /><br />
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="head_u"> Parents Feedback </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="head" style="margin-top:1rem;">
+
+      <button type="submit" class="mat-raised-button" (click)="export_parentk()">Download EXCEL</button>
+    </div>
+    <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+        <input matInput (keyup)="applyFilter_parents($event)" placeholder="Search...">
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button mat-raised-button color="accent" class="saveBtn" (click)="add_parent()">Add New Details</button>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource_parent"  class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="link">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{element?.link}}" target="_blank">{{element?.link}}</a>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit_parent(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container> -->
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete_parent(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns_parents"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns_parents;"></tr>
+
+  </table>
+  <br><br>
+
+</div>
+
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<br /><br />
+
+
+<mat-accordion class="example-headers-align" style="margin-bottom:  0.5rem;" multi>
+  <mat-expansion-panel >
+    <mat-expansion-panel-header>
+      <mat-panel-title  class="head_u"> Alumini Feedback </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="head" style="margin-top:1rem;">
+
+      <button type="submit" class="mat-raised-button" (click)="export__alumini()">Download EXCEL</button>
+    </div>
+    <div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+      <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+        <input matInput (keyup)="applyFilter_alumini($event)" placeholder="Search...">
+      </mat-form-field>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3">
+        <div class="card-body table-responsive">
+          <button mat-raised-button color="accent" class="saveBtn" (click)="add_alumini()">Add New Details</button>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource_alumini"  class="mat-elevation-z8" matSort>
+
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="link">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{element?.link}}" target="_blank">{{element?.link}}</a>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit_alumini(row)">
+          <mat-icon style="color: black">edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container> -->
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete_alumini(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns_alumini"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns_alumini;"></tr>
+
+  </table>
+  <br><br>
+
+</div>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<br /><br />
+
+
+</div>
+
+</ng-container>
+
+<!-- Parent display -->
+
+<ng-container *ngIf="userRole == 'Parent'">
+  <mat-card class="col" style="display: flex;justify-content: center;" >
+
+    <div class="head row" style="color: rgb(47, 90, 231);">
+
+      <h1 style="font-family:Josefin Slab;font-weight: bolder;text-align: center;">{{this.college}} </h1>
+      <h2 style="color: black;font-family:Josefin Slab;font-weight: 700;text-align: center;" >Welcome To Feedback </h2>
+    </div>
+      <div class="row" style="display: flex;justify-content: flex-end;" >
+      <button (click)="logout()" mat-mini-fab color="grey" aria-label="cart">
+      <mat-icon>logout</mat-icon></button>
+      </div>
+  </mat-card>
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource_parent"  class="mat-elevation-z8" matSort>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef> Link </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="{{element?.link}}" target="_blank">{{element?.link}}</a>
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="edit">
+        <td mat-cell
+          *matCellDef="let row"
+          [style.color]="row.color"
+          data-label="Edit :">
+          <button mat-button color="primary" (click)="edit_parent(row)">
+            <mat-icon style="color: black">edit</mat-icon>
+          </button>
+        </td>
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+      </ng-container> -->
+
+      <ng-container matColumnDef="delete">
+        <td mat-cell
+          *matCellDef="let row"
+          [style.color]="row.color"
+          data-label="Delete :">
+          <button mat-button color="primary" (click)="delete_parent(row)">
+            <mat-icon style="color: black; cursor: pointer"
+            >delete_forever</mat-icon>
+          </button>
+        </td>
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="parent_access_displayedColumns_parents"></tr>
+      <tr mat-row *matRowDef="let row; columns: parent_access_displayedColumns_parents;"></tr>
+
+    </table>
+    <br><br>
+
+  </div>
+</ng-container>
+
+
+<!-- Student display -->
+
+<ng-container *ngIf="userRole == 'Student'">
+  <mat-card class="col" style="display: flex;justify-content: center;" >
+
+    <div class="head row" style="color: rgb(47, 90, 231);">
+
+      <h1 style="font-family:Josefin Slab;font-weight: bolder;text-align: center;">{{this.college}} </h1>
+      <h2 style="color: black;font-family:Josefin Slab;font-weight: 700;text-align: center;" >Welcome To Feedback </h2>
+    </div>
+      <div class="row" style="display: flex;justify-content: flex-end;" >
+      <button (click)="logout()" mat-mini-fab color="grey" aria-label="cart">
+      <mat-icon>logout</mat-icon></button>
+      </div>
+  </mat-card>
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
+
+
+      <ng-container matColumnDef="a_year">
+        <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+        <td mat-cell *matCellDef="let element" data-label="title:"> {{element.feedback.academicDetail.academicYear}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="program">
+        <th mat-header-cell *matHeaderCellDef> Program </th>
+        <td mat-cell *matCellDef="let element" style="word-wrap: break-word;"> {{element.feedback.program.programName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef> Class </th>
+        <td mat-cell *matCellDef="let element"> {{element.programClass}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="divison">
+        <th mat-header-cell *matHeaderCellDef> Division </th>
+        <td mat-cell *matCellDef="let element"> {{element.feedback.academicDetail.division.divisionName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef> Link </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="{{element?.feedback?.link}}" target="_blank">{{element?.feedback?.link}}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <td mat-cell
+          *matCellDef="let row"
+          [style.color]="row.color"
+          data-label="Delete :">
+          <button mat-button color="primary" (click)="delete(row)">
+            <mat-icon style="color: black; cursor: pointer"
+            >delete_forever</mat-icon>
+          </button>
+        </td>
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="student_access_displayedColums"></tr>
+      <tr mat-row *matRowDef="let row; columns: student_access_displayedColums;"></tr>
+
+    </table>
+    <br><br>
+
+  </div>
+</ng-container>
+
+
+<!-- Alumini display -->
+
+<ng-container *ngIf="userRole == 'Alumini'">
+  <mat-card class="col" style="display: flex;justify-content: center;" >
+
+    <div class="head row" style="color: rgb(47, 90, 231);">
+
+      <h1 style="font-family:Josefin Slab;font-weight: bolder;text-align: center;">{{this.college}} </h1>
+      <h2 style="color: black;font-family:Josefin Slab;font-weight: 700;text-align: center;" >Welcome To Feedback </h2>
+    </div>
+      <div class="row" style="display: flex;justify-content: flex-end;" >
+      <button (click)="logout()" mat-mini-fab color="grey" aria-label="cart">
+      <mat-icon>logout</mat-icon></button>
+      </div>
+  </mat-card>
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource_alumini"  class="mat-elevation-z8" matSort>
+
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef> Link </th>
+        <td mat-cell *matCellDef="let element">
+          <a  href="{{element?.link}}" target="_blank">{{element?.link}}</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="alumini_access_displayedColumns_alumini"></tr>
+      <tr mat-row *matRowDef="let row; columns: alumini_access_displayedColumns_alumini;"></tr>
+
+    </table>
+    <br><br>
+  </div>
+</ng-container>

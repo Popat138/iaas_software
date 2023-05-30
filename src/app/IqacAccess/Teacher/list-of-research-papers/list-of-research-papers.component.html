@@ -1,0 +1,101 @@
+<div class="head">
+ List of Research Papers
+</div>
+
+<div class="col-md-6">
+
+  <div class="col">
+    <br>
+    <br>
+    <br>
+    <mat-form-field class="col-md-6" style="width: 75%;margin-left: 5rem;">
+      <input matInput style="width: 75%;" (keyup)="applyFilter($event)" placeholder="Search...">
+    </mat-form-field>
+    </div>
+</div>
+
+<div class="table-responsive">
+  <h3 style="text-align: right; color:rgb(201, 49, 11);margin-right:10rem; font-family: Arial, Helvetica, sans-serif;font-size:15px">Total: {{this.dataSource.data.length}}     Selected: {{this.dataSource.filteredData.length}} </h3>
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+
+
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+         <td  mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button color="primary">View Details</button> -->
+      {{element.academicYear}}
+        </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+         <td  mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button color="primary">View Details</button> -->
+      {{element.researchPublicationType}}
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="paper_title">
+      <th mat-header-cell *matHeaderCellDef> Paper Title  </th>
+         <td  mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button color="primary">View Details</button> -->
+      {{element.titleOfPaper}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="authors">
+      <th mat-header-cell *matHeaderCellDef> Authors </th>
+         <td  mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button color="primary">View Details</button> -->
+      {{element.author}}
+        </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="journal_name">
+      <th mat-header-cell *matHeaderCellDef>  Journal Name
+    <td  mat-cell *matCellDef="let element">
+      {{element.journalName}} </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef>  Volume
+    <td  mat-cell *matCellDef="let element">
+      {{element.volume}}
+    </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="issn">
+      <th mat-header-cell *matHeaderCellDef>  ISSN No
+    <td  mat-cell *matCellDef="let element">
+      {{element.issnNo}}
+    </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef>  View in Detail
+    <td  mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click)="viewDetail(element)">View Details</button>
+    </td>
+
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white"></tr>
+
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br><br>
+</div>

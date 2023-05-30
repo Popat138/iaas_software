@@ -1,0 +1,112 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">Update Journal/periodicals Subscription (Print)/Online</h4>
+    <!-- <h5 class="note">(Note: the entries must be made voucher wise)</h5> -->
+  
+  
+    <section class="container border mb-4 p-3 mt-4">
+    <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Program Name.</mat-label>
+      <input matInput type="text" formControlName="year" name="year" id="year" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field> -->
+  
+  
+  
+  
+      <!-- <div *ngFor="let other1 of otherControl;let i = index">
+        <div formArrayName="other">
+        <div [formGroupName]="i">
+          <div style="margin-top: 2rem;">
+            <button mat-raised-button class="btn btn-danger btn-sm" style="margin-bottom: 1rem;" (click)="removeother(i)">
+              Remove
+            </button>
+          </div>
+   -->
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year</mat-label>
+            <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." />
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Type</mat-label>
+            <mat-select required matNativeControl formControlName="other_type">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let other_type of other_type" [value]="other_type.other_type">
+                {{ other_type.other_type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Journal name</mat-label>
+            <input matInput type="text" formControlName="journal_name" name="journal_name" id="journal_name"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>ISBM/ISSN no</mat-label>
+            <input matInput type="text" formControlName="issn_no" name="issn_no" id="issn_no"
+              #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Period</mat-label>
+            <mat-select required matNativeControl formControlName="period">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let period of period" [value]="period.period">
+                {{ period.period }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Subscription Date</mat-label>
+            <input matInput type="text" formControlName="s_date" name="s_date" id="s_date" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Subscription Amount</mat-label>
+            <input matInput type="text" formControlName="s_amount" name="s_amount" id="s_amount" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Journal mode</mat-label>
+            <input matInput type="text" formControlName="j_mode" name="j_mode" id="j_mode" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <div class="col-sm-2" style="margin-top: 1rem;margin-left: 1rem;margin-bottom: 3rem;" (click)="uploadFile.click()">
+            <button mat-raised-button color="primary">Upload subscription receipt</button>
+            <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+          </div>
+  
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Title of research work</mat-label>
+            <input matInput type="text" formControlName="title_of_topic" name="title_of_topic" id="title_of_topic" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+  
+  
+        <!-- </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addother()">
+            Add Journal
+          </button>
+        </div>
+      </div>
+    </div> -->
+    </section>
+  </div>
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>
+  

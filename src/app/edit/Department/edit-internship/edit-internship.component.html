@@ -1,0 +1,60 @@
+<section class="container border mb-4 p-3 mt-4">
+    <div [formGroup]="Form">
+      <!-- <div formArrayName="pg"> -->
+        <h4 class="head_u" style="margin-bottom:4rem;">Update Internship details</h4>
+        <!-- <h4 class="head">Name</h4> -->
+  
+        <div>
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year</mat-label>
+            <input matInput type="text" formControlName="year" name="year" id="year" #input
+              placeholder="eg - 1,2,3.." readonly="true" />
+          </mat-form-field>
+          <br>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Student Name</mat-label>
+            <input matInput type="text" formControlName="student_name" name="student_name" id="student_name" #input
+              placeholder="eg - 1,2,3.."  [readonly] = true/>
+          </mat-form-field>
+          <!-- <button mat-raised-button color="accent" class="saveBtn" (click)="getStudent()">Students</button> -->
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Job Title</mat-label>
+            <input matInput type="text" formControlName="job_title" name="job_title" id="job_title" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+  
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Detail of Organization</mat-label>
+            <input matInput type="text" formControlName="detail_of_organization" name="detail_of_organization" id="detail_of_organization" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+        </div>
+          <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>No of Students Appeared</mat-label>
+            <input matInput type="text" formControlName="no_of_student_appeared" name="no_of_student_appeared" id="no_of_student_appeared" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>No of Students Passed</mat-label>
+            <input matInput type="text" formControlName="no_of_student_passed" name="no_of_student_passed" id="no_of_student_passed" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+          <div class="form-group" (click)="uploadFile.click()" style="margin-left: 1rem;">
+            <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload Internship Letter</button>{{this.rowdata.internshipLetter!=null?fileName||'Document Exist':""}}
+            <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+          </div>
+  
+  
+        
+      </div>
+      </section>
+    <!-- </div> -->
+    <button mat-raised-button  color="accent"  [disabled]="!Form.valid"  (click)="submitForm()"> Submit Form</button>
+  
+  

@@ -1,0 +1,71 @@
+<div [formGroup]="Form">
+    <section class="container border mb-4 p-3 mt-4">
+        <div class="row">
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academic_year">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                    {{ year }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" style="margin-top: 2rem;">
+          <mat-label>Stream/Faculty </mat-label>
+          <mat-select required matNativeControl formControlName="faculty" (selectionChange)="changeStream($event)" >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let stream of streams" [value]="stream">
+              {{ stream?.streamName || " " }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+        <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button> -->
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Class</mat-label>
+            <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" [disabled]="!this.Form.get('faculty').valid">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let item of classData" [value]="item">
+                    {{ item.streamClass }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Division</mat-label>
+            <mat-select required matNativeControl formControlName="div" (selectionChange)="divChange($event)" [disabled]="!this.Form.get('class').valid">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let division of divisions" [value]="division">
+                {{ division.divisionName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </section>
+    <section>
+        <div class="row" style="margin-top: 4rem;margin-bottom: 3rem;">
+            <div class="col-sm-3">
+              <h5 class="head_u">Upload student list</h5>
+            </div>
+            <div class="col-sm-2" (click)="uploadFile.click()" style="margin-left: -2rem;">
+              <button mat-raised-button color="primary" style="margin-top: -2rem;">Upload</button>
+              <input #uploadFile (change)="upload1($event)" type="file" accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" style="display: none" />
+            </div>
+      
+            <div class="col-sm-3">
+              <h5 class="head_u">Download Excel format to Fill Student data class and division wise</h5>
+            </div>
+            <div class="col-sm-2" style="margin-left: -2rem;">
+              <a mat-raised-button color="primary"  href="./../../../assets/Student_input_format.xls" target="_blank">Download</a>
+            </div>
+      
+        </div>
+    </section>
+    <button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitStudentData()"  >Submit Form</button>
+</div>

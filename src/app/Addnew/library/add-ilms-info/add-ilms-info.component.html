@@ -1,0 +1,71 @@
+
+<div  [formGroup]="Form">
+
+    <section class="container border mb-4 p-3 mt-4">
+      <h4 class="head_u">Add ILMS Information</h4>
+
+
+<mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+  <mat-label>Name Of ILMS</mat-label>
+  <input matInput type="text" formControlName="name" name="name" id="name" #input
+    placeholder="eg - 1,2,3.." />
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+  <mat-label>Nature Of Automation</mat-label>
+  <input matInput type="text" formControlName="nature_of_automation" name="nature_of_automation" id="nature_of_automation" #input
+    placeholder="eg - 1,2,3.." />
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+  <mat-label>Version</mat-label>
+  <input matInput type="text" formControlName="version" name="version" id="version" #input
+    placeholder="eg - 1,2,3.." />
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+  <mat-label>Year Of Automation</mat-label>
+  <input matInput type="text" formControlName="year_of_automation" name="year_of_automation" id="year_of_automation" #input
+    placeholder="eg - 1,2,3.." />
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+  <mat-label>Vendor Name</mat-label>
+  <input matInput type="text" formControlName="vendor_name" name="vendor_name" id="vendor_name" #input
+    placeholder="eg - 1,2,3.." />
+</mat-form-field>
+
+
+  <mat-form-field appearance="outline" style="width: 15rem;">
+    <mat-label>Year</mat-label>
+    <input matInput type="text" formControlName="year" name="year" id="year" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+
+<div class="row" style="display: flex;justify-content: space-around;">
+
+<div class="col-sm-2" style="margin-top: 0.5rem;" (click)="uploadpurchasereceipt.click()" >
+  <button mat-raised-button color="primary">Upload Purchase Receipt</button>
+  <input #uploadpurchasereceipt (change)="upload($event)" type="file" style="display: none" />
+</div>
+
+
+
+
+<div class="col-sm-2" style="margin-top: 0.5rem;margin-left: -9rem;" (click)="uploadagreement.click()">
+  <button mat-raised-button color="primary">Upload Agreement copy</button>
+  <input #uploadagreement (change)="uploadAgreementCopy($event)" type="file" style="display: none" />
+</div>
+
+<div class="col-sm-2" style="margin-top: 0.5rem;margin-left: -9rem;" (click)="uploadFile.click()">
+  <button mat-raised-button color="primary">Upload Maintenance Bill</button>
+  <input #uploadFile (change)="uploadMaintenance($event)" type="file" style="display: none" />
+</div>
+
+</div>
+
+</section>
+
+</div>
+<button mat-raised-button  color="accent"  [disabled]="!Form.valid"  (click)="submitForm()"> Submit Form</button>

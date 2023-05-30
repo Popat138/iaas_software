@@ -1,0 +1,195 @@
+<p>add-internal-assesment works!</p>
+<div [formGroup]="Form">
+<section class="container border mb-4 p-3 mt-4">
+  <div class="row">
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Academic Year</mat-label>
+      <mat-select required matNativeControl formControlName="academic_year">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+            {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Programme</mat-label>
+    <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+  <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Course Code</mat-label>
+    <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+  <button mat-raised-button color="accent" class="saveBtn" (click)="getCourses()" [disabled]="!this.Form.get('program').valid">Courses</button>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Course Name</mat-label>
+    <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year</mat-label>
+    <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Semester</mat-label>
+    <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+        placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Class</mat-label>
+    <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" [disabled]="!this.Form.get('program').valid">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let item of programDetails" [value]="item">
+        {{ item.streamClass }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Division</mat-label>
+    <mat-select required matNativeControl formControlName="div" [disabled]="!this.Form.get('class').valid">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let division of divisions" [value]="division">
+        {{ division.divisionName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Test type</mat-label>
+    <mat-select required matNativeControl formControlName="type" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{ type.type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Internal test</mat-label>
+    <mat-select [disabled]="this.Form.get('type').value===types[1].value" [required]="this.Form.get('type').value===types[0].value" matNativeControl formControlName="test" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let test of tests" [value]="test.test">
+        {{ test.test }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Total marks</mat-label>
+    <input matInput type="text" formControlName="totalMarks" name="totalMarks" id="totalMarks" #input
+        placeholder="eg - 1,2,3.."/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Threshold percentage</mat-label>
+    <input matInput type="text" formControlName="thresholdPercentage" name="thresholdPercentage" id="thresholdPercentage" #input
+        placeholder="eg - 1,2,3.."/>
+  </mat-form-field>
+</section>
+
+<section class="container border mb-4 p-3 mt-4">
+  <h2>Distributions of marks</h2>
+  <div formArrayName="distributedMarks">
+    <div *ngFor="let distributedMark of distributedMarks().controls; let i=index">
+      <div [formGroupName]="i" >
+        <input matInput type="text" formControlName="courseOutcome" [hidden]=true style="width: 0;"/>
+        <mat-form-field appearance="legacy">
+          <mat-label>CO{{i+1}}</mat-label>
+          <input matInput type="text" formControlName="totalMark" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <button (click)="removeDistributedMarks()">
+        Remove PO
+    </button>
+    <button type="button" (click)="addDistributedMarks()"> Add PO </button> -->
+  </div>
+
+<!-- <pre>
+  {{this.distributedMarks()?.value|json}}
+</pre> -->
+</section>
+
+<section class="container border border-danger mb-4 p-2 mt-4">
+  <p><strong>Intructions:</strong> If student is absent keep cell blank.</p>
+  </section>
+
+<section class="container border mb-4 p-2 mt-4">
+  <div formArrayName="studentCourseOutcomeMappings">
+      <table  class="mat-table" style="width: auto;">
+      <div *ngFor="let studentCourseOutcomeMapping of studentCourseOutcomeMappings().controls; let i=index">
+        <div [formGroupName]="i" >
+          <tr class="mat-header-row" *ngIf="i === 0">
+              <th class="mat-header-cell">Roll No</th>
+              <th class="mat-header-cell" id="name" style="width: 4rem;word-wrap: break-word;">Name of student</th>
+              <th class="mat-header-cell" *ngFor="let allottedMark of allottedMarks(0).controls; let j=index">
+                CO{{j+1}}
+              </th>
+              <th class="mat-header-cell">Total marks</th>
+          </tr>
+
+          <tr  class="mat-row" >
+            <input matInput type="text" formControlName="user" [hidden]="true" style="width: 0;"/>
+            <th class="mat-cell">{{this.studentCourseOutcomeMappings().at(i).get("user")?.value?.student?.rollNo}}</th>
+            <th class="mat-cell">{{this.studentCourseOutcomeMappings().at(i).get("user")?.value?.firstName}} {{this.studentCourseOutcomeMappings().at(i).get("user")?.value?.middleName}} {{this.studentCourseOutcomeMappings().at(i).get("user")?.value?.lastName }}</th>
+
+              <!-- <td  style="width: 3.5rem;" class="mat-cell">
+                <mat-form-field appearance="legacy" style="width: 3.5rem;" class="border ">
+                  <mat-label>Total marks</mat-label>
+                  <input matInput type="text" formControlName="totalMarks" />
+                </mat-form-field>
+              </td> -->
+
+            <!-- <div > -->
+
+              <td style="width: 3.5rem;" class="mat-cell" *ngFor="let allottedMark of allottedMarks(i).controls; let j=index" formArrayName="allottedMarks">
+                  <div [formGroupName]="j">
+
+                          <input matInput type="text" formControlName="courseOutcome" [hidden]=true style="width: 0;"/>
+
+                          <mat-form-field appearance="legacy" style="width: 3.5rem;" class="border ">
+                            <mat-label>Mark</mat-label>
+                            <input matInput type="number" (change)="change($event,j,i)" formControlName="mark"/>
+                          </mat-form-field>
+                  </div>
+              </td>
+
+              <td  style="width: 3.5rem;" class="mat-cell">
+                <mat-form-field appearance="legacy" style="width: 3.5rem;" class="border ">
+                  <mat-label>Total marks</mat-label>
+                  <input matInput type="text" formControlName="totalMarks" />
+                </mat-form-field>
+              </td>
+          <!-- </div> -->
+          </tr>
+
+        </div>
+      </div>
+
+      <!-- <button (click)="removeProgramOutcomes()">
+          Remove PO
+      </button>
+      <button (click)="removeAttainment()">
+          Remove CO
+      </button>
+      <button type="button" (click)="addProgramOutcomes()"> Add PO </button>
+      <button type="button" (click)="addAttainment()">Add CO</button> -->
+  </table>
+    </div>
+
+<!-- <pre>
+  {{this.studentCourseOutcomeMappings()?.value|json}}
+</pre> -->
+</section>
+
+</div>
+
+<button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>
+

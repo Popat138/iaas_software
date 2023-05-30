@@ -1,0 +1,94 @@
+.head{
+    //text-align: center;
+    font-family:'Times New Roman', Times, serif,
+    serif;font-size: 17px;
+    font-weight: bold;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    color: black;
+  }
+  .hill{
+    //text-align: center;
+    font-family:'Times New Roman', Times, serif,
+    serif;font-size: 17px;
+    font-weight: bold;
+    // font-style:italic;
+    color:rgb(10, 10, 10);
+    margin-left: 2rem;
+    margin-top: 0rem;
+    text-align: center;
+  }
+  table {
+    width: 96%;
+    margin-top: 2%;
+    margin-left: 1.5rem;
+    // table-layout: fixed;
+   // margin-right: 1.5rem;
+  }
+  .mat-header-cell{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 19px;
+    font-weight: bolder;
+    color: black;
+  
+    //width: 90%;
+    // margin-top: 2%;
+    // margin-left: 1.5rem;
+    // display: block;
+  
+  }
+  
+  .mat-cell {
+    padding: 8px 8px 8px 0;
+  }
+  th, td {
+    overflow: hidden;
+    font-family:'Times New Roman', Times, serif,
+    serif;
+    width: 200px;
+    text-overflow: ellipsis;
+    //white-space: nowrap;
+  }
+  .Nav{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif,
+    serif;font-size: 24px;
+    font-weight: bold;width: 90%;
+    margin-left: 1rem;
+  }
+
+//   pre {
+//     // overflow: auto;
+//     background-color: #ffffff;
+//     border: 1px solid #0a0a0a;
+//     padding: 5px;
+//   }
+  
+  .grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "header header header"
+                         "aside main main";
+    grid-template-columns: 10px 1fr 1fr;
+          
+      grid-template-rows: 100px 1fr;
+  }  
+
+  .row {
+    display: flex;
+    border: 0.3px solid #0a0a0a;
+  }
+  
+   .column {
+    float: left;
+    border-right: 0.3px solid #0a0a0a;
+    border-left: 0.3px solid #0a0a0a;
+  }
+  
+  .left {
+    width: 50%;
+  }
+  
+  .right {
+    width: 50%;
+  }

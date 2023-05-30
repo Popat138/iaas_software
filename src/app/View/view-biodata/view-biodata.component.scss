@@ -1,0 +1,108 @@
+.body{
+    padding-left:1%;
+}
+.head{
+    //text-align: center;
+    font-family: 'Times New Roman', Times, serif,
+    serif;font-size: 20px;
+    // font-weight: bold;
+    margin-left: 2rem;
+    //margin-top: 2rem;
+    color: black;
+  }
+  table {
+    width: 96%;
+    // margin-top: 2%;
+    
+    // margin-left: 1.5rem;
+    // table-layout: fixed;
+   // margin-right: 1.5rem;
+  }
+  .mat-header-cell{
+    font-family:'Josefin Slab';
+    font-size: 19px;
+    font-weight: bolder;
+      background-color:aqua;
+    color: black;
+
+    //width: 90%;
+    // margin-top: 2%;
+    // margin-left: 1.5rem;
+    // display: block;
+
+  }
+  .mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    height:50px;
+    min-width: 0;
+    background-color:aqua;
+    width: 180px;
+  }
+
+  .mat-cell {
+    padding: 8px 8px 8px 0;
+  }
+  th, td {
+    overflow: hidden;
+    // width: 200px;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    white-space:unset;
+    width:unset;
+  }
+  .Nav{
+    text-align: center;
+    font-family:'Josefin Slab',
+    serif;font-size: 24px;
+    font-weight: bold;width: 90%;
+    margin-left: 1rem;
+  }
+ hr.s1 {
+    height:5px;
+    border-top:1px solid black;
+    border-bottom:2px solid black;
+  }
+  .img{
+    width: 12vh;
+    height: 12vh;
+    //margin: 0 auto;
+    display: block;
+    margin-top:1%;
+    margin-left:5vh;
+   justify-content: left;
+  //margin-left: 10%;
+    // margin-top: -14vh;
+  }
+
+  table, th , td {
+    font-family: 'Times New Roman', Times, serif,
+    serif;font-size: 17px;
+    color: black;
+    // padding-left:5%;
+    vertical-align: top;
+    border: 1.5px solid black;
+    border-collapse: collapse;
+    padding-left: 10px;
+    // padding-right: 10px;
+    margin-left: 10px;
+    white-space:unset;
+    width:unset;
+  }
+  // th,td{
+  //   max-width: max-content;
+  // }
+//  .wrappingword {
+//     max-width: 150px;
+//     word-wrap: break-word;
+//   }
+
+.circular--square { border-radius: 50%; }
+
+hr {
+  height: 5px;
+        background-color: #06047e;
+        border: none;
+        border-radius: 5px;
+}

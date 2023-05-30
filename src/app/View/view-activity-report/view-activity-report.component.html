@@ -1,0 +1,172 @@
+
+<body class="page">
+<div id="report" #report >
+    
+<table>
+<tbody>
+<tr>
+    <td style="width:12%">
+         <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+    </td>
+<td style="width:auto;text-align:center;line-height: normal;white-space:unset;">
+    <p style=" color:rgb(17, 16, 16);font-family: Arial, Helvetica, sans-serif;font-size:9pt"><strong>{{this.association}}</strong></p>
+    <p style=" color:rgb(12, 11, 11);margin-top:-0.4rem; font-family: Arial, Helvetica, sans-serif;font-size:11pt"> <strong>{{this.college}}</strong></p>
+    <p style=" color:rgb(12, 11, 11);margin-top:-0.4rem;font-family: Arial, Helvetica, sans-serif;font-size:9pt"><strong>{{this.address}}</strong></p> 
+    <div *ngIf="this.data?.committee?.name"><p style="font-weight: 800; font-size:10pt ;margin-top:-0.4rem;">{{this.data?.committee?.name}} Committee</p></div>
+    <div *ngIf="!this.data?.committee?.name"><p style="font-weight: 800; font-size:10pt;margin-top:-0.4rem;">Department of {{this.data?.department.departmentName}}</p> </div> 
+</td>
+</tr>
+</tbody>
+</table>
+<hr style="height:3px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7);margin-top:-0.2rem;">
+<section style="padding-left:5%;padding-right:5%">
+<table>
+    <tbody style="text-align:center;line-height: normal;">
+   <tr>
+    <td style="font-family:'Times New Roman';font-weight: bold; font-size: 11pt;background-color:rgb(254, 255, 254);color: rgb(122, 5, 5);text-align: center; ">
+        {{this.data.titleOfActivity||this.data.title}}  
+    </td>
+   </tr>
+    </tbody>
+     <tbody>
+        <tr>
+       <td style="text-align: center;font-size: 8pt;"> Date: {{this.fdate | date:'dd/MM/yyyy'}} - {{this.tdate  | date:'dd/MM/yyyy'}}  ||  No of Students: {{this.data.noOfStudent}}  || No of Teachers: {{this.data.noOfTeachers}}</td>
+       <!-- <td style="text-align: left;font-size: 8pt;"> No of Students: {{this.data.noOfStudent}}   </td>
+       <td style="text-align: left;font-size: 8pt;"> No of Teachers: {{this.data.noOfTeachers}}    </td> -->
+        </tr>
+    </tbody>
+    <table>
+        <tbody>
+    <th style="text-align: left; font-size: 8pt;">Brief Report:</th>
+    <tr style="font-stretch: normal;font-family: 'Times New Roman', Times, serif;font-size: 8pt;color: black;text-align: justify; ;margin-top:-0.4rem;">
+    <td innerHTML="{{this.data.reportBrief}}" style="text-align: justify;font-size: 8pt;">
+       {{this.data.reportBrief}}.innerHTML
+    </td>
+    </tr>
+</tbody>
+</table>     
+<tbody>
+    <tr>
+        <td style="text-align: left;">
+            <strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 9pt;margin-top:-0.4rem;  white-space:unset;">Guests:: {{this.data.guests}}</strong>
+        </td>
+    </tr>
+</tbody>
+<tbody>
+    <tr>
+        <td style="text-align: left;">
+            <strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 9pt;margin-top:-0.4rem;  white-space:unset;">Supporting agency: {{this.data.supportingAgency}}</strong>
+        </td>
+    </tr>
+</tbody>
+</table>
+</section>
+<!-- <section style="padding-left:5%;padding-right:5%">
+<table style="padding-left:2.54cm;padding-rigth:2.54cm" class="ïmg">
+    <tbody>
+        <tr style="page-break-inside: avoid;">
+            <td style="text-align: left;font-size: 8pt;" >
+                 <img style="width: 95%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.photographs[0].photo}}">
+                 {{this.data.captions[0].caption}}
+              </td>
+              <td style="text-align: left;font-size: 8pt;" *ngIf="this.data.photographs.length>1">
+              <img style=" width: 95%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.photographs[1].photo}}">
+              {{this.data.captions[1].caption}}
+              </td>
+           </tr>
+    </tbody>
+    <tbody *ngIf="this.data.photographs.length>=3">
+        <tr style="page-break-inside: avoid;">
+            <td style="text-align: left;font-size: 8pt;">
+                 <img style=" width: 95%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.photographs[2].photo}}">
+                 {{this.data.captions[2].caption}}
+              </td>
+              <td style="text-align: left;font-size: 8pt;">
+              <img style="width: 95%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.photographs[3].photo}}">
+              {{this.data.captions[3].caption}}
+              </td>
+           </tr>
+    </tbody>
+    <tbody>
+        <tr style="page-break-inside: avoid;">
+         <td style="text-align: left;font-size: 8pt;">
+             <img style=" width: 90%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.newsReports[0].news}}">
+          </td>
+          <td>
+          <img style="width: 90%;height: auto; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.data.newsReports[1].news}}">
+          </td>
+     </tr>
+     
+     </tbody>
+</table>
+</section> -->
+    <!-- </div> -->
+   
+
+<!-- </body>
+<button  mat-button color="primary" (click)="report5()">Download</button> -->
+<!-- <button  mat-button color="primary" (click)="pstReport()">Download Images</button> -->
+
+<!-- <div class="container"> -->
+   
+    <div  class="col" style="display: flex;justify-content: space-between; padding-right: 20%; page-break-inside: avoid; " >
+     
+        <section style="margin-left:1.5cm">   
+            <div class="col" style="justify-content: baseline;" *ngFor="let photograph of this.data.photographs; let i=index" >
+          <!-- <div *ngIf="i>1" class="row"> -->
+            <table style=" page-break-inside: avoid;">
+                <tbody>
+                <tr >
+                    <td *ngIf="i<=1"> 
+                        <img   class="img1" style="width: 7cm;height: auto;" src="{{this.service.BASE_URL}}/resources/uploads/{{photograph.photo}}"/><br>
+                        
+                        <h4 style="font-family: 'Times New Roman', Times, serif; margin-left:2rem; margin-top: 0.3rem;font-weight: bold;font-size: 7pt;line-height: 1;">{{i+1}}: {{this.data.captions[i].caption}}</h4>
+                    </td> 
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+      <div *ngFor="let photograph of this.data.photographs; let i=index">
+            <table style=" page-break-inside: avoid;">
+               <tbody>
+                 
+                <tr *ngIf="i>1">
+                            <td> 
+                    <img   class="img1" style="width: 7cm;height: auto;" src="{{this.service.BASE_URL}}/resources/uploads/{{photograph.photo}}"/><br>
+        
+                    <h4 style="font-family: 'Times New Roman', Times, serif; margin-left:2rem; margin-top: 0.3rem;font-weight: bold;font-size: 7pt; line-height: 1;">{{i+1}}: {{this.data.captions[i].caption}}</h4>
+                    </td>
+             </tr>
+            </tbody>
+            </table>
+            <!-- </div> -->
+            <!-- <img   class="img1" style="width: 7cm;height: auto;" src="{{this.service.BASE_URL}}/resources/uploads/{{photograph.photo}}"/><br> -->
+        
+            <!-- <h4 style="font-family: 'Times New Roman', Times, serif; margin-left:2rem; margin-top: 0.3rem;font-weight: bold;font-size: 7pt">{{i+1}}: {{this.data.captions[i].caption}}</h4> -->
+        <!-- </div> -->
+        <!-- <br *ngIf="i>1" class="row">   -->
+        <!-- <div *ngIf="i>1"> -->
+          <!-- <img  class="img1" style="width: 7cm;height: auto;" src="{{this.service.BASE_URL}}/resources/uploads/{{photograph.photo}}"/><br> -->
+        
+            <!-- <h4 style="font-family: 'Times New Roman', Times, serif; margin-left:2rem; margin-top: 0.3rem;font-weight: bold;font-size: 7pt">{{i+1}}: {{this.data.captions[i].caption}}</h4>      -->
+        <!-- </div> -->
+          </div>
+          
+        </section>
+       
+    </div>
+    <section>
+        <div style="padding-left: 5%">
+                
+                <div class="col" style="justify-content: baseline;" *ngFor="let newsreport of this.data.newsReports" >
+                    <img  style="width:300px;height:auto" src="{{this.service.BASE_URL}}/resources/uploads/{{newsreport.news}}"/> <br>
+                    </div>
+                </div>
+           
+            </section>
+</div>
+<!-- </div> -->
+</body>
+<button  mat-button color="primary" (click)="report5()">Download</button>

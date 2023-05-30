@@ -1,0 +1,44 @@
+<section class="container border mb-4 p-3 mt-4">
+    <div [formGroup]="Form">
+      <!-- <div formArrayName="pg"> -->
+        <h4 class="head_u" style="margin-bottom:4rem;">Update Teachers</h4>
+        <!-- <h4 class="head">Name</h4> -->
+    
+        <div>
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="f_name" name="f_name" id="f_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Middle Name</mat-label>
+            <input matInput type="text" formControlName="m_name" name="m_name" id="m_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="l_name" name="l_name" id="l_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Teacher Email-id</mat-label>
+            <input matInput type="text" formControlName="email" name="email" id="email" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" formControlName="paswd" name="paswd" id="paswd" #input placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+    
+        </div>
+      </div>
+      </section>
+    <!-- </div> -->
+    <button mat-raised-button  color="accent"  [disabled]="!Form.valid"  (click)="submitForm()"> Submit Form</button>
+    

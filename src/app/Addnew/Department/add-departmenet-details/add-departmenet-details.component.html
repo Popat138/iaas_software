@@ -1,0 +1,52 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black;">Add Department Details </div>
+</mat-card>
+
+
+<div  [formGroup]="Form" style="display: flex;justify-content: center;margin-top: 2rem;">
+<div class="row">
+
+  <div class="col-sm-6" style="margin-top:2rem;;">
+<h4 class="head_u">Department Name</h4>
+</div>
+<div class="col-sm-2" style="margin-left: -4.5rem;">
+<mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+  <mat-label>Department Name</mat-label>
+
+  <input formControlName="name" matInput type="text" name="name" id="name" #input
+    placeholder="eg - Name..." />
+
+</mat-form-field>
+</div>
+<div class="col-sm-6" style="margin-top:1rem;">
+  <h4 class="head_u"> Establishment Year</h4>
+  </div>
+  <div class="col-sm-2" style="margin-left: -4.5rem;margin-top:2rem;">
+   <mat-form-field appearance="outline" style="width: 16rem;margin-top:-3rem;">
+   <mat-label>Year</mat-label>
+
+    <input formControlName="year" matInput type="text" name="year" id="year" #input
+      placeholder="eg - 2021..." />
+
+  </mat-form-field>
+  </div>
+
+</div>
+<!-- <div class="row">
+<div class="col-sm-6">
+  <h4 class="head_u" >College Code</h4>
+  </div>
+  <div class="col-sm-2">
+  <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+    <mat-label>College Code</mat-label>
+
+    <input formControlName="code" matInput type="text" name="code" id="code" #input
+      placeholder="eg - Name..." />
+
+  </mat-form-field>
+  </div>
+</div> -->
+</div>
+<button mat-raised-button color="accent"  [disabled]="!Form.valid"
+ style="margin-left: 25rem;margin-top: 3rem;"
+(click)="submitForm()" >Submit Form</button>

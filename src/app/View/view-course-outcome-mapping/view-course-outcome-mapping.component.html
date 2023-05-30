@@ -1,0 +1,176 @@
+<div id="report">
+<div [formGroup]="Form">
+
+    <!-- <h4 class="head_u"> <strong>CO - PO Mapping Table</strong></h4>
+  
+    <section class="container border mb-4 p-3 mt-4">
+  
+        <div class="row">
+           
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Academic Year</mat-label>
+                <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+        </div>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+    
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Code</mat-label>
+            <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+       
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Name</mat-label>
+            <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year</mat-label>
+            <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Semester</mat-label>
+        <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+            placeholder="eg - 1,2,3.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Class</mat-label>
+            <input matInput type="text" formControlName="class" name="class" id="class" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Division</mat-label>
+            <input matInput type="text" formControlName="div" name="div" id="div" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Internal weightage percentage</mat-label>
+          <input matInput type="text" formControlName="internalWeightagePercentage" name="internalWeightagePercentage" id="internalWeightagePercentage" #input
+              placeholder="eg - 1,2,3.." [readonly]=true/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>External weightage percentage</mat-label>
+          <input matInput type="text" formControlName="externalWeightagePercentage" name="externalWeightagePercentage" id="externalWeightagePercentage" #input
+              placeholder="eg - 1,2,3.." [readonly]=true/>
+        </mat-form-field>
+
+    </section> -->
+    <section class="head">
+        <p style="text-align: center; font-family:'Times New Roman', Times, serif;font-size: 22px;"> <strong>{{this.data.department?.college.name}}</strong><br>
+        <strong style="margin-top:-0.5rem; font-family:'Times New Roman', Times, serif;font-size: 20px;"> Department of {{this.data.department.departmentName}}</strong><br>
+        <strong style="margin-top:-0.5rem; font-family:'Times New Roman', Times, serif;font-size: 18px;"> Academic year : {{this.data.academicDetail.academicYear}}</strong><br>
+      <strong style="margin-top:-0.5rem; font-family:'Times New Roman', Times, serif;font-size: 18px;"> Programmme: {{this.data.academicDetail.course.program.programName + "   "}}           Class: {{this.data.academicDetail.streamDetail.streamClass + "   "}}        Div: {{this.data.academicDetail.division.divisionName+ "   "}}  Semester: {{this.data.academicDetail.course.semester + "    "}}</strong>
+      <strong style="margin-top:-0.5rem; ; font-family:'Times New Roman', Times, serif;font-size: 18px;"> Course Code: {{this.data.academicDetail.course.code}}  Course : {{ this.data.academicDetail.course.name}}   <br> Internal weightage: {{this.data.internalWeightagePercentage}} %     External Weightage : {{ this.data.externalWeightagePercentage}}%</strong>
+      <!-- <strong style="margin-top:-0.5rem; font-family:'Times New Roman', Times, serif;font-size: 18px;"> Internal weightage: {{this.data.internalWeightagePercentage}} %     External Weightage : {{ this.data.externalWeightagePercentage}}%</strong> --> </p>
+      <hr style="height:4px;border-width:2;color:rgb(17, 16, 16);background-color:rgb(8, 1, 1)">
+      <h4> <strong>CO - PO Mapping</strong></h4>
+    </section>
+    
+    <section style="margin-left:1rem">
+             <div formArrayName="attainmentLevels">
+              <!-- <div *ngFor="let attainmentLevel of attainmentLevels().controls; let i=index">
+                <div [formGroupName]="i" >
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Level</mat-label>
+                        <input matInput type="text" formControlName="level" [readonly]=true/>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Start range</mat-label>
+                        <input matInput type="text" formControlName="startRange" [readonly]=true/>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>End range</mat-label>
+                        <input matInput type="text" formControlName="endRange" [readonly]=true/>
+                    </mat-form-field>
+                </div>
+            </div> -->
+            <h3 style="margin-left:12.5%"><strong>Attainment Levels</strong></h3>
+            <div class="row" style="margin-left:25%;margin-right:25%;height: 30px; border:0.4px solid rgb(19, 18, 18)">
+                <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size:14pt;white-space: pre-wrap;padding-left:1em"><strong>Level</strong></pre> </div>
+                <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size:14pt;white-space: pre-wrap;padding-left:1em"><strong>Start range</strong></pre> </div>
+                <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size:14pt;white-space: pre-wrap;padding-left:1em"><strong>End Range</strong></pre> </div>
+            </div>
+            <div *ngFor="let attainmentLevel of attainmentLevels().controls; let i=index">
+                <div [formGroupName]="i" >
+                    <div class="row" style="margin-left:25%;margin-right:25%;height: 30px;border:0.4px solid rgb(19, 18, 18)">
+                        <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size:14pt;white-space: pre-wrap;padding-left:1em"><strong>{{this.data.attainmentsLevels[i].level}} </strong></pre> </div>
+                        <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong> {{this.data.attainmentsLevels[i].startRange}}</strong> </pre></div>
+                        <div class="column" style="width:33%"><pre style="text-align: center;margin-top: 7.5px;font-family:'Times New Roman', Times, serif;font-size: 14pt;white-space: pre-wrap;padding-left:1em"><strong>{{this.data.attainmentsLevels[i].endRange}} </strong></pre></div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <!-- <button (click)="removeAttainmentLevels()">
+            Remove Attainment Level
+        </button>
+        <button (click)="addAttainmentLevels()">
+            Add Attainment level
+        </button> -->
+        <!-- <pre>
+            {{this.attainmentLevels()?.value|json}}
+        </pre> -->
+    </section><br>
+    <br><br>
+
+    <section style="margin-left:2rem;margin-right:2rem">
+        <h3>CO-PO Mapping Table</h3>
+        <div formArrayName="attainments">
+            <table class="mat-table" style="width: auto;   border:0.4px solid black;grid-column: auto;">
+            <div *ngFor="let attainment of attainment().controls; let i=index">
+              <div [formGroupName]="i" >
+                    <input matInput type="text" formControlName="courseOutcome" [hidden]="true" style="width: 0;"/>
+                <tr class="mat-header-row" *ngIf="i === 0">
+                    <th class="mat-header-cell">-</th>
+                    <th class="mat-header-cell" *ngFor="let po of programOutcomes(0).controls; let poIndex=index">
+                        PO{{poIndex+1}}
+                    </th>
+                </tr>
+                <tr class="mat-row" formArrayName="programOutcomes">
+                    <th class="mat-cell">CO{{i+1}}</th>
+                    <td class="mat-cell" *ngFor="let po of programOutcomes(i).controls; let poIndex=index" >
+                        <div [formGroupName]="poIndex">
+                            
+                                <input matInput type="text" formControlName="po" [hidden]=true style="width: 0;"/>
+                                
+                                <mat-form-field appearance="legacy" style="width: 3.5rem;">
+                                <!-- <mat-label>Mark</mat-label> -->
+                                <input matInput type="text" formControlName="val" [readonly]=true/>
+                                </mat-form-field>
+                        </div>
+                    </td>
+                </tr>
+    
+              </div>
+            </div>
+    
+            <!-- <button (click)="removeProgramOutcomes()">
+                Remove PO
+            </button>
+            <button (click)="removeAttainment()">
+                Remove CO
+            </button>
+            <button type="button" (click)="addProgramOutcomes()"> Add PO </button>
+            <button type="button" (click)="addAttainment()">Add CO</button> -->
+        </table>
+          </div>
+    
+    <!-- <pre>
+        {{this.attainment()?.value|json}}
+    </pre> -->
+    </section>
+</div>
+
+<!-- <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button> -->
+</div>
+<br>
+<button  mat-button color="primary" style="background-color:rgb(248, 204, 139)" (click)="report()">Download</button>

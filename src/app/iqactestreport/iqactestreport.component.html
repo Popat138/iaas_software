@@ -1,0 +1,63 @@
+<div  [formGroup]="Form" >
+    <section style="margin-left:5rem; margin-right:5rem" >
+  <div id="report">
+        <section class="container" style="text-align: center;">
+          <div class="row">
+            <div class="col-md-1"> 
+          <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+            </div>
+            <div class="col-md-10">
+          <p style="text-align: center; color:rgb(17, 16, 16);margin-top:1rem; font-family: Arial, Helvetica, sans-serif;"><strong>{{this.association}}</strong></p>
+        <p style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem; font-family: Arial, Helvetica, sans-serif;font-size:20px"> <strong>{{this.college}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;"><strong>{{this.address}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;"><strong>Internal Quality Assurance Cell</strong></p>
+        <!-- <div *ngIf="this.data?.committee?.name"><p style="font-weight: 800; font-size:20px">{{this.data?.committee?.name}} Committee</p></div>
+        <div *ngIf="!this.data?.committee?.name"><p style="font-weight: 800; font-size:20px">Department of {{this.data?.department.departmentName}}</p> </div>   -->
+      </div>
+    </div>
+       </section>
+       <hr style="height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7)" >
+  <section >
+   <h5 style="font-family:'Times New Roman';text-align: center; font-weight: bold; font-size: 20px;background-color:rgb(254, 255, 254);color: rgb(247, 8, 8); ">{{this.data.titleOfActivity||this.data.title}}</h5>
+   <pre style="text-align: center;"><strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px;">Date: {{this.fdate | date:'dd/MM/yyyy'}} - {{this.tdate  | date:'dd/MM/yyyy'}} 
+        No of Students: {{this.data.noOfStudent}}                                               No of Teachers: {{this.data.noOfTeachers}}</strong></pre>
+   <!-- <div class="col container border mb-2 p-2 mt-2" style="display: flex-start; ">
+    <h4> <p>Guests: </p> {{this.data.guests}}</h4>
+  </div> -->
+  <!-- <pre><strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px;">Guests:: {{this.data.guests}}</strong></pre>
+  <pre><strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px;">Supporting agency: {{this.data.supportingAgency}}</strong></pre> -->
+   <!-- <div class="col container border mb-2 p-2 mt-2" style="display: flex-start; ">
+      <h4> <p>Supporting agency:</p> {{this.data.supportingAgency}}</h4>
+      <pre>Supporting agency: {{this.data.supportingAgency}}</pre>
+  </div> -->
+  <div  class="col container border mb-2 p-2 mt-2" style="display: flex-start; font-family: 'Times New Roman', Times, serif; font-size: 12px;color: rgb(5, 5, 5); text-align: justify">
+    <h4 style="font-family: 'Times New Roman', Times, serif;font-size: larger; font-weight: 900;color: black;">Breif Report :</h4>
+       <!-- <pre style="font-size:12px;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px; white-space: pre-wrap;padding-left:1em;">{{this.data.reportBrief}}</pre> -->
+       <p innerHTML="{{this.data.reportBrief}}" style="white-space: pre-wrap;"></p>
+       <!-- <div innerHTML="{{this.data.reportBrief}}" style="white-space: pre-wrap"></div>  -->
+       <pre><strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px;">Guests:: {{this.data.guests}}</strong></pre>
+      <pre><strong style="font-weight: 800;color: black; font-family:'Times New Roman', Times, serif;font-size: 16px;">Supporting agency: {{this.data.supportingAgency}}</strong></pre>
+   </div>
+  <div class="row" style="display: flex;justify-content: space-between; ">
+    <div class="col" *ngFor="let photograph of this.data.photographs;let i=index" >
+  
+      <img  style="margin-left:2rem; width: 450px;height: 300px;" src="{{this.service.BASE_URL}}/resources/uploads/{{this.photograph.photo}}"/>
+      
+      <h4 style="font-family: 'Times New Roman', Times, serif; margin-left:2rem; margin-top: 0.3rem;font-weight: bold;">{{i+1}}: {{this.data.captions[i].caption}}</h4>
+    </div>
+  <div class="col" *ngFor="let newsreport of this.data.newsReports">
+  <img style="margin-left:2rem; width: 450px;height: 300px; " src="{{this.service.BASE_URL}}/resources/uploads/{{this.newsreport.news}}"/>
+  </div>
+  <!-- <img style="width: 350px;height: 300px;" src="http://localhost:8080/api/resources/uploads/{{this.data.newsReports[1].news}}"/> -->
+  </div>
+  
+  </section>
+  <pre>      {{this.college}}</pre>
+  </div>
+    </section>
+  </div>
+  <button  mat-button color="primary" (click)="report5()">Download</button>
+  <br>
+  <br>
+
+  <button printSectionId="report" ngxPrint [printStyle]="{ h4: { color: 'red' } }">print</button> 

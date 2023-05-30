@@ -1,0 +1,153 @@
+<p>edit-teaching-methods works!</p>
+<div [formGroup]="Form">
+    <h2 class="head_u" style="margin-left: 4rem">Innovative Teaching Methods: Experintial Learning, Problem Solving, Participative Learning</h2>
+    <section class="container border mb-4 p-3 mt-4">
+        <div class="row">
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+              <mat-label>Academic Year</mat-label>
+              <mat-select required matNativeControl formControlName="academicYear">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                    {{ year }}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="row" >
+            <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+              <mat-label>ICT resources</mat-label>
+              <input formControlName="resource" matInput type="text" name="resource" id="resource" #input
+               placeholder="eg - Enter ICT resources separated by comma " />
+            </mat-form-field>
+          </div>
+          <div class="row" >
+            <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+              <mat-label>ICT resources Link 1: </mat-label>
+              <input formControlName="link_one" matInput type="text" name="link_one" id="resource" #input
+               placeholder="eg - Enter ICT resources separated by comma " />
+            </mat-form-field>
+          </div>
+
+          <div class="row" >
+            <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+              <mat-label>ICT resources link 2  </mat-label>
+              <input formControlName="link_two" matInput type="text" name="link_two" id="resource" #input
+               placeholder="eg - Enter ICT resources separated by comma " />
+            </mat-form-field>
+          </div>
+</section>
+<section class="container border mb-4 p-3 mt-4">
+  <h3> Enter Information of Innovative Teaching Method</h3>
+     <!-- <p> Methods: {{this.data?.type}}</p> -->
+        <div>
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Type</mat-label>
+                <mat-select matNativeControl formControlName="type">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of types" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Type</mat-label>
+                <mat-select matNativeControl formControlName="type2">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of types" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Type</mat-label>
+                <mat-select matNativeControl formControlName="type3">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of types" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>  -->
+        </div>  
+        <div class="row" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+            <mat-label>Title of teaching-learning activity </mat-label>
+            <input formControlName="title" matInput type="text" name="title" id="resource" #input
+             placeholder="eg - Enter title... " />
+          </mat-form-field>
+        </div>
+
+        <div class="row" >
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+            <mat-label>Class </mat-label>
+            <input formControlName="p_class" matInput type="text" name="p_class" id="p_class" #input
+             placeholder="eg - Enter title... " />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="margin-top: 0rem;margin-left: 1rem;">
+            <mat-label>Subject </mat-label>
+            <input formControlName="p_subject" matInput type="text" name="p_subject" id="p_subject" #input
+             placeholder="eg - Enter title... " />
+          </mat-form-field>
+        </div>
+        
+    <div class="row">
+      <div>
+
+          <!-- <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+            <mat-label>Title Of Activity</mat-label>
+            <input formControlName="title" matInput type="text" name="title" id="title" #input
+              placeholder="eg - Title..." />
+
+          </mat-form-field> -->
+
+          <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+            <mat-label>From Date</mat-label>
+            <input matInput formControlName="f_date" [matDatepicker]="picker1" />
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field color="accent" appearance="outline" style="margin-left: 1rem">
+            <mat-label>To Date</mat-label>
+            <input matInput formControlName="t_date" [matDatepicker]="picker2" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+
+      </div>
+    </div>
+      <div>
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Number of Students</mat-label>
+          <input matInput type="text" formControlName="number_of_students" name="no_students" id="no_students" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+      </div>
+      <h3 class="head">Brief Report :-</h3>
+      <!-- <textarea   formControlName="breif_report" style="margin-left: 8rem; margin-top: -3rem" cols="100"
+        rows="15"></textarea> -->
+        <angular-editor formControlName="breif_report"  id="editor1" [(ngModel)]="this.data.reportBrief" [config]="config">
+          
+        </angular-editor>
+ <br>
+ <br>
+ <br>
+        <h3 class="head">Learning Outcomes :-</h3>
+      <!-- <textarea   formControlName="learn" style="margin-left: 8rem; margin-top: 1rem" contenteditable="true" cols="100"
+        rows="10"></textarea>  -->
+       
+        <angular-editor formControlName="learn"  id="editor2" [(ngModel)]="this.data.learnOutcomes" [config]="config"></angular-editor>
+        <div class="row" style="margin-top: 3rem">
+          <div class="col-sm-2">
+            <h5 class="head_u">Photographs</h5>
+            <h5>(maximum: 4 photos)</h5>
+          </div>
+    
+          <div class="col-sm-2" (click)="uploadFile.click()">
+            <button mat-raised-button color="primary">Upload</button>
+            <input #uploadFile multiple (change)="photographUpload($event)" type="file" style="display: none" />
+          </div>
+          </div>
+    </section>
+</div>
+<button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>

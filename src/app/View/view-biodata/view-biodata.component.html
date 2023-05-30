@@ -1,0 +1,337 @@
+<body style="margin-left:5rem; margin-right:5rem" content="width=device-width, initial-scale=1">
+    <section  id ="print" style="margin-left:5rem; margin-right:5rem" >
+<h2 style="text-align: center;margin-top:2rem;text-underline-offset: 1;">Bio-Data</h2>
+<hr style="margin:0" >
+<!-- <div id="gitprofil" class="container" ng-app="app" ng-controller="appCtrl">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{data?.firstName+" "+data?.middleName+" "+data?.lastName}}</h3>
+      </div>
+      <div class="panel-body">
+          <div class="row">
+              <div class="col-md-3">
+                  <img src="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher.teacherPhoto}}" alt="profile image" class="img"/>
+                  <br />
+                   <a class="btn btn-default btn-block animated  fadeIn" href="{{userData.html_url}}" target="_blank">View Profile</a> -->
+              <!-- </div> -->
+              <!-- <div class="col-md-9"> -->
+                <!-- <span class="label label-primary  animated  fadeIn">{{userData.public_repos}} Public Repos</span>
+  <span class="label label-success  animated fadeIn">{{userData.public_gists}} Public Gists</span>
+  <span class="label label-info  animated fadeIn">{{userData.followers}} Followers</span>
+  <span class="label label-warning animated fadeIn">{{userData.following}}Public Repos</span>
+                <br />  
+                <br /> 
+                <h5 class="animated fadeInRight">{{userData.bio}}</h5> 
+                <br /> -->
+                <!-- <ul class="list-group animated fadeInUp">
+                  <li class="list-group-item"><strong>{{data?.teacher?.salute}} {{data.firstName}} {{data.middleName}} {{data.lastName}} </strong> </li>
+                  <li class="list-group-item"><strong></strong> {{data?.teacher?.designation}} in {{data.teacher?.department.departmentName}}</li>
+                  <li class="list-group-item">Department of {{data.teacher?.department.departmentName}}</li>
+                  <li class="list-group-item">{{data?.teacher?.department.college.name}}</li>
+                  <li class="list-group-item">{{data?.teacher?.department.college.address}}</li>
+               </ul>
+              </div>
+          </div> --> 
+          <div class="row" style="margin:0">
+            <div class="col-md-1" style="width:10%;background-color: rgb(57, 56, 58);margin:0"></div>
+            <div class="col-md-10">  
+          <table style="width:100%;margin-left:0%;text-align: justify;text-indent: 0.5%;vertical-align: text-top; margin-right:0%;border:0px;color: rgb(247, 177, 26);">
+            
+          <tbody>
+            <tr style="border: 0px">
+                <td style="border: 0px;background-color: rgb(243, 220, 170);justify-content: center;margin-left:10%"><img style="width:15vh;margin-left:12%" src="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher.teacherPhoto}}" alt="profile image" class="circular--square"/></td>
+                <td style="border: 0px;background-color: rgb(130, 212, 218);"> <strong>{{data?.teacher?.salute}} {{data.firstName}} {{data.middleName}} {{data.lastName}}</strong> <br> {{data?.teacher?.designation}} in {{data.teacher?.department.departmentName}} <br>Department of {{data.teacher?.department.departmentName}}<br>{{data?.teacher?.department.college.name}}<br>{{data?.teacher?.department.college.address}}<br><i class="material-icons" style="color:rgb(3, 2, 2)">&#9743;</i>  {{data?.phone}}  <i class="material-icons" style="color:rgb(3, 2, 2)">&#9854;</i>{{"       "}} {{data?.teacher.tecMail}}</td>
+                <td style="border: 0px;background-color: rgb(244, 245, 193);"><br>Address:<pre style="margin-left:6px;white-space:pre-wrap;"style="font-family: 'Times New Roman', Times, serif,
+                    serif;font-size: 15px;">{{data?.teacher?.tecAddress}}</pre></td>
+            </tr>
+        </tbody>
+          </table>
+        </div>
+          </div>
+          <hr style="padding-right:5%;height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7);margin:0" >
+                   
+          <div class="row" style="margin:0">
+            <div class="col-md-1" style="width:10%;background-color: rgb(57, 56, 58);"></div>
+            <div class="col-md-10">  
+               <h4 style="margin:0;padding-left: 2%;padding-top:5%">  <i class="material-icons" style="color:rgb(250, 6, 6)">&#10002;</i><strong>Qualification:</strong> </h4> 
+         <table style="width:90%;margin-left:5%;margin-right:5%">
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>University</th>
+                    <th>Year</th>
+                    <th>Specialization</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{data?.teacher?.ugQualification[0]?.degree}} ({{data?.teacher?.ugQualification[0]?.specialization}})</td>
+                    <td>{{data?.teacher?.ugQualification[0]?.university}}</td>
+                    <td>{{data?.teacher?.ugQualification[0]?.yearOfPassing}}</td>
+                    <td>{{data?.teacher?.ugQualification[0]?.specialization}}</td>
+                    <td>{{data?.teacher?.ugQualification[0]?.grade}}</td>
+                </tr>
+                <tr>
+                    <td>{{data?.teacher?.pgQualification[0]?.degree}} ({{data?.teacher?.pgQualification[0]?.specialization}})</td>
+                    <td>{{data?.teacher?.pgQualification[0]?.university}}</td>
+                    <td>{{data?.teacher?.pgQualification[0]?.yearOfPassing}}</td>
+                    <td>{{data?.teacher?.pgQualification[0]?.specialization}}</td>
+                    <td>{{data?.teacher?.pgQualification[0]?.grade}}</td>
+                </tr>
+                <tr>
+                    <td>{{data?.teacher?.researchQualification[0]?.degree}} </td>
+                    <td>{{data?.teacher?.researchQualification[0]?.university}}</td>
+                    <td>{{data?.teacher?.researchQualification[0]?.dateOfDeclaration| date:'dd/MM/yyyy'}}</td>
+                    <td>{{data?.teacher?.researchQualification[0]?.subject}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+         </table>
+<h4 style="margin:0; padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9731;</i><strong>Research Publications: </strong></h4>
+<table *ngFor="let row of this.papers; let i = index" style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+    <td style="wrap-text;" style="border: 0px">
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:2px;" style="border: 0px">
+        {{row.user.author}}, ({{row.user.year}}), <i>{{row.user.titleOfPaper}}</i>, {{row.user.journalName}}, {{row.user.volume}}({{row.user.issue}}),{{row.user.pageNo}}.
+    </td>
+
+</table>
+<h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9763;</i> <strong> Conference/Symposim Presentations: </strong></h4>
+<table *ngFor="let row of this.confpapers; let i = index" style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+    <td style="wrap-text;" style="border: 0px">
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:2px;" style="border: 0px">
+        {{row.user.titleOfPaper}}, <i>{{row.user.title}}</i> held on {{row.user.startDate| date:'dd/MM/yyyy'}} to {{row.user.endDate| date:'dd/MM/yyyy'}}.
+    </td>
+
+</table>
+<!-- <div *ngIf="this.confattend.facultySeminarLevel=='International'"> -->
+<h4 style="margin:0;padding-left: 2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9812;</i> <strong>National/International Conference/Symposim/Workshop Attended:</strong>  </h4>
+<table *ngFor="let row of this.confattend; let i = index" style="margin-left:3rem;border-color: rgb(251, 252, 253);" >
+    <tr *ngIf="row.user.facultySeminarLevel=='National' || row.user.facultySeminarLevel=='International'" >
+    <td style="wrap-text" style="border: 0px">
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:2px;"style="border: 0px">
+       Participated in {{row.user.title}} held at {{row.user.place}} on {{row.user.startDate| date:'dd/MM/yyyy'}} to {{row.user.endDate| date:'dd/MM/yyyy'}}.
+    </td>
+    </tr>
+</table>
+<h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9851;</i><strong>State/University level Conference/Symposim/Workshop Attended:</strong> </h4>
+<table *ngFor="let row of this.confattendS; let i = index"  style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+    <tr *ngIf="row.user.facultySeminarLevel=='State' || row.user.facultySeminarLevel=='University'" style="border-color: rgb(251, 252, 253);">
+    <td style="wrap-text; border: 0px" >
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:2px;" style="border: 0px">
+       Participated in {{row.user.title}} held at {{row.user.place}} on {{row.user.startDate| date:'dd/MM/yyyy'}} to {{row.user.endDate| date:'dd/MM/yyyy'}}.
+    </td>
+    </tr>
+</table>
+<h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9883;</i><strong>Books published::</strong> </h4>
+<table *ngFor="let row of this.bookT; let i = index"  style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+    <tr style="border-color: rgb(251, 252, 253);">
+    <td style="wrap-text; border: 0px" >
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:2px;" style="border: 0px">
+       {{row.user.titleOfBook}},({{row.user.yearOfPublication}}),{{row.user.publishers}}, Book type:  {{row.user.bookType.replace("_", " ")}},ISBN/ISSN:{{row.user.edition}}.
+    </td>
+    </tr>
+</table>
+<h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9885;</i> <strong>Proceeding Publication::</strong> </h4>
+<table *ngFor="let row of this.proceeding; let i = index"  style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+    <tr style="border-color: rgb(251, 252, 253);">
+    <td style="wrap-text; border: 0px" >
+        {{i+1}}.  
+    </td>
+    <td style="margin-left:px;" style="border: 0px">
+       {{row.user.procPaper}},({{row.user.yearOfPublication}}),{{row.user.procTitle}} published by {{row.user.publishers}},ISBN/ISSN:{{row.user.edition}}.
+    </td>
+    </tr>
+</table>
+<h4 style="margin:0;padding-left: 2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#10054;</i><strong>Research Project:</strong> </h4>
+         <table style="width:100%"  style="margin-left:5%;margin-right:5%">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Researcher</th>
+                    <th>Role</th>
+                    <th>Title of Project</th>
+                    <th>Year (Duration)</th>
+                    <th>Amount (Rs)</th>
+                    <th>Awarding agency</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let row of this.rproject; let i = index">
+                <tr>
+                    <td>{{i+1}}.</td>
+                    <td>{{row.user.author}}</td>
+                    <td>{{row.user.role}}</td>
+                    <td>{{row.user.titleOfBook }}</td>
+                    <td>{{row.user.yearOfPublication}}</td>
+                    <td>{{row.user.edition}}</td>
+                    <td>{{row.user.publishers}}</td>
+                </tr>
+                
+            </tbody>
+         </table>
+         <h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#10032;</i><strong>Research Students (Registered):</strong> </h4>
+        
+         <table style="width:100%"  style="margin-left:5%;margin-right:5%">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Degree</th>
+                    <th>Student Name</th>
+                    <th>Topic Title</th>
+                    <th> Date of Registration</th>
+                    <th>Research Centre</th>
+                    <!-- <th>Year (Duration)</th> -->
+                    <!-- <th>Amount (Rs)</th> -->
+                    <!-- <th>Awarding agency</th> -->
+                </tr>
+            </thead>
+            <tbody *ngFor="let row of this.register; let i = index">
+                <tr>
+                    <td>{{i+1}}.</td>
+                    <td>Ph.D.{{this.subject}}</td>
+                    <td>{{row.registered[0].studentName}}</td>
+                    <td>{{row.registered[0].title}}</td>
+                    <td>{{row.registered[0].registrationDate| date:'dd/MM/yyyy'}}</td>
+                    <td>{{row.registered[0].researchCentre}}</td>
+                    <!-- <td>{{row.user.titleOfBook }}</td>
+                    <td>{{row.user.yearOfPublication}}</td>
+                    <td>{{row.user.edition}}</td>
+                    <td>{{row.user.publishers}}</td> -->
+                </tr>
+                
+            </tbody>
+         </table>
+        
+         <h4 style="margin:0;padding-left:2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#10050;</i><strong>Research Students (Degree declared):</strong> </h4>
+         <table style="width:100%"    style="margin-left:5%;margin-right:5%">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Degree</th>
+                    <th>Student Name</th>
+                    <th>Topic Title</th>
+                    <th> Date of Registration</th>
+                    <th> Date of Declaration</th>
+                    <th>Research Centre</th>
+                   
+                </tr>
+            </thead>
+            <tbody *ngFor="let row of this.declFinal; let i = index" >
+                <tr >
+                    <td  >{{i+1}}.</td>
+                    <td>Ph.D.{{this.subject}}</td>
+                    <td >{{row.declared.studentName}}</td>
+                    <td >{{row.declared.title}}</td>
+                    <td >{{row.declared.registrationDate| date:'dd/MM/yyyy'}}</td>
+                    <td >{{row.declared.dateOfDeclaration| date:'dd/MM/yyyy'}}</td>
+                    <td >{{row.declared.researchCentre}}</td>                    
+                    
+                </tr>
+                
+            </tbody>
+         </table>
+        <h4 style="margin:0;padding-left: 2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9812;</i> <strong>Academic body memberships:</strong>  </h4>
+        <table *ngFor="let row of this.bodyA; let i = index" style="margin-left:3rem;border-color: rgb(251, 252, 253);" >
+            <tr>
+            <td style="wrap-text" style="border: 0px">
+                {{i+1}}.  
+            </td>
+            <td style="margin-left:2px;"style="border: 0px">
+             {{row.user.roleMember}}, {{row.user.academicBody}},{{row.user.university}} in the period {{row.user.period}}.
+            </td>
+            </tr>
+        </table>
+        <h4 style="margin:0;padding-left: 2%;"> <i class="material-icons" style="color:rgb(65, 42, 165)">&#9812;</i> <strong>Additional Duties:</strong>  </h4>
+        <table style="margin-left:3rem;border-color: rgb(251, 252, 253);">
+            <pre style="margin-left:6px;white-space:pre-wrap;"style="font-family: 'Times New Roman', Times, serif,
+            serif;font-size: 17px;">{{this.data?.teacher?.addDuty}}</pre>
+        </table>
+<!-- </div> -->
+          <!-- <br/><br/><br/>
+          <div class="row">
+            <div class="col-md-6">
+              <h4><b>Undergraduate</b></h4>
+              <ul class="list-group animated fadeInUp">
+                <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.ugQualification[0]?.degree}} ({{data?.teacher?.ugQualification[0]?.specialization}})</li>
+                <li class="list-group-item"><strong>University:</strong> {{data?.teacher?.ugQualification[0]?.university}}</li>
+                <li class="list-group-item"><strong>Year Of Passing:</strong> {{data?.teacher?.ugQualification[0]?.yearOfPassing}}</li>
+                <li class="list-group-item"><strong>Specialization:</strong> {{data?.teacher?.ugQualification[0]?.specialization}}</li>
+                <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.ugQualification[0]?.grade}}</li>
+                
+                </ul>
+            </div>
+            <div class="col-md-6">
+              <h4><b>Postgraduate</b></h4>
+              <ul class="list-group animated fadeInUp">
+                <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.pgQualification[0]?.degree}} ({{data?.teacher?.pgQualification[0]?.specialization}})</li>
+                <li class="list-group-item"><strong>University:</strong> {{data?.teacher?.pgQualification[0]?.university}}</li>
+                <li class="list-group-item"><strong>Year Of Passing:</strong> {{data?.teacher?.pgQualification[0]?.yearOfPassing}}</li>
+                <li class="list-group-item"><strong>Specialization:</strong> {{data?.teacher?.pgQualification[0]?.specialization}}</li>
+                <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.pgQualification[0]?.grade}}</li>
+                
+                </ul>
+            </div>
+        </div>
+        <br/><br/><br/>
+        <div class="row">
+          <div class="col-md-6">
+            <h4><b>Qualifying exam
+            </b></h4>
+            <ul class="list-group animated fadeInUp">
+              <li class="list-group-item"><strong>NET/SET/GATE:</strong> {{data?.teacher?.entranceQualification[0]?.name}}</li>
+              <li class="list-group-item"><strong>Year of Passing:</strong> {{data?.teacher?.entranceQualification[0]?.yearOfPassing}}</li>
+              <li class="list-group-item"><strong>Subject:</strong> {{data?.teacher?.entranceQualification[0]?.subject}}</li>
+              <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.entranceQualification[0]?.grade}}</li>       
+              </ul>
+          </div>
+          <div class="col-md-6">
+            <h4><b>Research</b></h4>
+            <ul class="list-group animated fadeInUp">
+              <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.researchQualification[0]?.degree}}</li>
+              <li class="list-group-item"><strong>Date of Declaration:</strong> {{data?.teacher?.researchQualification[0]?.dateOfDeclaration}}</li>
+              <li class="list-group-item"><strong>Subject:</strong> {{data?.teacher?.researchQualification[0]?.subject}}</li>
+              <li class="list-group-item"><strong>University.:</strong> {{data?.teacher?.researchQualification[0]?.university}}</li>
+            </ul>
+          </div>
+      </div> -->
+      <!-- </div>
+  </div>
+  </div>
+   -->
+  
+  <!-- 
+  <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br /> <br />  
+                <br />  -->
+  
+  
+  
+  
+  
+            </div>
+          </div>  
+    </section>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" (click)="report5()" >Print</button>
+            </body>

@@ -1,0 +1,178 @@
+<div [formGroup]="Form">
+
+    <h4 class="head_u">CO - PO Mapping edit</h4>
+  
+     <section class="container border mb-4 p-3 mt-4">
+  
+        <div class="row">
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academic_year">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                    {{ year }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Programme</mat-label>
+            <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+        <button mat-raised-button color="accent" class="saveBtn" (click)="getProgram()">Programs</button>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Code</mat-label>
+            <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+        <button mat-raised-button color="accent" class="saveBtn" (click)="getCourses()" [disabled]="!this.Form.get('program').valid">Courses</button>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Course Name</mat-label>
+            <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Year</mat-label>
+            <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Semester</mat-label>
+        <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+            placeholder="eg - 1,2,3.." [readonly]=true/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Class</mat-label>
+        
+        <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let item of programDetails" [value]="item.streamClass">
+            {{ item.streamClass }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Division</mat-label>
+        <mat-select required matNativeControl formControlName="div" [disabled]="!this.Form.get('class').valid">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let division of divisions" [value]="division.id">
+            {{ division.divisionName }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Internal weightage percentage</mat-label>
+          <input matInput type="text" formControlName="internalWeightagePercentage" name="internalWeightagePercentage" id="internalWeightagePercentage" #input
+              placeholder="eg - 1,2,3.."/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>External weightage percentage</mat-label>
+          <input matInput type="text" formControlName="externalWeightagePercentage" name="externalWeightagePercentage" id="externalWeightagePercentage" #input
+              placeholder="eg - 1,2,3.."/>
+        </mat-form-field>
+
+    </section>
+    <br>
+    <section class="container border border-danger mb-4 p-2 mt-4" style="background-color:rgb(8, 90, 52); color:white">
+        <p ><strong >Intructions:</strong> Please enter Level like 0, 1, 2, 3 and Please enter percentage marks range like 0 to 49.99 or 50.00 to 59.99.</p>
+    </section>
+    <br>
+
+    <section >
+        <h2 style="margin-left:20%">Attainment Level</h2>
+        <div formArrayName="attainmentLevels" style="margin-left:20%">
+            
+            <div *ngFor="let attainmentLevel of attainmentLevels().controls; let i=index">
+                <div [formGroupName]="i" >
+                    <mat-form-field appearance="legacy" style="background-color:rgb(193, 233, 214);" >
+                        <mat-label>Level</mat-label>
+                        <input matInput type="text" formControlName="level"/>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy" style="background-color:rgb(233, 226, 207);" >
+                        <mat-label>Start range</mat-label>
+                        <input matInput type="text" formControlName="startRange"/>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy" style="background-color:rgb(194, 238, 240);" >
+                        <mat-label>End range</mat-label>
+                        <input matInput type="text" formControlName="endRange"/>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <button (click)="removeAttainmentLevels()" style="margin-left:20%">
+            Remove Attainment Level
+        </button>
+        <button (click)="addAttainmentLevels()"style="margin-left:5%">
+            Add Attainment level
+        </button>
+        <!-- <pre>
+            {{this.attainmentLevels()?.value|json}}
+        </pre> -->
+    </section><br>
+    <br>
+        <br>
+    <section class="container border border-danger mb-2 p-2 mt-2" style="background-color:rgb(8, 90, 52); color:white">
+        <p><strong>PO-CO Mapping Table:</strong> Generate mapping table by Add CO, Add PO buttons.</p>
+    </section>
+    <section>
+        <div formArrayName="attainments">
+            <table class="table" style="margin-left:25%;width: auto; background-color:rgb(226, 230, 198); color:rgb(26, 2, 2)">
+            <div *ngFor="let attainment of attainment().controls; let i=index">
+              <div [formGroupName]="i" >
+                    <input matInput type="text" formControlName="courseOutcome" [hidden]="true" style="width: 0;"/>
+                <tr *ngIf="i === 0">
+                    <th>-</th>
+                    <th *ngFor="let po of programOutcomes(0).controls; let poIndex=index">
+                        PO{{poIndex+1}}
+                    </th>
+                </tr>
+                <tr formArrayName="programOutcomes">
+                    <th>CO{{i+1}}</th>
+                    <td *ngFor="let po of programOutcomes(i).controls; let poIndex=index" >
+                        <div [formGroupName]="poIndex">
+                            
+                                <input matInput type="text" formControlName="po" [hidden]=true style="width: 0;"/>
+                                
+                                <mat-form-field appearance="legacy" style="width: 3.5rem;" class="border border-dark">
+                                    <mat-label>Level</mat-label>
+                                    <input matInput type="text" formControlName="val"/>
+                                </mat-form-field>
+                        </div>
+                    </td>
+                </tr>
+    
+              </div>
+            </div>
+    
+            <button (click)="removeProgramOutcomes()">
+                Remove PO
+            </button>
+            <button (click)="removeAttainment()">
+                Remove CO
+            </button>
+            <button type="button" (click)="addProgramOutcomes()"> Add PO </button>
+            <button type="button" (click)="addAttainment()">Add CO</button>
+        </table>
+          </div>
+    
+    <!-- <pre>
+        {{this.attainment()?.value|json}}
+    </pre> -->
+    </section>
+    <section class="container border border-danger mb-2 p-1 mt-2" style="background-color:rgb(209, 242, 243);">
+        <p><strong>Intructions:</strong> Fill cells with following mapping levels.</p>
+        <p><strong>Low:</strong> 1</p>
+        <p><strong>Medium:</strong> 2</p>
+        <p><strong>High:</strong> 3</p>
+        <p>If no mapping fill cells with 0</p>
+    </section>
+</div>
+
+<button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button>

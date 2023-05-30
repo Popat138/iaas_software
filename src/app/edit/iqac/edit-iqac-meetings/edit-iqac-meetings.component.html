@@ -1,0 +1,161 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Update IQAC Meetings</div>
+  </mat-card>
+  
+  <div style="margin-left: 3rem" [formGroup]="Form">
+  
+    <section class="container border mb-4 p-3 mt-4">
+      <h3 class="head">Report Of Meetings</h3>
+  
+        <mat-form-field appearance="outline" style="margin-top: 1.5rem">
+          <mat-label>Academic Year</mat-label>
+          <mat-select required matNativeControl formControlName="academicYear">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+              {{ year }}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      <div class="row">
+        <div>
+  
+            <!-- <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+              <mat-label>Title Of Activity</mat-label>
+              <input formControlName="title" matInput type="text" name="title" id="title" #input
+                placeholder="eg - Title..." />
+  
+            </mat-form-field> -->
+  
+            <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+              <mat-label>Date</mat-label>
+              <input matInput formControlName="date" [matDatepicker]="picker1" />
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+  
+  
+        </div>
+      </div>
+  
+      <div class="row" style="display: flex">
+        <h4 class="head" style="margin-top: 1.5rem">Time & Place :-</h4>
+  
+        <mat-form-field appearance="outline" style="width: 15rem">
+          <mat-label>Time</mat-label>
+          <input matInput type="text" formControlName="number_of_teachers" name="no_teachers" id="no_teachers" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Place</mat-label>
+          <input matInput type="text" formControlName="number_of_students" name="no_students" id="no_students" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+  
+      </div>
+  
+      <h3 class="head">Breif Introduction :-</h3>
+      <textarea   formControlName="breif_report" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+        rows="5"></textarea>
+  
+  
+  
+  
+  
+        <div formArrayName="agenda">
+        <section  class="container border mb-4 p-3 mt-4">
+  
+          <div *ngFor="let agenda of agendaControl; let i = index">
+  
+            <div [formGroupName]="i">
+  
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" style="margin-top: 3rem;" (click)="removeagenda(i)">
+                  Remove
+                </button>
+              </div>
+  
+              
+<!--   
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem; display: none;">
+            <mat-label>Agenda Id</mat-label>
+            <input matInput type="text" formControlName="agendaId" name="agendaId" id="agendaId" #input
+              placeholder="eg - 1,2,3.." [hidden]=true/>
+          </mat-form-field> -->
+
+          <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Agenda no.</mat-label>
+            <input matInput type="text" formControlName="agenda_no" name="no_teachers" id="no_teachers" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+              
+          <mat-form-field appearance="outline" style="width: 25rem; margin-left: 1rem">
+            <mat-label>Agenda</mat-label>
+            <input matInput type="text" formControlName="agenda_name" name="agenda_name" id="agenda_name" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+
+          <h3 class="head">Discussion :-</h3>
+          <textarea formControlName="discussion" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+            rows="5"></textarea>
+          <!-- <mat-form-field appearance="outline" style="width: 70%; margin-left: 1rem">
+            <mat-label>Discussion</mat-label>
+            <input matInput type="text" formControlName="discussion" name="no_students" id="no_students" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+   -->
+   <br>
+   <h3 class="head">Decision :-</h3>
+   <textarea formControlName="decision" style="margin-left: 17.5rem; margin-top: -2rem" cols="100"
+     rows="5"></textarea>
+  
+          <!-- <mat-form-field appearance="outline" style="width: 100%; margin-left: 1rem">
+            <mat-label>Decision</mat-label>
+            <input matInput type="text" formControlName="decision" name="no_students" id="no_students" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+  
+          <mat-form-field appearance="outline" style="width: 40%; margin-left: 1rem">
+            <mat-label>Proposer</mat-label>
+            <input matInput type="text" formControlName="proposer" name="no_students" id="no_students" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" style="width: 40%; margin-left: 1rem">
+            <mat-label>Seconder</mat-label>
+            <input matInput type="text" formControlName="seconder" name="no_students" id="no_students" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field>
+  
+          <h3 class="head">Action Taken :-</h3>
+            <textarea formControlName="action" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+              rows="5"></textarea>
+          <!-- <mat-form-field appearance="outline" style="width: 100%; margin-left: 1rem">
+            <mat-label>Action Taken</mat-label>
+            <input matInput type="text" formControlName="action" name="no_students" id="no_students" #input
+              placeholder="eg - 1,2,3.." />
+          </mat-form-field> -->
+          <br>
+            <h3 class="head">Responsibility defined to :-</h3>
+            <textarea formControlName="responsibility" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+              rows="5"></textarea>
+           <br>   
+          <h3 class="head">Completion Duration :-</h3>
+          <textarea formControlName="preperation" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+            rows="5"></textarea>
+        </div>
+  
+    </div>
+  
+    <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addAgenda()">
+      Add Agenda
+    </button>
+  
+        </section>
+  
+      </div>
+  
+    </section>
+  
+    <button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()" >Submit Form</button>

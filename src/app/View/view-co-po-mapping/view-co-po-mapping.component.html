@@ -1,0 +1,176 @@
+
+<div id="printReport">
+    <div [formGroup]="Form">
+    
+        <!-- <h4 class="head_u"> <strong>CO - PO Attainment</strong></h4>
+      
+        <section class="container border mb-4 p-3 mt-4">
+      
+            <div class="row">
+                <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                    <mat-label>Academic Year</mat-label>
+                    <input matInput type="text" formControlName="academic_year" name="academic_year" id="academic_year" #input placeholder="eg - 2020.." [readonly]=true/>
+                </mat-form-field>
+            </div>
+      
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Programme</mat-label>
+                <input matInput type="text" formControlName="program" name="program" id="program" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+  
+        
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Course Code</mat-label>
+                <input matInput type="text" formControlName="c_code" name="c_code" id="c_code" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+  
+        
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Course Name</mat-label>
+                <input matInput type="text" formControlName="c_name" name="c_name" id="c_name" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Year</mat-label>
+                <input matInput type="text" formControlName="year" name="year" id="year" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+            <mat-label>Semester</mat-label>
+            <input matInput type="text" formControlName="semester" name="semester" id="semester" #input
+                placeholder="eg - 1,2,3.." [readonly]=true/>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Class</mat-label>
+                <input matInput type="text" formControlName="class" name="class" id="class" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+                <mat-label>Division</mat-label>
+                <input matInput type="text" formControlName="div" name="div" id="div" #input placeholder="eg - 2020.." [readonly]=true/>
+            </mat-form-field>
+    
+           
+    
+        </section>
+    
+         -->
+    
+    <!-- <button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()">Submit Form</button> -->
+    </div>
+    <br>
+    
+    
+    <br>
+    <section class="head">
+        <p> <strong>{{this.data.department?.college.name}}</strong></p>
+        <p style="margin-top:-0.5rem"> Department of {{this.data.department.departmentName}}</p>
+        <p style="margin-top:-0.5rem"> Academic year : {{this.data.academicDetail.academicYear}}</p>
+      <pre class="head" style="margin-top:-0.5rem"> Programmme: {{this.data.academicDetail.course.program.programName}}      Class: {{this.data.academicDetail.streamDetail.streamClass }}    Div: {{this.data.academicDetail.division.divisionName}}  Semester: {{this.data.academicDetail.course.semester}}</pre>
+      <pre class="head" style="margin-top:-0.5rem"> Course Code: {{this.data.academicDetail.course.code}}  Course : {{ this.data.academicDetail.course.name}}  ||  Internal weightage: {{this.data.internalWeightagePercentage}} %     External Weightage : {{ this.data.externalWeightagePercentage}}%</pre>
+      <!-- <pre class="head" style="margin-top:-0.5rem"> Internal weightage: {{this.data.internalWeightagePercentage}} %     External Weightage : {{ this.data.externalWeightagePercentage}}%</pre> -->
+    </section>
+    <div>
+        <p class="head"><strong>Teacher: {{this.data.user.firstName + "  " + this.data.user.middleName + "  " + this.data.user.lastName}}</strong></p>
+        <!-- <h3 Style="background-color:rgb(250, 211, 211)">   Academic Year:-{{formData.academicYear}} ||   Program:- {{formData.program}}   ||  Course:- {{formData.c_name}} ||   class:- {{formData.class.streamClass}} &nbsp;Div:- {{formData.divisionName}} </h3> -->
+    <h2>CO Attainment for course</h2>
+    
+    <table class="mat-table" style="border-style:solid">
+        <tr class="mat-header-row" style="border-style:solid">
+            <th class="mat-header-cell"></th>
+            <th class="mat-header-cell" *ngFor="let item of internalAssessments[0]?.courseOutcomeWiseCourseAttainments">
+               <strong> {{item.courseOutcome}}</strong>
+            </th>
+        </tr>
+        <!-- <tr class="mat-row">
+            <td class="mat-cell">
+                Total students having more than threshold
+            </td>
+            <td class="mat-cell" *ngFor="let item of internalAttainments">
+                {{item.totalStudentAboveThreshold}}
+            </td >
+        </tr> -->
+    
+        <tr class="mat-row">
+            <th class="mat-cell">% of students secure marks > threshold marks</th >
+                
+            <td class="mat-cell" *ngFor="let item of internalAttainments">
+                {{item.attainment.toFixed(2)}}
+            </td >
+        </tr>
+        <tr class="mat-row">
+            <th class="mat-cell">Attainment (Internal)</th >
+                
+            <td class="mat-cell" *ngFor="let item of internalAttainments">
+                {{item.attainmentLevel}}
+            </td >
+        </tr>
+        <!-- <tr>
+            <br>
+        </tr> -->
+        <br><br><br>
+        <tr class="mat-row">
+            <th class="mat-cell">
+                Total students having more than threshold(External)
+            </th>
+            <td class="mat-cell" *ngFor="let item of externalAttainments">
+                {{item.studentAboveThreshold}}
+            </td >
+        </tr>
+        <tr class="mat-row">
+            <th class="mat-cell">
+                % of students secure marks > threshold marks
+            </th >
+                
+            <td class="mat-cell" *ngFor="let item of externalAttainments">
+                {{item.attainment.toFixed(2)}}
+            </td >
+        </tr>
+        <tr class="mat-row">
+            <th class="mat-cell">
+                Attainment (External)
+            </th >
+                
+            <td class="mat-cell" *ngFor="let item of externalAttainments">
+                {{item.attainmentLevel}}
+            </td >
+        </tr>
+        <tr></tr>
+        <!-- <ng-container [matColumnDef]="item.courseOutcome" *ngFor="let item of internalAssessments[0]?.courseOutcomeWiseCourseAttainments">
+            <th mat-header-cell *matHeaderCellDef> {{item.courseOutcome}} </th>
+            <td mat-cell *matCellDef="let element"> {{element | json}} </td>
+    </ng-container> -->
+    <!-- </table>
+    <button mat-raised-button (click)="getFinalCOAttainment()">Generate Final Attainment</button>
+    <table class="mat-table"> -->
+        <tr class="mat-row" >
+            <th class="mat-cell" Style="font-size:15px">CO Attainment</th>
+            <td class="mat-cell" *ngFor="let item of finalCOAttainment">
+                {{item.finalAttainment ? item.finalAttainment.toFixed(2) : "-"}}
+            </td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    <br>
+    <div>
+        <h2>PO Attainment for course</h2>
+        <table class="mat-table" style="border-style:solid">
+            <tr class="mat-header-row">
+                <th class="mat-header-cell"></th>
+                <th class="mat-header-cell" *ngFor="let item of finalPOAttainment">
+                   <strong> {{item.programOutcome}} </strong>
+                </th>
+            </tr>
+            <tr class="mat-row">
+                <th class="mat-cell" Style="font-size:15px">PO Attainment</th>
+                <td class="mat-cell" *ngFor="let item of finalPOAttainment">
+                    {{item.finalAttainment ? item.finalAttainment.toFixed(2) : "-"}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+    <button  mat-button color="primary" style="background-color:rgb(248, 204, 139)" (click)="printReport()">Click to See table</button>

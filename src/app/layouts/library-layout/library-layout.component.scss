@@ -1,0 +1,64 @@
+.example-container {
+  width:auto;
+  height: 100%;
+  background-color:rgb(250, 249, 227);
+  border: 0.2px  rgba(0, 0, 0, 0.5);
+  }
+
+  .example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  }
+
+  .example-sidenav {
+  padding: 20px;
+  }
+
+  .Nav{
+    text-align: center;
+    font-family:'Josefin Slab',
+    serif;font-size: 24px;
+    font-weight: bold;width: 90%;
+    margin-left: -3em;
+  }
+
+
+  .nav{
+      text-align: center;
+      font-family:'Josefin Slab';
+      font-size: 24px;
+      font-weight: bold;width: 96%;
+
+      display: block;
+  }
+
+  a.active {
+    background-color: #00aec5;
+    color: white;
+   // margin: 10px -10px 0;
+  }
+
+  // :host ::ng-deep nav-item nav-link{
+  //   margin: 0 !important;
+  //   padding: 0;
+
+  // }
+
+  .nav-link{
+    display: flex;
+
+  }
+  .title{
+    margin-left: 0.2rem;
+    font-size: large;
+    font-family:'Poppins';
+    font-weight:600;
+    color: black;
+    text-overflow:hidden;
+    text-align: left;
+    //white-space: nowrap;
+    margin-top: 0.3rem;
+  }
+

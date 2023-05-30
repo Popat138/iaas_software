@@ -1,0 +1,40 @@
+<p>App photos</p>
+
+<div [formGroup]="Form" class="row" style="display: block;">
+<div class="col-sm-2" (click)="photograph.click()">
+    <button mat-raised-button color="primary">Upload</button>
+    <input #photograph multiple (change)="photgraphUpload($event)" type="file" style="display: none" />
+  </div>
+
+  <!-- <div *ngFor="let Photographs of urls; let i = index">
+    <img style="margin-left:2rem; width: 400px;height: 300px;" [src]="Photographs"/><br/>
+    
+</div> -->
+<!-- <div *ngFor="let Photographs of urls; let i = index">
+    <div [formGroupName]="i">
+
+      <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+        <mat-label>Add caption for this image</mat-label>
+        <input formControlName="caption" matInput type="text" name="caption" #input />
+      </mat-form-field>
+
+
+    </div>
+  </div> -->
+  <div div formArrayName="caption">
+    <div *ngFor="let caption of captionControl; let i = index">
+    <div [formGroupName]="i">
+        <div class="row">
+            <img style="margin-left:2rem; width: 400px;height: 300px;" [src]="urls[i]"/><br/>
+          </div>
+      <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+        <mat-label>Add caption for this image</mat-label>
+        <input formControlName="caption" matInput type="text" name="caption" #input />
+      </mat-form-field>
+
+
+    </div>
+    </div>
+  </div>
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="display:flex;justify-content: center;margin-top: 3rem;"
+  (click)="submitForm()">Submit photo</button>

@@ -1,0 +1,63 @@
+<h1 class="head">{{this.data.academicYear}} {{this.data.scholarshipType}} Scholarship Data</h1>
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+</div>
+
+
+<div class="table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  ">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="scholarshipType">
+      <th mat-header-cell *matHeaderCellDef>Scholarship Type</th>
+      <td mat-cell *matCellDef="let element"> {{element?.scholarshipType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="scholarshipScheme">
+      <th mat-header-cell *matHeaderCellDef>Scholarship Scheme</th>
+      <td mat-cell *matCellDef="let element"> {{element?.scholarshipScheme}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="awardingAgency">
+      <th mat-header-cell *matHeaderCellDef>Awarding Agency</th>
+      <td mat-cell *matCellDef="let element"> {{element?.awardingAgency}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="noOfStudent">
+        <th mat-header-cell *matHeaderCellDef>No of students</th>
+        <td mat-cell *matCellDef="let element"> {{element?.noOfStudent}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element"> {{element?.amount}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="sanctionLetter">
+        <th mat-header-cell *matHeaderCellDef> Sanction Letter </th>
+        <td mat-cell *matCellDef="let element"> 
+            <a mat-raised-button color="primary" [disabled]="!element.sanctionLetter" href="{{this.service.BASE_URL}}/resources/uploads/{{element.sanctionLetter}}" target="_blank">View Report</a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="studentList">
+        <th mat-header-cell *matHeaderCellDef>Student List</th>
+        <td mat-cell *matCellDef="let element"> 
+            <a mat-raised-button color="primary" [disabled]="!element.studentList" href="{{this.service.BASE_URL}}/resources/uploads/{{element.studentList}}" target="_blank">View Report</a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br>
+</div>
+<div class="head" style="margin-bottom: 0.6rem;">
+  <!-- <h4 style="padding: 1rem;">Export Data</h4> -->
+  <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+</div>

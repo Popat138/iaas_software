@@ -1,0 +1,95 @@
+<!-- <p>list-of-faculty-development-program works!</p> -->
+
+
+<h1 class="head">List of Faculty-development-program</h1>
+
+
+
+
+
+<div class="row" style="margin-left: 5rem;margin-top: 5rem;">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <!-- <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button mat-raised-button color="accent" class="saveBtn" (click)="addnewprogram()">Add New Details</button>
+    </div>
+  </div> -->
+</div>
+
+
+<div class="head" style="margin-bottom: 0.6rem;">
+  <!-- <h4 style="padding: 1rem;">Export Data</h4> -->
+  <button type="submit" class="mat-raised-button" (click)="export()">Download EXCEL</button>
+</div>
+
+<div class="table-responsive">
+  <h3 style="text-align: right; color:rgb(201, 49, 11);margin-right:10rem; font-family: Arial, Helvetica, sans-serif;font-size:15px">Total: {{this.dataSource.data.length}}     Selected: {{this.dataSource.filteredData.length}} </h3>
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
+
+    <!-- <ng-container matColumnDef="a_year">
+      <th mat-header-cell *matHeaderCellDef> Academic year </th>
+      <td mat-cell *matCellDef="let element"  data-label="a_year:" > {{element.academicYear}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="academic_year">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.academicYear}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="teacher">
+        <th mat-header-cell *matHeaderCellDef> Teacher Name </th>
+           <td  mat-cell *matCellDef="let element">
+            {{element?.user?.firstName + " " + element?.user?.middleName +" "+element?.user?.lastName}}
+          </td>
+      </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.facultyProgramType}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="course_title">
+      <th mat-header-cell *matHeaderCellDef> Course Title </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.titleOfCourse}}
+        </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="course_place">
+      <th mat-header-cell *matHeaderCellDef> Course Place  </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.placeOfCourse}}
+        </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.startDate | date: 'dd-MM-yyyy'}} - {{element.endDate | date: 'dd-MM-yyyy'}}
+        </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="upload_cert">
+      <th mat-header-cell *matHeaderCellDef> Certificate
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="primary" [disabled]="!element.document" href="{{this.service.BASE_URL}}/resources/uploads/{{element.document}}" target="_blank">View</a>
+    </td>
+  
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white"></tr>
+
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br><br>
+
+</div>

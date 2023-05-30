@@ -1,0 +1,202 @@
+<h1 class="head">Screen Shot</h1>
+
+<div class="row" style="margin-left: 5rem; margin-top: 5rem">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search..." />
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button
+        mat-raised-button
+        color="accent"
+        class="saveBtn"
+        (click)="addpgcourses()">
+        Add New Details
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+    
+
+    <ng-container matColumnDef="Sr_no">
+      <th mat-header-cell *matHeaderCellDef>Sr no</th>
+      <td mat-cell *matCellDef="let element">{{ element.pos }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="academicYear">
+      <th mat-header-cell *matHeaderCellDef> Academic Year </th>
+         <td  mat-cell *matCellDef="let element">
+           {{element.academicYear}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="screenshot">
+      <th mat-header-cell *matHeaderCellDef> Screen Shot Name </th>
+         <td  mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button color="primary">View Details</button> -->
+      {{element.bookIssueReturn}}
+        </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="view_ss">
+      <th mat-header-cell *matHeaderCellDef>View Screenshots</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.program?.natureOfAutomation }}
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="view_ss">
+      <th mat-header-cell *matHeaderCellDef> View screenshots</th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="primary" [disabled]="!element.ilmsHomePage" href="{{this.service.BASE_URL}}/resources/uploads/{{element.ilmsHomePage}}" target="_blank">View</a>
+    </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="s_name">
+    <th mat-header-cell *matHeaderCellDef> Upload certificate
+  <td mat-cell *matCellDef="let element">
+    <a mat-raised-button color="primary" [disabled]="!element.accessionRegistration" href="{{this.service.BASE_URL}}/resources/uploads/{{element.accessionRegistration}}" target="_blank">View</a>
+  </td>
+</ng-container> -->
+
+
+<!-- <ng-container matColumnDef="isbn_no">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.bookIssueReturn" href="{{this.service.BASE_URL}}/resources/uploads/{{element.bookIssueReturn}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="period">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.bookBankIssueReturn" href="{{this.service.BASE_URL}}/resources/uploads/{{element.bookBankIssueReturn}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="vendor_name">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.stockVerification" href="{{this.service.BASE_URL}}/resources/uploads/{{element.stockVerification}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="subs_amount">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.searchBookFacility" href="{{this.service.BASE_URL}}/resources/uploads/{{element.searchBookFacility}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="no_of_users">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.studentMembershipReport" href="{{this.service.BASE_URL}}/resources/uploads/{{element.studentMembershipReport}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="receipt">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.libraryDues" href="{{this.service.BASE_URL}}/resources/uploads/{{element.libraryDues}}" target="_blank">View</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="usage_report">
+  <th mat-header-cell *matHeaderCellDef> Upload certificate
+<td mat-cell *matCellDef="let element">
+  <a mat-raised-button color="primary" [disabled]="!element.bookReservation" href="{{this.service.BASE_URL}}/resources/uploads/{{element.bookReservation}}" target="_blank">View</a>
+</td>
+</ng-container> -->
+
+
+
+
+
+
+
+    <!-- <ng-container matColumnDef="s_name">
+      <th mat-header-cell *matHeaderCellDef>Software Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="isbn_no">
+      <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+      <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef>Period</th>
+      <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="vendor_name">
+      <th mat-header-cell *matHeaderCellDef>Vendor Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container> -->
+<!--
+    <ng-container matColumnDef="subs_amount">
+      <th mat-header-cell *matHeaderCellDef>Subscription Amount</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="no_of_users">
+      <th mat-header-cell *matHeaderCellDef>No of Users</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container> -->
+
+
+
+    <!-- <ng-container matColumnDef="receipt">
+      <th mat-header-cell *matHeaderCellDef> Receipt </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary">View Report</button>
+      </td>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="usage_report">
+      <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+      <td mat-cell *matCellDef="let element">{{ element.maintenanceBill }}</td>
+    </ng-container> -->
+<!-- 
+    <ng-container matColumnDef="edit">
+      <mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">Edit</mat-icon>
+        </button>
+      </mat-cell>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container> -->
+
+    <ng-container matColumnDef="delete">
+      <mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <br /><br/>
+</div>

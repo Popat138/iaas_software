@@ -1,0 +1,157 @@
+
+
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Update Faculty-Development-Programs</div>
+  </mat-card>
+  
+  
+  
+  <section class="container border mb-4 p-3 mt-4">
+  
+  
+    <h3 class="head" style="margin-bottom: 2rem;">Refresher/Orientation Courses/Faculty Development Programmes:</h3>
+  
+  
+  
+    <div [formGroup]="Form" class="row" style="display: block">
+  
+        <div class="row">
+  
+            <div class="col-md-3"  >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Academic Year</mat-label>
+            <mat-select required matNativeControl formControlName="academicYear">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+                  {{ year }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+        <!-- <div class="row">
+  
+          <div class="col-md-3"  >
+          <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>First Name</mat-label>
+          <input formControlName="f_name" matInput type="text" name="f_name" id="f_name" #input
+          placeholder="eg - Title..." />
+          </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="row">
+  
+          <div class="col-md-3"  >
+          <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>Middle Name</mat-label>
+          <input formControlName="m_name" matInput type="text" name="m_name" id="m_name" #input
+          placeholder="eg - Title..." />
+          </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+  
+          <div class="col-md-3"  >
+          <mat-form-field appearance="outline" style="margin-top: 1rem">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="l_name" matInput type="text" name="l_name" id="l_name" #input
+          placeholder="eg - Title..." />
+          </mat-form-field>
+          </div>
+        </div> -->
+
+
+
+        <div class="row">
+  
+  
+            <div class="col-md-3"  >
+            <mat-form-field appearance="outline" style="margin-top: 1rem">
+            <mat-label>Type</mat-label>
+            <mat-select required matNativeControl formControlName="type">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                {{ type.title }}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+  
+            <!-- <div class="col-md-3"  >
+              <mat-form-field appearance="outline" style="margin-top: 1rem">
+              <mat-label>Level</mat-label>
+              <mat-select required matNativeControl formControlName="level">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of level" [value]="type.level">
+                  {{ type.level }}
+                  </mat-option>
+              </mat-select>
+              </mat-form-field>
+              </div> -->
+        </div>
+  
+      <div class="row" >
+  
+  
+      <div class="col-md-3" >
+        <mat-form-field appearance="outline" >
+          <mat-label>Title of Course</mat-label>
+          <input formControlName="title_of_conf" matInput type="text" name="title_of_conf" id="title_of_conf" #input
+            placeholder="eg - Title..." />
+        </mat-form-field>
+        </div>
+        <div class="col-md-3" >
+        <mat-form-field appearance="outline" style="width: 16rem;">
+          <mat-label>Place of Course</mat-label>
+          <input formControlName="place" matInput type="text" name="place" id="place" #input
+            placeholder="eg - Title..." />
+  
+        </mat-form-field>
+      </div>
+    </div>
+  
+  
+    <div class="row">
+      <div>
+  
+  
+  
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput formControlName="s_date" [matDatepicker]="picker1" />
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+            <mat-label>End Date</mat-label>
+            <input matInput formControlName="e_date" [matDatepicker]="picker2" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+  
+  
+      </div>
+  
+    </div>
+  
+    <div class="row">
+      <div class="row" style="margin-top: 2rem">
+        <div class="col" (click)="uploadFile.click()" style="margin-left: -3rem;margin-top: -1rem;color:brown">
+          <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload certificate copy
+          </button> {{this.data?.document!=null?fileName||'Document Exist':""}}
+          <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+        </div>
+        </div>
+    </div>
+    </div>
+  </section>
+  
+  
+  <button mat-raised-button color="accent" [disabled]="!Form.valid"
+    (click)="submitForm()">
+    Submit Form
+  </button>
+  
+  

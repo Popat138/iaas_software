@@ -1,0 +1,166 @@
+<section class="container border mb-4 p-3 mt-4">
+    <h3 class="head">Update Program Details</h3>
+    <div [formGroup]="Form" class="row" style="display: block;">
+  
+  
+  
+      <div class="row">
+  
+        <div class="col-md-2" style="margin-top: 2rem;">
+          <h4 class="head">Department</h4></div>
+          <div class="col">
+          <mat-form-field appearance="outline" style="margin-top: 2rem;">
+              <mat-label>Department</mat-label>
+              <mat-select required matNativeControl formControlName="department" (selectionChange)="changeDepartment($event)">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let department of departments" [value]="department">
+                  {{ department.departmentName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+          </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-2" style="margin-top: 2.5rem;">
+          <h4 class="head">Program Name</h4>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" style="margin-left: -4rem;margin-top: 2rem;">
+            <mat-label>Program Name</mat-label>
+            <mat-select required matNativeControl formControlName="prog_name">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let program of fetchPrograms()" [value]="program.programId">
+                {{ program.programName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2" style="margin-top: 2.5rem;margin-left: 3rem;">
+          <h4 class="head">Class</h4>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" style="width: 16rem; margin-top: 2rem">
+            <mat-label>Class</mat-label>
+            <input formControlName="class" matInput type="class" name="class" id="title" #input
+              placeholder="eg - Title..." />
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-md-2" style="margin-top: 3rem;">
+          <h4 class="head">Number of Division</h4>
+        </div>
+  
+        <div class="col-md-3" style="margin-left: -5rem;margin-top: 2rem;">
+          <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem">
+            <mat-label>number of div</mat-label>
+            <input formControlName="no_of_div" matInput type="text" name="no_of_div" #input />
+          </mat-form-field>
+        </div>
+  
+      </div>
+  
+  
+  
+      <div div formArrayName="division">
+        <section class="container border mb-4 p-3 mt-4">
+          <div *ngFor="let division of divisionControl; let i = index">
+            <div [formGroupName]="i">
+  
+  
+  
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" style="margin-top: 3rem;" (click)="removeDivision(i)">
+                  Remove
+                </button>
+              </div>
+  
+              <div class="row">
+  
+  
+                <div class="col-md-2" style="margin-top: 3rem;margin-left: 2rem;">
+                  <h4 class="head">Division List</h4>
+                </div>
+                <div class="col-md-3" style="margin-top: 2rem;">
+                  <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                    <mat-label>List of Divisions</mat-label>
+                    <mat-select required matNativeControl formControlName="division">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let level of level" [value]="level.level">
+                        {{ level.level }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+  
+                <div class="col-md-2" style="margin-top: 3rem;">
+                  <h4 class="head">Add Subject</h4>
+                </div>
+                <div class="col-md-3" style="margin-top: 2rem;">
+                  <!-- <mat-label>Favorite Fruits</mat-label> -->
+                  <mat-form-field appearance="outline">
+                    <mat-chip-list #chipList aria-label="Subject selection">
+                      <mat-chip *ngFor="let subject of subjects[i]" (removed)="remove(subject, i)">
+                        {{subject}}
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip>
+                      <input appearance="outline" placeholder="New Subject..." [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event, i)">
+                    </mat-chip-list>
+                  </mat-form-field>
+                </div>
+  
+  
+              </div>
+              <button mat-raised-button class="btn btn-primary" style="margin-top: 2.5rem;" (click)="addDivision()">
+                Add Division
+              </button>
+  
+  
+            </div>
+          </div>
+        </section>
+      </div>
+  
+  
+  
+  
+      <div class="row">
+  
+        <div class="col-md-2" style="margin-top: 2rem;">
+          <h4 class="head"> Intake </h4>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" style="width: 16rem; margin-top: 1rem">
+            <mat-label>Intake</mat-label>
+            <input formControlName="intake" matInput type="text" name="intake" #input />
+          </mat-form-field>
+  
+        </div>
+  
+  
+  
+        <div class="row">
+          <h4 class=" head" style="margin-top: 3rem;">Upload permission letter
+          </h4>
+          <div class="col-sm-2" (click)="newsReport.click()">
+            <button mat-raised-button color="primary" style="margin-top: 2rem;margin-left: -2rem;">Upload</button>
+            <input #newsReport (change)="certupload($event)" type="file" style="display: none" />
+          </div>
+  
+  
+        </div>
+  
+  
+      </div>
+    </div>
+  </section>
+  <button mat-raised-button color="accent" [disabled]="!Form.valid" style="margin-top: 3rem;"
+    (click)="submitForm()">Submit Form</button>

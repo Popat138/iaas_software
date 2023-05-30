@@ -1,0 +1,80 @@
+<div class="nav">
+    List of FDP Details
+    </div>
+    
+    <!-- <div class="col-md-6">
+    
+      <button style="margin-top: 5%;margin-left: 1.5rem;" mat-raised-button color="primary" (click)="addapprovaldetails()">
+        Add your details
+      </button>
+    
+    </div> -->
+    
+    <div style="margin-top: 5%" class="table-responsive">
+    <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="f_name">
+          <th mat-header-cell *matHeaderCellDef>First Name </th>
+             <td  mat-cell *matCellDef="let element">
+              {{element.user.firstName}}
+            </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="m_name">
+          <th mat-header-cell *matHeaderCellDef> Middle Name </th>
+             <td  mat-cell *matCellDef="let element">
+              {{element.user.middleName}}
+            </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="l_name">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+             <td  mat-cell *matCellDef="let element">
+              {{element.user.lastName}}
+            </td>
+        </ng-container>
+    
+      <ng-container matColumnDef="approval_date">
+        <th mat-header-cell *matHeaderCellDef> Approval Date </th>
+           <td  mat-cell *matCellDef="let element">
+            {{element.tfdp.approvalDate | date: 'dd-MM-yyyy'}}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="letter_no">
+        <th mat-header-cell *matHeaderCellDef> Letter Number </th>
+           <td  mat-cell *matCellDef="let element">
+             {{element.tfdp.letterNumber}}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="approval_type">
+        <th mat-header-cell *matHeaderCellDef> Approval Type </th>
+           <td  mat-cell *matCellDef="let element">
+             {{element.tfdp.approvalType}}
+          </td>
+      </ng-container>
+    
+    
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef> Designation </th>
+           <td  mat-cell *matCellDef="let element">
+             {{element.tfdp.designation}}
+          </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="document">
+        <th mat-header-cell *matHeaderCellDef> Document </th>
+        <td  mat-cell *matCellDef="let element">
+          <a mat-raised-button color="primary" [disabled]="!element.tfdp.document" href="{{this.service.BASE_URL}}/resources/uploads/{{element.approval.document}}" target="_blank">View</a>
+        </td>
+    
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color:white"></tr>
+    
+     </table>
+    <br><br>
+    
+    </div>
+    
+    
+    

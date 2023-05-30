@@ -1,0 +1,120 @@
+<!-- <p>list-of-online-resources works!</p> -->
+
+<h1 class="head">List of Online Resources</h1>
+
+<div class="row" style="margin-left: 5rem; margin-top: 5rem">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem">
+    <input matInput (keyup)="applyFilter_onlineresources($event)" placeholder="Search..." />
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <!-- <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button
+        mat-raised-button
+        color="accent"
+        class="saveBtn"
+        (click)="addpgcourses()">
+        Add New Details
+      </button>
+    </div>
+  </div> -->
+</div>
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>Year</th>
+      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="r_type">
+      <th mat-header-cell *matHeaderCellDef>Resource Type</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.otherType }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="r_name">
+      <th mat-header-cell *matHeaderCellDef>Resource Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.resourceName }}</td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="isbn_no">
+      <th mat-header-cell *matHeaderCellDef>ISBN/ISSN no</th>
+      <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef>Period</th>
+      <td mat-cell *matCellDef="let element">{{ element.purchaseReceipt }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="subs_date">
+      <th mat-header-cell *matHeaderCellDef>Subscription Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subs_amount">
+      <th mat-header-cell *matHeaderCellDef>Subscription Amount</th>
+      <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="no_of_users">
+      <th mat-header-cell *matHeaderCellDef>No of Users</th>
+      <td mat-cell *matCellDef="let element">{{ element.noOfUsers }}</td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="receipt">
+      <th mat-header-cell *matHeaderCellDef> Receipt </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.subscriptionReceipt" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.subscriptionReceipt}}" target="_blank">View</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usage_report">
+      <th mat-header-cell *matHeaderCellDef>Usage Report</th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.annualUsage" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.annualUsage}}" target="_blank">View</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit_onlineresources(row)">
+          <mat-icon style="color: black">Edit</mat-icon>
+        </button>
+      </mat-cell>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete_onlineresources(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" style="background-color:rgb(252, 252, 249)"></tr>
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br /><br/>
+</div>

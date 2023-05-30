@@ -1,0 +1,279 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Add New Committee Activity Calendor</div>
+  </mat-card>
+  
+  <div style="margin-left: 3rem" [formGroup]="Form">
+    <mat-form-field appearance="outline" style="margin-top: 1.5rem">
+      <mat-label>Academic Year</mat-label>
+      <mat-select required matNativeControl formControlName="academicYear" [disabled]=true>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let year of year" [value]="year.year">
+          {{ year.year }}
+        </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="yearControl.hasError('required')">Academic Year</mat-error>
+      <mat-hint>{{ yearControl.value?.sound }}</mat-hint> -->
+    </mat-form-field>
+  
+  
+  
+  
+  
+  
+  
+  
+    <!-- <div formArrayName="add_details">
+      <section class="container border mb-4 p-3 mt-4">
+        <div>
+          <h4 class="head" style="margin-bottom: 2rem">Committee Members</h4>
+          <div *ngFor="let add_detail of add_detailsControls; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">
+                  Remove
+                </button>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" formControlName="name" name="name" id="name" #input maxlength="250"
+                    placeholder="eg - mumbai" />
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>Role</mat-label>
+                  <mat-select required formControlName="role">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let role of role" [value]="role">
+                      {{ role.role }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="roleControl.hasError('required')">Role</mat-error>
+                  <mat-hint>{{ roleControl.value?.sound }}</mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Mobile Number</mat-label>
+                  <input matInput type="text" formControlName="mobile_no" name="mobile_no" id="mobile_no" #input
+                    maxlength="250" placeholder="eg - mumbai" />
+                </mat-form-field>
+  
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Email Id</mat-label>
+                  <input matInput type="text" formControlName="email" name="email" id="email" #input maxlength="250"
+                    placeholder="eg - mumbai" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addAddress()">
+            Add Names
+          </button>
+        </div>
+      </section>
+    </div> -->
+  
+    <div formArrayName="academic_calander">
+      <section class="container border mb-4 p-3 mt-4">
+        <div>
+          <h4 class="head" style="margin-bottom: 2rem">Academic Calender</h4>
+          <div *ngFor="
+              let academic_calander1 of academic_calanderControl;
+              let i = index
+            ">
+            <div [formGroupName]="i">
+              <!-- <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeacademic_calander(i)">
+                  Remove
+                </button>
+              </div> -->
+  
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Title of Activity</mat-label>
+                  <input matInput type="text" formControlName="title" name="title" id="title" #input maxlength="250"
+                    placeholder="eg - mumbai" [readonly]=true/>
+                  <!-- <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint> -->
+                </mat-form-field>
+  
+                <mat-form-field color="accent" appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>From Date</mat-label>
+                  <input formControlName="from_date" matInput [matDatepicker]="picker1" [readonly]=true/>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"  [disabled]=true></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+  
+                <mat-form-field color="accent" appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>To Date</mat-label>
+                  <input formControlName="to_date" matInput [matDatepicker]="picker2" [readonly]=true />
+                  <mat-datepicker-toggle matSuffix [for]="picker2"  [disabled]=true></mat-datepicker-toggle>
+                  <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addacademic_calander()">
+            Add Names
+          </button>
+        </div> -->
+      </section>
+    </div>
+  
+    <div formArrayName="meeting_details">
+      <section class="container border mb-4 p-3 mt-4">
+        <div>
+          <h4 class="head" style="margin-bottom: 2rem">Meeting Records</h4>
+          <div *ngFor="let meeting_details of meeting_detailsControl; let i = index">
+            <div [formGroupName]="i">
+              <!-- <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removemeeting_details(i)">
+                  Remove
+                </button>
+              </div> -->
+  
+              <div style="display: flex; justify-content: space-around">
+                <mat-form-field style="padding-top: 2%" appearance="outline">
+                  <mat-label>Agenda</mat-label>
+                  <input matInput type="text" formControlName="agenda" name="title" id="title" #input maxlength="250"
+                    placeholder="eg - mumbai" [readonly]=true />
+                  <!-- <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint> -->
+                </mat-form-field>
+  
+                <mat-form-field color="accent" appearance="outline" style="margin-top: 1.1rem">
+                  <mat-label>Date</mat-label>
+                  <input formControlName="date" matInput [matDatepicker]="picker1" [readonly]=true />
+                  <mat-datepicker-toggle matSuffix [for]="picker1"  [disabled]=true></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <div class="row" style="margin-top: 2rem">
+                  <div class="col-sm-3">
+                    <h5 class="head_u">Upload Minutes</h5>
+                  </div>
+  
+                  <div class="col-sm-2" style="margin-left: 1.5rem;">
+                    <a mat-raised-button color="primary" [disabled]="!this.element.meetingRecords[i].document" href="{{this.service.BASE_URL}}/resources/uploads/{{this.element.meetingRecords[i].document}}" target="_blank">View</a>
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div>
+          <button mat-raised-button class="btn btn-primary" (click)="addmeeting_details()">
+            Add Meeting
+          </button>
+        </div> -->
+      </section>
+    </div>
+  
+    <section class="container border mb-4 p-3 mt-4">
+      <h3 class="head">Report Of Activity</h3>
+  
+      <!-- <form id="addNewDetails-form" [formGroup]="addnewDetailsForm" class="form" action="" method="post"> -->
+        <div  formArrayName="report_activity"  >
+      <div  *ngFor="let report_activity of report_activityControl; let i = index">
+        <div [formGroupName]= "i" style="margin-top:2rem;">
+          <!-- <div class="col-6 text-right">
+            <button type="button" class="btn btn-danger btn-sm" (click)="removereport_activity(i)">
+              Remove
+            </button>
+          </div> -->
+          <div class="row">
+            <div>
+  
+                <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+                  <mat-label>Title Of Activity</mat-label>
+                  <input formControlName="title" matInput type="text" name="title" id="title" #input
+                    placeholder="eg - Title..." [readonly]=true />
+  
+                </mat-form-field>
+  
+                <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+                  <mat-label>From Date</mat-label>
+                  <input matInput formControlName="f_date" [matDatepicker]="picker1" [readonly]=true />
+                  <mat-datepicker-toggle matSuffix [for]="picker1"  [disabled]=true></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+  
+                <mat-form-field color="accent" appearance="outline" style="margin-left: 1rem">
+                  <mat-label>To Date</mat-label>
+                  <input matInput formControlName="t_date" [matDatepicker]="picker2" [readonly]=true />
+                  <mat-datepicker-toggle matSuffix [for]="picker2"  [disabled]=true></mat-datepicker-toggle>
+                  <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+  
+            </div>
+          </div>
+  
+          <div class="row" style="display: flex">
+            <h4 class="head" style="margin-top: 1.5rem">Number of participants :-</h4>
+  
+            <mat-form-field appearance="outline" style="width: 15rem">
+              <mat-label>Number of Teachers</mat-label>
+              <input matInput type="text" formControlName="number_of_teachers" name="no_teachers" id="no_teachers" #input
+                placeholder="eg - 1,2,3.." [readonly]=true />
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+              <mat-label>Number of Students</mat-label>
+              <input matInput type="text" formControlName="number_of_students" name="no_students" id="no_students" #input
+                placeholder="eg - 1,2,3.." [readonly]=true />
+            </mat-form-field>
+          </div>
+  
+          <h3 class="head">Breif Report :-</h3>
+          <textarea   formControlName="breif_report" style="margin-left: 17.5rem; margin-top: -3rem" cols="50"
+            rows="5" [readonly]=true></textarea>
+  
+          <div class="row">
+            <h3 class="head" style="margin-top: 2rem">Supporting Agency :-</h3>
+            <textarea formControlName="supporting_agency" style="margin-left: 18.1rem; width: 50%; margin-top: -3rem" cols="50"
+            rows="1" [readonly]=true></textarea>
+          </div>
+  
+          <div class="row" style="margin-top: 3rem">
+            <div class="col-sm-2">
+              <h5 class="head_u">Photographs</h5>
+            </div>
+  
+            <div class="col-sm-2" >
+              <a mat-raised-button color="primary" [disabled]="!this.element.reportOfActivities[i].photographs[0].photo" href="{{this.service.BASE_URL}}/resources/uploads/{{this.element.reportOfActivities[i].photographs[0].photo}}" target="_blank">View</a>
+            </div>
+  
+            <div class="col-sm-2">
+              <h5 class="head_u">News Report</h5>
+            </div>
+  
+            <div class="col-sm-2" >
+              <a mat-raised-button color="primary" [disabled]="!this.element.reportOfActivities[i].newsReports[0].news" href="{{this.service.BASE_URL}}/resources/uploads/{{this.element.reportOfActivities[i].newsReports[0].news}}" target="_blank">View</a>
+            </div>
+  
+            <div class="col-sm-2">
+              <h5 class="head_u">Participants</h5>
+            </div>
+  
+            <div class="col-sm-2" >
+              <a mat-raised-button color="primary" [disabled]="!this.element.reportOfActivities[i].listOfParticipants[0].participant" href="{{this.service.BASE_URL}}/resources/uploads/{{this.element.reportOfActivities[i].listOfParticipants[0].participant}}" target="_blank">View</a>
+            </div>
+          </div>
+  
+  
+        </div>
+  
+      </div>
+      <!-- <div style="margin-top: 3rem;">
+        <button mat-raised-button class="btn btn-primary" (click)="addreport_activity()">
+          Add New Report
+        </button>
+      </div> -->
+  </div>
+    </section>
+  
+    <!-- <button mat-raised-button color="accent" style="display:flex;justify-content: center;" (click)="submitForm()" >Submit Form</button> -->
+  
+  </div>
+  

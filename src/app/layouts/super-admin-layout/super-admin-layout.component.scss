@@ -1,0 +1,62 @@
+.example-container {
+  width:auto;
+  height: 100%;
+  border: 0.2px  rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.Nav{
+    text-align: center;
+    font-family:'Josefin Slab',
+    serif;font-size: 24px;
+    font-weight: bold;width: 90%;
+    margin-left: -3em;
+}
+
+.head{
+  //text-align: center;
+  font-family:'Josefin Slab',
+  serif;font-size: 24px;
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+table {
+  width: 96%;
+  margin-top: 2%;
+  margin-left: 1.5rem;
+  // table-layout: fixed;
+ // margin-right: 1.5rem;
+}
+.mat-header-cell{
+  font-family:'Josefin Slab';
+  font-size: 19px;
+  font-weight: bolder;
+  color: black;
+
+  //width: 90%;
+  // margin-top: 2%;
+  // margin-left: 1.5rem;
+  // display: block;
+
+}
+
+.mat-cell {
+  padding: 8px 8px 8px 0;
+}
+th, td {
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

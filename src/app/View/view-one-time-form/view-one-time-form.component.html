@@ -1,0 +1,436 @@
+
+
+<div id="gitprofil" class="container" ng-app="app" ng-controller="appCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{data?.firstName+" "+data?.middleName+" "+data?.lastName}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher.teacherPhoto}}" alt="profile image" class="img"/>
+                <br />
+                <!-- <a class="btn btn-default btn-block animated  fadeIn" href="{{userData.html_url}}" target="_blank">View Profile</a> -->
+            </div>
+            <div class="col-md-9">
+              <!-- <span class="label label-primary  animated  fadeIn">{{userData.public_repos}} Public Repos</span>
+<span class="label label-success  animated fadeIn">{{userData.public_gists}} Public Gists</span>
+<span class="label label-info  animated fadeIn">{{userData.followers}} Followers</span>
+<span class="label label-warning animated fadeIn">{{userData.following}}Public Repos</span>
+              <br />  
+              <br /> 
+              <h5 class="animated fadeInRight">{{userData.bio}}</h5> 
+              <br /> -->
+              <ul class="list-group animated fadeInUp">
+                <li class="list-group-item"><strong>{{data?.teacher?.salute}} {{data.firstName}} {{data.middleName}} {{data.lastName}} </strong> </li>
+                <li class="list-group-item"><strong></strong> {{data?.teacher?.designation}} in {{data.teacher?.department.departmentName}}</li>
+                <li class="list-group-item">Department of {{data.teacher?.department.departmentName}}</li>
+                <li class="list-group-item">{{data?.teacher?.department.college.name}}</li>
+                <li class="list-group-item">{{data?.teacher?.department.college.address}}}</li>
+             </ul>
+            </div>
+        </div>
+        <!-- <br/><br/><br/>
+        <div class="row">
+          <div class="col-md-6">
+            <h4><b>Undergraduate</b></h4>
+            <ul class="list-group animated fadeInUp">
+              <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.ugQualification[0]?.degree}} ({{data?.teacher?.ugQualification[0]?.specialization}})</li>
+              <li class="list-group-item"><strong>University:</strong> {{data?.teacher?.ugQualification[0]?.university}}</li>
+              <li class="list-group-item"><strong>Year Of Passing:</strong> {{data?.teacher?.ugQualification[0]?.yearOfPassing}}</li>
+              <li class="list-group-item"><strong>Specialization:</strong> {{data?.teacher?.ugQualification[0]?.specialization}}</li>
+              <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.ugQualification[0]?.grade}}</li>
+              
+              </ul>
+          </div>
+          <div class="col-md-6">
+            <h4><b>Postgraduate</b></h4>
+            <ul class="list-group animated fadeInUp">
+              <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.pgQualification[0]?.degree}} ({{data?.teacher?.pgQualification[0]?.specialization}})</li>
+              <li class="list-group-item"><strong>University:</strong> {{data?.teacher?.pgQualification[0]?.university}}</li>
+              <li class="list-group-item"><strong>Year Of Passing:</strong> {{data?.teacher?.pgQualification[0]?.yearOfPassing}}</li>
+              <li class="list-group-item"><strong>Specialization:</strong> {{data?.teacher?.pgQualification[0]?.specialization}}</li>
+              <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.pgQualification[0]?.grade}}</li>
+              
+              </ul>
+          </div>
+      </div>
+      <br/><br/><br/>
+      <div class="row">
+        <div class="col-md-6">
+          <h4><b>Qualifying exam
+          </b></h4>
+          <ul class="list-group animated fadeInUp">
+            <li class="list-group-item"><strong>NET/SET/GATE:</strong> {{data?.teacher?.entranceQualification[0]?.name}}</li>
+            <li class="list-group-item"><strong>Year of Passing:</strong> {{data?.teacher?.entranceQualification[0]?.yearOfPassing}}</li>
+            <li class="list-group-item"><strong>Subject:</strong> {{data?.teacher?.entranceQualification[0]?.subject}}</li>
+            <li class="list-group-item"><strong>Grade:</strong> {{data?.teacher?.entranceQualification[0]?.grade}}</li>       
+            </ul>
+        </div>
+        <div class="col-md-6">
+          <h4><b>Research</b></h4>
+          <ul class="list-group animated fadeInUp">
+            <li class="list-group-item"><strong>Degree:</strong> {{data?.teacher?.researchQualification[0]?.degree}}</li>
+            <li class="list-group-item"><strong>Date of Declaration:</strong> {{data?.teacher?.researchQualification[0]?.dateOfDeclaration}}</li>
+            <li class="list-group-item"><strong>Subject:</strong> {{data?.teacher?.researchQualification[0]?.subject}}</li>
+            <li class="list-group-item"><strong>University.:</strong> {{data?.teacher?.researchQualification[0]?.university}}</li>
+          </ul>
+        </div>
+    </div> -->
+    </div>
+</div>
+</div>
+
+
+<!-- 
+<br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br /> <br />  
+              <br />  -->
+<h4 class="head_u">One Time Form</h4>
+
+
+<div [formGroup]="Form">
+<section  class="container border mb-4 p-3 mt-4">
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>First Name.</mat-label>
+    <input matInput type="text" formControlName="f_name" name="f_name" id="f_name" #input
+      placeholder="eg - 1,2,3.." [readonly]=true />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Middle Name.</mat-label>
+    <input matInput type="text" formControlName="m_name" name="m_name" id="m_name" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Last Name.</mat-label>
+    <input matInput type="text" formControlName="l_name" name="l_name" id="l_name" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+
+  <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput formControlName="dob" [matDatepicker]="picker1" [readonly]=true/>
+    <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]=true></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Addhar No</mat-label>
+        <input matInput type="text" formControlName="addhar" name="addhar" id="addhar" #input
+          placeholder="eg - 1,2,3.." [readonly]=true/>
+      </mat-form-field>
+    </div>
+  
+    <div class="col-3">
+      <!-- <button mat-raised-button color="primary" (click)="uploadAdhaar.click()">Upload Adhaar</button>
+    <input #uploadAdhaar (change)="adhaarUpload($event)" type="file" style="display: none" /> -->
+    <a mat-raised-button color="primary" [disabled]="!data.teacher.aadharDocument" href="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher.aadharDocument}}" target="_blank">View</a>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Pancard No.</mat-label>
+        <input matInput type="text" formControlName="pan_no" name="pan_no" id="pan_no" #input
+          placeholder="eg - 1,2,3.." [readonly]=true/>
+      </mat-form-field>
+    </div>
+  
+
+    <div class="col-3">
+      <!-- <button mat-raised-button color="primary" (click)="uploadPan.click()">Upload</button>
+    <input #uploadPan (change)="panUpload($event)" type="file" style="display: none" /> -->
+
+    <a mat-raised-button color="primary" [disabled]="!data.teacher.panDocument" href="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher.panDocument}}" target="_blank">View</a>
+    </div>
+  </div>
+  <mat-form-field appearance="outline" style="margin-top: 1rem" >
+    <mat-label>Present Designation</mat-label>
+           <input matInput type="text" formControlName="designation" name="designation" id="designation" [readonly]=true/>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Gender</mat-label>
+          <input matInput type="text" formControlName="gender" name="gender" id="gender" #input
+            placeholder="Male/Female/Other" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Mobile No.</mat-label>
+          <input matInput type="text" formControlName="mobile" name="mobile" id="mobile" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Email Id.</mat-label>
+          <input matInput type="text" formControlName="tec_mail" name="tec_mail" id="tec_mail" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+</section >
+
+    
+    
+ 
+
+<section  class="container border mb-4 p-3 mt-4">
+
+  <h4 class="head_u">Undergraduate</h4>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree.</mat-label>
+    <input matInput type="text" formControlName="degree" name="degree" id="degree" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass" name="y_of_pass" id="y_of_pass" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Specialization.</mat-label>
+    <input matInput type="text" formControlName="specialization" name="specialization" id="specialization" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade" name="grade" id="grade" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="uploadUGFile.click()">Upload</button>
+  <input #uploadUGFile (change)="ugFileUpload($event)" type="file" style="display: none" /> -->
+
+  <a mat-raised-button color="primary" [disabled]="!data.teacher.ugQualification[0].document" href="{{this.service.BASE_URL}}/resources/uploads/{{data.teacher?.ugQualification[0]?.document}}" target="_blank">View</a>
+
+</section>
+
+
+<section  class="container border mb-4 p-3 mt-4">
+
+
+  <h4 class="head_u">Postgraduate</h4>
+
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree.</mat-label>
+    <input matInput type="text" formControlName="degree1" name="degree1" id="degree1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university1" id="university1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass1" name="y_of_pass1" id="y_of_pass1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Specialization.</mat-label>
+    <input matInput type="text" formControlName="specialization1" name="specialization1" id="specialization1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade1" name="grade1" id="grade1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="uploadPGFile.click()">Upload</button>
+  <input #uploadPGFile (change)="pgFileUpload($event)" type="file" style="display: none" /> -->
+
+  <a mat-raised-button color="primary" [disabled]="!data.teacher.pgQualification[0].document" href="{{this.service.BASE_URL}}/resources/uploads/{{data?.teacher?.pgQualification[0]?.document}}" target="_blank">View</a>
+
+</section>
+
+
+<section  class="container border mb-4 p-3 mt-4">
+
+  <h4 class="head_u">Qualifying exam</h4>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>NET/SET/GATE</mat-label>
+    <input matInput type="text" formControlName="net_set" name="net_set" id="net_set" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass2" name="y_of_pass2" id="y_of_pass2" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject" name="subject" id="subject" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade2" name="grade2" id="grade2" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="uploadQualifingFile.click()">Upload</button>
+  <input #uploadQualifingFile (change)="qualifingFileUpload($event)" type="file" style="display: none" /> -->
+
+  <a mat-raised-button color="primary" [disabled]="!data.teacher.entranceQualification[0].document" href="{{this.service.BASE_URL}}/resources/uploads/{{data?.teacher?.entranceQualification[0]?.document}}" target="_blank">View</a>
+
+  <h4 class="head_u">Other qualification</h4>
+  <!-- <p style="font-weight: bold;color: red;">Fill this if you have this, otherwise keep blank</p> -->
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Other degree or exam</mat-label>
+    <input matInput type="text" formControlName="net_set1" name="net_set1" id="net_set1" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Passing.</mat-label>
+    <input matInput type="text" formControlName="y_of_pass21" name="y_of_pass21" id="y_of_pass21" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject11" name="subject1" id="subject11" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Grade.</mat-label>
+    <input matInput type="text" formControlName="grade21" name="grade21" id="grade21" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+
+</section>
+
+<section  class="container border mb-4 p-3 mt-4">
+
+  <h4 class="head_u">Research</h4>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Degree</mat-label>
+    <input matInput type="text" formControlName="degree2" name="degree2" id="degree2" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University.</mat-label>
+    <input matInput type="text" formControlName="university1" name="university" id="university" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field> -->
+
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Date of Declaration.</mat-label>
+    <input matInput formControlName="date_of_declaration" [matDatepicker]="picker2" [readonly]=true/>
+    <mat-datepicker-toggle matSuffix [for]="picker2" [disabled]=true></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Subject.</mat-label>
+    <input matInput type="text" formControlName="subject1" name="subject1" id="subject1" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>University2</mat-label>
+    <input matInput type="text" formControlName="university2" name="university2" id="university2" #input
+      placeholder="eg - 1,2,3.." [readonly]=true/>
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" (click)="uploadResearchFile.click()">Upload</button>
+  <input #uploadResearchFile (change)="researchFileUpload($event)" type="file" style="display: none" /> -->
+
+  <a mat-raised-button color="primary" [disabled]="!data.teacher.researchQualification[0].document" href="{{this.service.BASE_URL}}/resources/uploads/{{data?.teacher?.researchQualification[0]?.document}}" target="_blank">View</a>
+
+
+
+
+
+</section>
+<section  class="container border mb-4 p-3 mt-4">
+  <h4 class="head_u">Research guide information</h4>
+  <mat-form-field appearance="outline" style="margin-top: 1.1rem">
+    <mat-label>whether research recognized guide</mat-label>
+    <mat-select required matNativeControl formControlName="guide">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let level of level" [value]="level.level">
+        {{ level.level }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hidden]="this.Form.get('guide').value!=='Yes'" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Year of Recognition</mat-label>
+    <input matInput type="text" formControlName="rec_year" name="rec_year" id="rec_year" #input 
+      placeholder="eg - 2020,2021..." />
+  </mat-form-field>
+
+  <!-- <button mat-raised-button color="primary" [hidden]="this.Form.get('guide').value!=='Yes'" (click)="uploadguideFile.click()">Upload guidesheep letter </button>
+  <input #uploadguideFile (change)="guideFileUpload($event)" type="file" style="display: none" /> -->
+  <div class="col-3">
+    <!-- <button mat-raised-button color="primary" (click)="uploadPan.click()">Upload</button>
+  <input #uploadPan (change)="panUpload($event)" type="file" style="display: none" /> -->
+
+  <a mat-raised-button color="primary" [disabled]="!data.teacher.guideLetter" href="{{this.service.BASE_URL}}/resources/uploads/{{data?.teacher?.guideLetter}}" target="_blank">View</a>
+  </div>
+</section>
+
+<section class="container border mb-4 p-3 mt-4">
+  <div>
+    <h3 class="head">Address:-</h3> <br>
+    <textarea formControlName="tec_address" style="margin-left: 17.5rem; margin-top: -3rem" cols="40"
+      rows="5"></textarea>
+  </div>
+  <div>
+    <h3 class="head">Membership/Additional Duties:-</h3> <br><br><br>
+    <textarea formControlName="add_duty" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+      rows="5"></textarea>
+    </div>
+  </section>
+</div>

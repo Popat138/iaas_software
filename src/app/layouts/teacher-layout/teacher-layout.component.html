@@ -1,0 +1,69 @@
+<div class="wrapper" style="width: 100%;height: 100%;">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-card style="display: flex; flex-direction: row; align-items: center;color:black; background-color:hsl(189, 96%, 53%)">
+      <div style="width: 10%">
+        <button mat-mini-fab (click)="drawer.toggle()" style="margin-left: 2rem">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <p style="margin-top:0rem; margin-left: 2rem; color:rgb(19, 19, 18)"> Menu</p>
+      </div>
+      <div class="Nav" style="color: rgb(14, 14, 13);">
+        <h1 style="font-family:Poppins;font-weight: bolder; font-size=10px">{{this.association}} </h1>
+        <h1 style="font-family:Poppins;font-weight: bolder; font-size=20px; margin-top:-1rem"><strong>{{this.college}}</strong> </h1>
+        <h2 style="font-family:Garamond;font-weight: 700;color:rgb(245, 7, 7)" >Welcome {{this.teachername}} to {{this.dept_name}} Department</h2></div>
+      <button   (click)="logout()" mat-mini-fab color="grey" aria-label="cart" >
+        <mat-icon>logout</mat-icon>
+      </button>
+      <p style="margin-top:4rem; margin-left: -2.5rem; color:rgb(19, 19, 18)"> logout</p>
+    </mat-card>
+
+      <!-- <img class="img1"  src="{{this.service.BASE_URL}}/resources/uploads/{{this.teacherphoto}}" style="display:flex; position: absolute;" alt=""> -->
+      <br>
+  
+    <mat-drawer #drawer class="example-sidenav" mode="side" style="width: 18rem;background-color:hsl(0, 0%, 100%);">
+      <mat-card class="shadow p-3 mb-2 bg-body rounded" style=" margin-bottom: 1%;background-color:hsla(162, 87%, 12%, 0.815);">
+        <h4 style="
+          font-family: Poppins;
+          font-weight: bold;
+          font-size: 19px;
+          margin-top: 5%;
+          text-align: center;
+          ">
+         <strong>TEACHER</strong>
+        
+        </h4>
+        
+        <p style="text-align: center; font-size: 17px;"><strong>{{this.teachername}}</strong></p>
+        
+      </mat-card>
+    <mat-card class="shadow p-1 mb-5 bg-body rounded">
+      <img class="img2"  src="{{this.service.BASE_URL}}/resources/uploads/{{this.teacherphoto}}" style="position: right;" alt="">
+    </mat-card>
+<ul class="nav" style="margin-left: 0.8rem; ">
+        
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <ul class="nav flex-column card  text-dark border-light mb-1 shadow-sm  mb-1  bg-body rounded">
+              <!-- <mat-card style="width: 100%;margin-bottom: 2rem;"> -->
+                 <li routerLinkActive="active"  class="{{menuItem.class}} nav-item" style="color: aliceblue ;background-color: rgb(3, 123, 139); border-radius: 10pt;">
+                    <a class="nav-link" [routerLink]="menuItem.path">
+                        <i style="margin-left: -5px;color:  rgb(240, 242, 247);" class="material-icons" >{{menuItem.icon}}</i>
+                           &nbsp;
+                        <p class="title">{{menuItem.title}}</p>
+            <ng-container  *ngIf="menuItem.children && menuItem.children.length > 0" > </ng-container>
+        </a>
+             </li>
+
+            <!-- </mat-card> -->
+
+          </ul>
+
+
+    </li>
+</ul>
+    </mat-drawer>
+    <div>
+      
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,101 @@
+<!-- <p>list-of-purchase-of-books works!</p> -->
+<h1 class="head">List of Purchase Of Books</h1>
+<!-- <h5 class="note">(Note: the entries must be made voucher wise)</h5> -->
+
+<div class="row" style="margin-left: 5rem; margin-top: 5rem">
+  <mat-form-field class="col-md-6" style="margin-left: 8rem">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search..." />
+  </mat-form-field>
+
+  <div class="col-md-1"></div>
+
+  <!-- <div class="col-md-3">
+    <div class="card-body table-responsive">
+      <button
+        mat-raised-button
+        color="accent"
+        class="saveBtn"
+        (click)="addpgcourses()">
+        Add New Details
+      </button>
+    </div>
+  </div> -->
+</div>
+
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>Year</th>
+      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="booktype">
+      <th mat-header-cell *matHeaderCellDef>Book Type</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.otherType }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalbooks">
+      <th mat-header-cell *matHeaderCellDef>Total Books</th>
+      <td mat-cell *matCellDef="let element">{{ element.totalBooks }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amountpaid">
+      <th mat-header-cell *matHeaderCellDef>Amount Paid</th>
+      <td mat-cell *matCellDef="let element">{{ element.amountPaid }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="invoiceno">
+      <th mat-header-cell *matHeaderCellDef>Invoice No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.invoiceNo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="view_upload_list">
+      <th mat-header-cell *matHeaderCellDef> View List </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" [disabled]="!element.accessionNumbers" href="{{this.service.BASE_URL}}/resources/uploads/{{element?.accessionNumbers}}" target="_blank">View</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Edit :">
+        <button mat-button color="primary" (click)="edit(row)">
+          <mat-icon style="color: black">Edit</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <td mat-cell
+        *matCellDef="let row"
+        [style.color]="row.color"
+        data-label="Delete :">
+        <button mat-button color="primary" (click)="delete(row)">
+          <mat-icon style="color: black; cursor: pointer"
+          >delete_forever</mat-icon>
+        </button>
+      </td>
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" style="background-color:white"></tr>
+  </table>
+  <mat-paginator style="font-weight:bold;margin-right: 5rem;margin-left: 5rem; background-color: rgb(178, 247, 229);" #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <br /><br/>
+</div>

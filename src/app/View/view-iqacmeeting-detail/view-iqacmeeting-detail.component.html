@@ -1,0 +1,143 @@
+
+<!--
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+  <div class="Nav" style="color: black">View IQAC Meetings</div>
+</mat-card>
+-->
+
+<div  [formGroup]="Form" >
+  <section style="margin-left:5rem; margin-right:5rem" >
+   <div class="container border mb-1 p-3 mt-1">
+    <section id ="print" style="margin-left:2rem;margin-right:2rem" >
+      <div class="row">
+        <div class="col-md-1">
+          <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+        </div>
+        <div class="col-md-10"> 
+        <p style="text-align: center; color:rgb(17, 16, 16);margin-top:1rem; font-family: Arial, Helvetica, sans-serif;"><strong>{{this.association}}</strong></p>
+        <p style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem; font-family: Arial, Helvetica, sans-serif;font-size:20px"> <strong>{{this.college}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;"><strong>{{this.address}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;font-size: x-large;"><strong>Internal Quality Assurance Cell</strong></p>
+        </div>
+      </div>
+        <hr style="height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7)" >
+        <h3 style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: large;font-weight: bold;" ><strong>Minutes IQAC Meetings</strong></h3>
+        <pre style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;"> Date: {{this.rowdata.date| date:'dd/MM/yyyy'}}    Time: {{this.rowdata.time}}  Place: {{this.rowdata.place}} </pre>
+       <h3 class="head" style="font-family: 'Times New Roman', Times, serif;font: size 12px; margin-left:5rem;margin-right:5rem"><strong style="margin-left:2rem;">Brief Introduction : </strong><br><p style="margin-left:3rem; font-family: 'Times New Roman', Times, serif; font: size 12px;white-space: pre-wrap;padding-left:1rem;">{{this.introduction}}</p></h3> 
+     <div formArrayName="agenda" >
+         <section id="agenda" class="container">
+        <div *ngFor="let agenda of agendaControl; let i = index" style="margin-left:5rem;margin-right:5rem">
+          <div [formGroupName]="i">
+            <h4 class="head" style="margin-top: 0.1rem; font-family: 'Times New Roman', Times, serif;font: size 12px;;font-weight: bold;"><strong>Agenda {{i+1}} </strong>: {{this.rowdata.agendas[i].agenda}}</h4> 
+            <h3><p class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font:size 12px; white-space: pre-wrap;"><strong>Discussion: </strong>{{this.rowdata.agendas[i].discussion}}</p></h3>
+            <h3><p class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font: size 12px;white-space: pre-wrap;"><strong>Decision: </strong>{{this.rowdata.agendas[i].decision}}</p></h3>
+            <br>
+           <div class="cols">      
+        
+          <pre class="head" style="margin-top: 0.1rem; font-family: 'Times New Roman', Times, serif;font: size 12px;text-align: center;">Proposer :{{this.rowdata.agendas[i].proposer}}                                                                    Seconder:{{this.rowdata.agendas[i].proposer}}</pre>
+        <br>
+        </div>  
+      </div>
+
+  </div> 
+ </section>
+
+    </div>
+    </section>
+  </div>
+    
+    <button mat-raised-button color="primary" (click)="report4()" >Download Minutes Details</button>
+
+    <div>
+      <br>
+      <br>
+    <button mat-raised-button color="primary" (click)="report6()" >Download Action Taken Report</button>
+   <div class="container border mb-1 p-3 mt-1">
+    <section id="plan" >
+      <div class="row">
+        <div class="col-md-1">
+          <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+        </div>
+        <div class="col-md-10"> 
+        <p style="text-align: center; color:rgb(17, 16, 16);margin-top:1rem; font-family: Arial, Helvetica, sans-serif;"><strong>{{this.association}}</strong></p>
+        <p style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem; font-family: Arial, Helvetica, sans-serif;font-size:20px"> <strong>{{this.college}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;"><strong>{{this.address}}</strong></p>
+        <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;font-size: x-large;"><strong>Internal Quality Assurance Cell</strong></p>
+        </div>
+      </div>
+      <hr style="height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7)" >
+        <h3 class="head" style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: large;font-weight: bold;" ><strong>IQAC Meetings</strong></h3>
+      
+      <h4 class="head" style="text-align: center;"><strong>Action Taken Report</strong></h4>
+
+            
+      <pre style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;"> Date: {{this.rowdata.date| date:'dd/MM/yyyy'}}    Time: {{this.rowdata.time}}  Place: {{this.rowdata.place}} </pre>
+      <div *ngFor="let row of rowdata.agendas; let i = index" style="margin-left:5rem;margin-right:5rem">
+      <div [formGroupName]="i" class="cols">
+     <div>
+        <h4 class="head" style="margin-top: 0.1rem; font-family: 'Times New Roman', Times, serif;font: size 12px;;font-weight: bold;"><strong>Agenda {{i+1}} </strong>: {{this.rowdata.agendas[i].agenda}}</h4> 
+      <!-- <h3><pre class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font:size 12px; white-space: pre-wrap;"><strong>Discussion: </strong>{{this.rowdata.agendas[i].discussion}}</pre> </h3> -->
+       <br>
+      </div>
+      <div>
+      <h3><pre class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font:size 12px; white-space: pre-wrap;"><strong>Decision:</strong> {{this.rowdata.agendas[i].decision}}</pre></h3>
+    </div>
+      <h3><pre class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font:size 12px; white-space: pre-wrap;"><strong>Action Taken:</strong> {{this.rowdata.agendas[i].actionTaken}}</pre></h3>
+      <h3><pre class="head" style="text-align: justify; margin-top: 0rem; font-family: 'Times New Roman', Times, serif;font:size 12px; white-space: pre-wrap;"><strong>Prepared By:</strong> {{this.rowdata.agendas[i].prepBy}}</pre></h3>
+    </div>
+
+
+    <br>
+</div>
+
+    </section>
+  </div>
+  </div>
+  <button mat-raised-button color="primary" (click)="report5()" >Download ATR in Table-format</button>
+ <div class="container border mb-1 p-3 mt-1">
+  <section id="plan1">
+    <div class="row">
+      <div class="col-md-1">
+        <img class="img1" src="{{this.service.BASE_URL}}/resources/uploads/{{this.image}}" style="display:flex;" alt="profile image">
+      </div>
+      <div class="col-md-10"> 
+      <p style="text-align: center; color:rgb(17, 16, 16);margin-top:1rem; font-family: Arial, Helvetica, sans-serif;"><strong>{{this.association}}</strong></p>
+      <p style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem; font-family: Arial, Helvetica, sans-serif;font-size:20px"> <strong>{{this.college}}</strong></p>
+      <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;"><strong>{{this.address}}</strong></p>
+      <p  style="text-align: center; color:rgb(12, 11, 11);margin-top:-0.2rem;font-family: Arial, Helvetica, sans-serif;font-size: x-large;"><strong>Internal Quality Assurance Cell</strong></p>
+      </div>
+    </div>
+    <hr style="height:5px;border-width:2px;color:rgb(8, 8, 8);background-color:rgb(7, 7, 7)" >
+        <h3 class="head" style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: large;font-weight: bold;" ><strong>IQAC Meetings</strong></h3>
+        <pre style="text-align: center;font-family: 'Times New Roman', Times, serif;font-size: larger;font-weight: bold;"> Date: {{this.rowdata.date| date:'dd/MM/yyyy'}}    Time: {{this.rowdata.time}}  Place: {{this.rowdata.place}} </pre>
+      <h4 class="head" style="text-align: center;"><strong>Action Taken Report</strong></h4>
+    <table style="width:90%;margin-left:5%;text-align: justify;text-indent: 0.5%;vertical-align: text-top;">
+      <thead style="text-align: center;vertical-align:middle;">
+        <tr>
+            <th>Agenda No</th>
+            <th>Agenda:</th>
+            <th>Decision</th>
+            <th>Action Taken</th>
+            <th>Responsibility defined to</th>
+            <th>Completion period</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rowdata.agendas; let i = index">
+          <td style="text-align: center;">{{i+1}}.</td>
+          <td >{{ this.rowdata.agendas[i].agenda}}</td>
+          <td>{{ this.rowdata.agendas[i].decision}}</td>
+          <td>{{ this.rowdata.agendas[i].actionTaken}}</td>
+          <td> {{this.rowdata.agendas[i].compileBy}}  </td>
+           <td> {{this.rowdata.agendas[i].prepBy}}  </td>
+          
+      </tr>
+  </tbody>
+    </table>
+</section>
+ </div>
+  </section>
+
+
+
+

@@ -1,0 +1,108 @@
+<mat-card style="display: flex; flex-direction: row; align-items: center">
+    <div class="Nav" style="color: black">Update Professional Development program</div>
+  </mat-card>
+
+  <div style="margin-left: 3rem" [formGroup]="Form">
+
+    <section class="container border mb-4 p-3 mt-4">
+      <h3 class="head">Report Of Activity</h3>
+
+      <mat-form-field appearance="outline" style="margin-top: 1.5rem">
+        <mat-label>Academic Year</mat-label>
+        <mat-select required matNativeControl formControlName="academicYear">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+            {{ year }}
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="row">
+        <div>
+
+            <mat-form-field appearance="outline" style="width: 16rem;margin-top:2rem;">
+              <mat-label>Title Of Activity</mat-label>
+              <input formControlName="title" matInput type="text" name="title" id="title" #input
+                placeholder="eg - Title..." />
+
+            </mat-form-field>
+
+            <mat-form-field color="accent" appearance="outline" style="margin-left: 1.6rem">
+              <mat-label>From Date</mat-label>
+              <input matInput formControlName="f_date" [matDatepicker]="picker1" />
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field color="accent" appearance="outline" style="margin-left: 1rem">
+              <mat-label>To Date</mat-label>
+              <input matInput formControlName="t_date" [matDatepicker]="picker2" />
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="row" style="display: flex">
+        <h4 class="head" style="margin-top: 1.5rem">Number of participants :-</h4>
+
+        <mat-form-field appearance="outline" style="width: 15rem">
+          <mat-label>Number of Teachers</mat-label>
+          <input matInput type="text" formControlName="number_of_teachers" name="no_teachers" id="no_teachers" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>Number of Staff</mat-label>
+          <input matInput type="text" formControlName="number_of_students" name="no_students" id="no_students" #input
+            placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+      </div>
+
+      <h3 class="head">Breif Report :-</h3>
+      <textarea   formControlName="breif_report" style="margin-left: 17.5rem; margin-top: -3rem" cols="100"
+        rows="15"></textarea>
+
+      <div class="row">
+        <h3 class="head" style="margin-top: 2rem">Supporting Agency :-</h3>
+        <textarea formControlName="supporting_agency" style="margin-left: 18.1rem; width: 50%; margin-top: -3rem" cols="50"
+        rows="1"></textarea>
+      </div>
+
+      <div class="row" style="margin-top: 3rem">
+        <div class="col-sm-2">
+          <h5 class="head_u">Photographs</h5>
+          <h5>(maximum: 4 photos)</h5>
+        </div>
+        <div class="col-sm-2">
+          <button mat-raised-button color="accent" class="saveBtn" (click)="addPhoto()">Add Photo</button>
+        </div>
+        <!-- <div class="col-sm-2" (click)="uploadFile.click()">
+          <button mat-raised-button color="primary">Upload</button>
+          <input #uploadFile multiple (change)="photographUpload($event)" type="file" style="display: none" />
+        </div> -->
+
+        <div class="col-sm-2">
+          <h5 class="head_u">News Report</h5>
+          <h5>(maximum: 2 news reports)</h5>
+        </div>
+
+        <div class="col-sm-2" (click)="newsReport.click()">
+          <button mat-raised-button color="primary">Upload</button>
+          <input #newsReport multiple (change)="newsReportUpload($event)" type="file" style="display: none" />
+        </div>
+
+        <div class="col-sm-2">
+          <h5 class="head_u">Participants</h5>
+        </div>
+
+        <div class="col-sm-2" (click)="partcipant.click()">
+          <button mat-raised-button color="primary">Upload</button>
+          <input #partcipant (change)="participantListUpload($event)" type="file" style="display: none" />
+        </div>
+      </div>
+
+    </section>
+
+    <button mat-raised-button color="accent"  [disabled]="!Form.valid" style="display:flex;justify-content: center;" (click)="submitForm()" >Submit Form</button>

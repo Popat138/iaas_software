@@ -1,0 +1,101 @@
+<section class="container border mb-4 p-3 mt-4">
+  <div [formGroup]="Form">
+    <!-- <div formArrayName="pg"> -->
+    <h4 class="head_u" style="margin-bottom:4rem;">Add Placement details</h4>
+    <!-- <h4 class="head">Name</h4> -->
+
+    <div>
+      <mat-form-field appearance="outline" style="margin-top: 1.5rem; margin-left: 1rem">
+        <mat-label>Academic Year</mat-label>
+        <mat-select required matNativeControl formControlName="year">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+            {{ year }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+        <mat-label>Programme</mat-label>
+        <input matInput type="text" formControlName="program" name="program" id="program" #input
+          placeholder="eg - 2020.." [readonly]=true />
+      </mat-form-field>
+      <button mat-raised-button style="width: 6rem; height: 40px;" color="accent" class="saveBtn"
+        (click)="getProgram()">Programs</button>
+    </div>
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Class</mat-label>
+      <mat-select required matNativeControl formControlName="class" (selectionChange)="classChanges($event)" [disabled]="!this.Form.get('program').valid">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of programDetails" [value]="item">
+          {{ item.streamClass }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Division</mat-label>
+      <mat-select required matNativeControl formControlName="div" [disabled]="!this.Form.get('class').valid">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let division of divisions" [value]="division">
+          {{ division.divisionName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Student Name</mat-label>
+      <input matInput type="text" formControlName="student_name" name="student_name" id="student_name" #input
+        placeholder="eg - 1,2,3.." [readonly]=true />
+    </mat-form-field>
+    <button mat-raised-button color="accent" class="saveBtn" (click)="getStudent()">Students</button>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Student Contact </mat-label>
+      <input matInput type="text" formControlName="student_contact" name="job_title" id="job_title" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Job Title</mat-label>
+      <input matInput type="text" formControlName="job_title" name="job_title" id="job_title" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Organization Name with contact number</mat-label>
+      <input matInput type="text" formControlName="detail_of_organization" name="detail_of_organization"
+        id="detail_of_organization" #input placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Pay Package per annum</mat-label>
+      <input matInput type="text" formControlName="pay_package" name="job_title" id="job_title" #input
+        placeholder="eg - 1,2,3.." />
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>No of Students Appeared</mat-label>
+          <input matInput type="text" formControlName="no_of_student_appeared" name="no_of_student_appeared" id="no_of_student_appeared" #input placeholder="eg - 1,2,3.." />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+          <mat-label>No of Students Passed</mat-label>
+          <input matInput type="text" formControlName="no_of_student_passed" name="no_of_student_passed" id="no_of_student_passed" #input placeholder="eg - 1,2,3.." />
+        </mat-form-field> -->
+
+    <div class="col" (click)="uploadFile.click()" style="margin-left: 1rem;">
+      <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload Placement Letter</button> {{fileName||'Not selected'}}
+      <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+    </div>
+
+
+  </div>
+</section>
+<!-- </div> -->
+<button mat-raised-button color="accent" [disabled]="!Form.valid" (click)="submitForm()"> Submit Form</button>

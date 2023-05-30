@@ -1,0 +1,103 @@
+<div id="report">
+<div>
+    <h3 Style="background-color:rgb(250, 211, 211)">   Academic Year:-{{formData.academicYear}} ||   Program:- {{formData.program}}   ||  Course:- {{formData.c_name}} ||   class:- {{formData.class.streamClass}} &nbsp;Div:- {{formData.divisionName}} </h3>
+<h2>CO Attainment for course</h2>
+
+<table class="mat-table">
+    <tr class="mat-header-row">
+        <th class="mat-header-cell"></th>
+        <th class="mat-header-cell" *ngFor="let item of internalAssessments[0]?.courseOutcomeWiseCourseAttainments">
+           <strong> {{item.courseOutcome}}</strong>
+        </th>
+    </tr>
+    <!-- <tr class="mat-row">
+        <td class="mat-cell">
+            Total students having more than threshold
+        </td>
+        <td class="mat-cell" *ngFor="let item of internalAttainments">
+            {{item.totalStudentAboveThreshold}}
+        </td >
+    </tr> -->
+
+    <tr class="mat-row">
+        <th class="mat-cell">% of students secure marks > threshold marks</th >
+            
+        <td class="mat-cell" *ngFor="let item of internalAttainments">
+            {{item.attainment.toFixed(2)}}
+        </td >
+    </tr>
+    <tr class="mat-row">
+        <th class="mat-cell">Attainment (Internal)</th >
+            
+        <td class="mat-cell" *ngFor="let item of internalAttainments">
+            {{item.attainmentLevel}}
+        </td >
+    </tr>
+    <!-- <tr>
+        <br>
+    </tr> -->
+    <br><br><br>
+    <tr class="mat-row">
+        <th class="mat-cell">
+            Total students having more than threshold(External)
+        </th>
+        <td class="mat-cell" *ngFor="let item of externalAttainments">
+            {{item.studentAboveThreshold}}
+        </td >
+    </tr>
+    <tr class="mat-row">
+        <th class="mat-cell">
+            % of students secure marks > threshold marks
+        </th >
+            
+        <td class="mat-cell" *ngFor="let item of externalAttainments">
+            {{item.attainment.toFixed(2)}}
+        </td >
+    </tr>
+    <tr class="mat-row">
+        <th class="mat-cell">
+            Attainment (External)
+        </th >
+            
+        <td class="mat-cell" *ngFor="let item of externalAttainments">
+            {{item.attainmentLevel}}
+        </td >
+    </tr>
+    <tr></tr>
+    <!-- <ng-container [matColumnDef]="item.courseOutcome" *ngFor="let item of internalAssessments[0]?.courseOutcomeWiseCourseAttainments">
+        <th mat-header-cell *matHeaderCellDef> {{item.courseOutcome}} </th>
+        <td mat-cell *matCellDef="let element"> {{element | json}} </td>
+</ng-container> -->
+<!-- </table>
+<button mat-raised-button (click)="getFinalCOAttainment()">Generate Final Attainment</button>
+<table class="mat-table"> -->
+    <tr class="mat-row">
+        <th class="mat-cell">CO Attainment</th>
+        <td class="mat-cell" *ngFor="let item of finalCOAttainment">
+            {{item.finalAttainment ? item.finalAttainment.toFixed(2) : "-"}}
+        </td>
+    </tr>
+</table>
+</div>
+<br>
+<br>
+<div>
+    <h2>PO Attainment for course</h2>
+    <table class="mat-table">
+        <tr class="mat-header-row">
+            <th class="mat-header-cell"></th>
+            <th class="mat-header-cell" *ngFor="let item of finalPOAttainment">
+               <strong> {{item.programOutcome}} </strong>
+            </th>
+        </tr>
+        <tr class="mat-row">
+            <th class="mat-cell">PO Attainment</th>
+            <td class="mat-cell" *ngFor="let item of finalPOAttainment">
+                {{item.finalAttainment ? item.finalAttainment.toFixed(2) : "-"}}
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+<br>
+<button  mat-button color="primary" style="background-color:rgb(248, 204, 139)" (click)="report()">Download</button>

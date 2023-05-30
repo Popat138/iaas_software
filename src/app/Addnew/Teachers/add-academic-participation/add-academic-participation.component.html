@@ -1,0 +1,93 @@
+<p style="font-family: poppins;font-size:24px">Academic Bodies and Evluation participation</p>
+<div [formGroup]="Form">
+<section class="container border mb-4 p-3 mt-4"> 
+   
+  <div class="row">
+
+    <div class="col-md-3"  >
+    <mat-form-field appearance="outline" style="margin-top: 1rem">
+    <mat-label>Academic Year</mat-label>
+    <mat-select required matNativeControl formControlName="academicYear">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let year of service.getAcademicYear()" [value]="year">
+          {{ year }}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+    </div>
+</div>
+<p><strong>Academic Participation</strong></p>
+<div class="col-md-3" >
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Academic Body</mat-label>
+    <input matInput type="text" formControlName="academic_body" name="academic_body" id="academic_body" #input
+      placeholder="eg - 1,2,3.." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>College/University</mat-label>
+    <input formControlName="university" matInput type="text" name="university" id="university" #input
+      placeholder="eg - Title..." />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Member type</mat-label>
+    <input formControlName="member_type" matInput type="text" name="member_type" id="member_type" #input
+      placeholder="eg - Title..." />
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+    <mat-label>Period</mat-label>
+    <input formControlName="period" matInput type="text" name="member_type" id="member_type" #input
+      placeholder="eg - Title..." />
+  </mat-form-field>
+  <div class="row">
+    <div class="row" style="margin-top: 2rem">
+      <div class="col" (click)="uploadFile.click()" style="margin-left: 1rem;margin-top: -1rem;">
+        <button mat-raised-button color="primary" [ngClass]="{'green' : toggle, 'red': !toggle}">Upload certificate copy
+        </button>{{fileName||'Not uploaded'}}
+        <input #uploadFile (change)="upload($event)" type="file" style="display: none" />
+      </div>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<p><strong>Participation in Evaluation and curriculum design</strong></p>
+  <div class="col-md-2" >
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Participation Type </mat-label>
+      <input matInput type="text" formControlName="examiner" name="examiner" id="examiner" #input
+        placeholder="eg - Examiner/papersetter" />
+    </mat-form-field>
+    <p>Add here Paper setting or Evaluation or Curriculum design for Add on/Diploma/Certificate courses</p>
+  
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>College/University</mat-label>
+      <input formControlName="exam_type" matInput type="text" name="exam_type" id="exam_type" #input
+        placeholder="eg - Title..." />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" style="width: 15rem; margin-left: 1rem">
+      <mat-label>Subject</mat-label>
+      <input formControlName="subject" matInput type="text" name="subject" id="member_type" #input
+        placeholder="eg - Title..." />
+    </mat-form-field>
+  
+    <div class="row">
+      <div class="row" style="margin-top: 2rem">
+        <div class="col" (click)="uploadExamdoc.click()" style="margin-left: 1rem;margin-top: -1rem;">
+          <button mat-raised-button color="primary" [ngClass]="{'green' : togglee, 'red': !togglee}">Upload certificate copy </button>{{fileNamee||'not uploaded'}}
+          <input #uploadExamdoc (change)="examFileUpload($event)" type="file" style="display: none" />
+        </div>
+        </div>
+    </div>
+  </div>
+
+  <p>IF you have multiple participation add new form for each</p>
+</section>
+
+</div>
+<button mat-raised-button  (click)="submitForm()" [disabled]="!Form.valid"> Submit Form</button>  
+
+    
+

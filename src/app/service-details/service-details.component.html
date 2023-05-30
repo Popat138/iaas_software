@@ -1,0 +1,102 @@
+<div class="nav">
+  Service Details (Appointment Details)
+</div>
+
+<div class="col-md-6" >
+
+  <button style="margin-top: 5%;margin-left: 1.5rem;" mat-raised-button color="acccent" (click)="addservicedetails()">
+    Add your details
+  </button>
+
+</div>
+
+<div class="table-responsive" >
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+
+   <ng-container matColumnDef="appointment_date">
+    <th mat-header-cell *matHeaderCellDef> Appointment Date </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.appointmentDate | date: 'dd-MM-yyyy'}}
+      </td>
+  </ng-container>
+  <ng-container matColumnDef="teacher">
+    <th mat-header-cell *matHeaderCellDef> Teacher Name </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.user.firstName + " " + element.user.middleName +" "+element.user.lastName}}
+      </td>
+  </ng-container>
+  <ng-container matColumnDef="order_no">
+    <th mat-header-cell *matHeaderCellDef> Order Number </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.orderNumber}}
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="appointment_type">
+    <th mat-header-cell *matHeaderCellDef> Appointment Type </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.appointmentType.replace("_"," ")}}
+      </td>
+  </ng-container>
+  <ng-container matColumnDef="nature">
+    <th mat-header-cell *matHeaderCellDef> Appointment Nature </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.nature}}
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="designation">
+    <th mat-header-cell *matHeaderCellDef> Designation </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.designation.replace("_"," ")}}
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="joining_date">
+    <th mat-header-cell *matHeaderCellDef> Joining Date in present Institute </th>
+       <td  mat-cell *matCellDef="let element">
+        {{element.joinDate | date: 'dd-MM-yyyy'}}
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="document">
+    <th mat-header-cell *matHeaderCellDef> Document </th>
+    <td  mat-cell *matCellDef="let element">
+      <a mat-raised-button color="primary" [disabled]="!element.document" href="{{this.service.BASE_URL}}/resources/uploads/{{element.document}}" target="_blank">View</a>
+    </td>
+
+  </ng-container>
+  
+  <ng-container matColumnDef="edit">
+    <td mat-cell
+      *matCellDef="let row"
+      [style.color]="row.color"
+      data-label="Edit :">
+      <button mat-button color="primary" (click)="edit(row)">
+        <mat-icon style="color: black">edit</mat-icon>
+      </button>
+    </td>
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <td mat-cell
+      *matCellDef="let row"
+      [style.color]="row.color"
+      data-label="Delete :">
+      <button mat-button color="primary" (click)="delete(row)">
+        <mat-icon style="color: black; cursor: pointer"
+        >delete_forever</mat-icon>
+      </button>
+    </td>
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color:rgb(105, 109, 108);"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color: white;"></tr>
+
+ </table>
+<br><br>
+
+</div>
+
